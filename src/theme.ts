@@ -2,13 +2,13 @@ import { createTheme } from "@mui/material/styles";
 
 const palette = {
   background: {
-    default: "black",
+    default: "#000000",
     paper: "",
     secondary: "",
     buttons: "",
   },
   text: {
-    primary: "white",
+    primary: "#ffffff",
     dark: "",
   },
 };
@@ -35,7 +35,8 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          // display: 'flex',
+          border: `2px solid #1a1a1a`,
+          borderRadius: 8
         },
       },
     },
