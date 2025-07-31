@@ -1,7 +1,6 @@
 import { Box, useTheme, Avatar } from "@mui/material";
-import { Brightness4 as ThemeToggle } from "@mui/icons-material";
 
-const HeroSection = ({ toggleTheme }) => {
+const HeroSection = () => {
   const theme = useTheme();
 
   const services = [
@@ -17,29 +16,6 @@ const HeroSection = ({ toggleTheme }) => {
 
   return (
     <>
-      {/* Theme toggle */}
-      <Box
-        onClick={toggleTheme}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          m: "auto",
-          mb: 2,
-          width: 60,
-          height: 60,
-          color: theme.palette.text.primary,
-          bgcolor: theme.palette.background.paper,
-          borderRadius: 50,
-          transition: "all 0.2s ease",
-          cursor: "pointer",
-          "&:hover": {
-            color: theme.palette.text.secondary,
-          },
-        }}
-      >
-        <ThemeToggle />
-      </Box>
       <Box sx={{ mt: 8, width: 400, mx: "auto" }}>
         <Avatar
           src="/src/assets/Headshot.jpg"
