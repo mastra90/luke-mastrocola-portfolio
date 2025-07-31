@@ -4,6 +4,7 @@ import {
   Box,
   Card,
   CardContent,
+  CardHeader,
   Chip,
   Grid,
   IconButton,
@@ -19,7 +20,7 @@ const DevWork = () => {
     {
       title: "Dr. Andrew Thomas",
       description:
-        "Dr Andrew Thomas' is a schollar and lecture at Deakin University. His website was developed to showcase his work and contact",
+        "Dr Andrew Thomas is a schollar and lecture at Deakin University. His website was developed to showcase his work and contact",
       technologies: ["React", "JavaScript", "Express,js"],
       github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
       demo: "https://www.drandrewthomasir.com/",
@@ -38,7 +39,7 @@ const DevWork = () => {
       title: "Task Tracker",
       description:
         "A modern task tracking web application built with React frontend and NestJS backend, fully containerized with Docker for easy deployment and development.",
-      technologies: ["React", "TypeScript", "Material UI", "NestJS", "Docker"],
+      technologies: ["React", "TypeScript", "NestJS", "Docker"],
       github: "https://github.com/mastra90/tsa-task-tracker",
       type: "React web app",
     },
@@ -82,100 +83,101 @@ const DevWork = () => {
   ];
 
   return (
-    <Card sx={{ width: "100%", my: 4, border: "none" }}>
-      <Grid container spacing={2}>
-        {devProjects.map((project, index) => (
-          <Grid size={6} key={index}>
-            <Card
-              sx={{
-                height: "100%",
-                bgcolor: alpha(theme.palette.common.white, 0.02),
-                border: `1px solid ${alpha(theme.palette.common.white, 0.1)}`,
-                "&:hover": {
-                  bgcolor: alpha(theme.palette.common.white, 0.06),
-                  transition: "all 0.2s ease",
-                },
-              }}
-            >
-              <CardContent sx={{ p: 3 }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    mb: 2,
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    sx={{ fontWeight: 600 }}
+    <Grid sx={{ my: 4 }} container spacing={2}>
+      {devProjects.map((project, index) => (
+        <Grid size={{ sm: 12, md: 6 }} key={index}>
+          <Card
+            variant="outlined"
+            sx={{
+              height: "100%",
+              "&:hover": {
+                transform: "scale(1.005)",
+                bgcolor: theme.palette.background.default,
+              },
+            }}
+          >
+            <CardContent sx={{ p: 3 }}>
+              <CardHeader
+                sx={{ p: 0 }}
+                title={
+                  <Box
+                    sx={{ display: "flex", justifyContent: "space-between" }}
                   >
                     {project.title}
-                  </Typography>
-                  <Chip
-                    label={project.type}
-                    size="small"
-                    sx={{
-                      bgcolor: alpha(theme.palette.primary.main, 0.1),
-                      color: theme.palette.primary.main,
-                    }}
-                  />
-                </Box>
-                <Typography variant="body2" sx={{ mb: 3, opacity: 0.8 }}>
-                  {project.description}
-                </Typography>
-                <Box sx={{ mb: 3 }}>
+                    <Chip
+                      variant="outlined"
+                      sx={{
+                        color: theme.palette.techChip.type,
+                        fontWeight: 700,
+                        border: 0,
+                      }}
+                      label={project.type}
+                    />
+                  </Box>
+                }
+                subheader={
                   <Box
-                    sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}
+                    sx={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      my: 1,
+                      ml: -0.5,
+                      gap: 1,
+                    }}
                   >
                     {project.technologies.map((tech) => (
                       <Chip
                         key={tech}
                         label={tech}
-                        size="small"
-                        variant="outlined"
                         sx={{
+                          fontWeight: 500,
                           border: 0,
-                          color: "#55e49f",
-                          bgcolor: "#012514",
-                          p: 0.5,
-                          ml: -0.5,
+                          bgcolor: theme.palette.techChip.background
                         }}
                       />
                     ))}
                   </Box>
-                </Box>
-                <Box sx={{ display: "flex", gap: 1 }}>
-                  <Link target="_blank" rel="noreferrer" href={project.github}>
-                    <IconButton
-                      size="small"
-                      sx={{ bgcolor: alpha(theme.palette.common.white, 0.1) }}
-                    >
-                      <GitHub
-                        fontSize="small"
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </IconButton>
-                  </Link>
-                  <Link target="_blank" rel="noreferrer" href={project.demo}>
-                    <IconButton
-                      size="small"
-                      sx={{ bgcolor: alpha(theme.palette.common.white, 0.1) }}
-                    >
-                      <OpenInNew
-                        fontSize="small"
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </IconButton>
-                  </Link>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Card>
+                }
+              />
+              <Typography
+                variant="body2"
+                sx={{ my: 3, color: theme.palette.text.secondary }}
+              >
+                {project.description}
+              </Typography>
+              <Box sx={{ display: "flex", gap: 1 }}>
+                <Link target="_blank" rel="noreferrer" href={project.github}>
+                  <IconButton
+                    sx={{
+                      bgcolor: theme.palette.gitHub.background,
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                        bgcolor: theme.palette.gitHub.background,
+                      },
+                    }}
+                  >
+                    <GitHub sx={{ color: theme.palette.gitHub.button }} />
+                  </IconButton>
+                </Link>
+                <Link target="_blank" rel="noreferrer" href={project.demo}>
+                  <IconButton
+                    sx={{
+                      bgcolor: theme.palette.gitHub.background,
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                        bgcolor: theme.palette.gitHub.background,
+                      },
+                    }}
+                  >
+                    <OpenInNew sx={{ color: theme.palette.gitHub.button }} />
+                  </IconButton>
+                </Link>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

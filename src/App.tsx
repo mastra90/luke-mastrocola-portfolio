@@ -3,6 +3,7 @@ import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
+import DevWork from "./components/DevWork";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -15,6 +16,7 @@ const App = () => {
         <CssBaseline />
         <ToggleThemeButton toggleTheme={toggleTheme} />
         <Header />
+        <DevWork />
       </Container>
     </ThemeProvider>
   );

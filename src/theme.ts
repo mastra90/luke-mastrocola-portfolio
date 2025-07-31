@@ -6,11 +6,14 @@ declare module "@mui/material/styles" {
       primary: string;
       secondary: string;
     };
-  }
-  interface PaletteOptions {
-    border?: {
-      primary?: string;
-      secondary?: string;
+    gitHub: {
+      button: string;
+      background: string;
+    };
+    techChip: {
+      primary: string;
+      background: string;
+      type: string;
     };
   }
 }
@@ -30,23 +33,41 @@ const createAppTheme = (isDark: boolean) => {
         },
         border: {
           primary: "#ffe071",
-          secondary: "#a3abb2",
+          secondary: "#313940",
+        },
+        gitHub: {
+          button: "#f1f2f4",
+          background: "#313940",
+        },
+        techChip: {
+          primary: "#0f3d3a",
+          background: "#37bab2",
+          type: "#37bab2",
         },
       }
     : {
         background: {
-          default: "#e9ebec",
-          paper: "#ffffff",
+          default: "#eff0f2",
+          paper: "#f5f5f5",
           secondary: "",
           buttons: "",
         },
         text: {
-          primary: "#3d3d3d",
-          secondary: "#575757",
+          primary: "#504b9e",
+          secondary: "#7a77a5ff",
         },
         border: {
           primary: "#ffe071",
-          secondary: "#a3abb2",
+          secondary: "#d9dbdcff",
+        },
+        gitHub: {
+          button: "#454e5f",
+          background: "#e6e8ec",
+        },
+        techChip: {
+          primary: "#504b9e",
+          background: "#e7e6fb",
+          type: "#504b9e",
         },
       };
 
@@ -72,8 +93,16 @@ const createAppTheme = (isDark: boolean) => {
       MuiCard: {
         styleOverrides: {
           root: {
-            border: `2px solid #1a1a1a`,
+            border: `1px solid ${palette.border.secondary}`,
             borderRadius: 8,
+            backgroundColor: palette.background.secondary,
+          },
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            color: palette.techChip.primary,
           },
         },
       },
