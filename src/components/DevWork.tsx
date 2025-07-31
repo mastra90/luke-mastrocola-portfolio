@@ -1,8 +1,4 @@
-import {
-  Code,
-  GitHub,
-  OpenInNew,
-} from "@mui/icons-material";
+import { Code, GitHub, OpenInNew } from "@mui/icons-material";
 import {
   alpha,
   Box,
@@ -44,7 +40,6 @@ const DevWork = () => {
         "A modern task tracking web application built with React frontend and NestJS backend, fully containerized with Docker for easy deployment and development.",
       technologies: ["React", "TypeScript", "Material UI", "NestJS", "Docker"],
       github: "https://github.com/mastra90/tsa-task-tracker",
-      // demo: "",
       type: "React web app",
     },
     {
@@ -53,7 +48,6 @@ const DevWork = () => {
         "A Python application for cleaning and processing .srt subtitle files. This tool provides various functions to improve subtitle readability and timing, making it easier to prepare subtitles for viewing.",
       technologies: ["Python", "pysrt"],
       github: "https://github.com/mastra90/tsa-task-tracker",
-      // demo: "",
       type: "Python app",
     },
   ];
@@ -89,12 +83,6 @@ const DevWork = () => {
 
   return (
     <Card sx={{ width: "100%", my: 4, border: "none" }}>
-      <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
-        <Code sx={{ mr: 2, color: theme.palette.primary.main }} />
-        <Typography variant="h4" component="h2">
-          Web development
-        </Typography>
-      </Box>
       <Grid container spacing={2}>
         {devProjects.map((project, index) => (
           <Grid size={6} key={index}>
