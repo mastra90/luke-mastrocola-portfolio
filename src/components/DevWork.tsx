@@ -1,6 +1,5 @@
-import { Code, GitHub, OpenInNew } from "@mui/icons-material";
+import { GitHub, OpenInNew } from "@mui/icons-material";
 import {
-  alpha,
   Box,
   Card,
   CardContent,
@@ -20,20 +19,20 @@ const DevWork = () => {
     {
       title: "Dr. Andrew Thomas",
       description:
-        "Dr Andrew Thomas is a schollar and lecture at Deakin University. His website was developed to showcase his work and contact",
-      technologies: ["React", "JavaScript", "Express,js"],
+        "Dr Andrew Thomas is a scholar and lecturer at Deakin University. This website was developed to showcase his work and offer a method of contact.",
+      technologies: ["React", "JavaScript", "Express.js"],
       github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
       demo: "https://www.drandrewthomasir.com/",
-      type: "Profressional website",
+      type: "Professional website",
     },
     {
       title: "Fullard Boats",
       description:
-        "Fullard Boats is business based in Gippsland. The purpose of this product is to showcase who they are as a business, the services that Fullard Boats has to offer and a way of contacting them.",
-      technologies: ["React", "JavaScript", "Express,js"],
+        "Fullard Boats is boat building business based in Gippsland. The website showcases their work and  services as well as a method of contact.",
+      technologies: ["React", "JavaScript", "Express.js"],
       github: "https://github.com/FullardBoats-Website/fullard-boats-frontend",
       demo: "https://www.fullardboats.com.au/",
-      type: "Profressional website",
+      type: "Professional website",
     },
     {
       title: "Task Tracker",
@@ -53,50 +52,25 @@ const DevWork = () => {
     },
   ];
 
-  const audioProjects = [
-    {
-      title: "Electronic Pop Mix",
-      artist: "Local Artist",
-      description:
-        "Mixed and mastered electronic pop track with dynamic processing and spatial effects",
-      genre: "Electronic Pop",
-      duration: "3:42",
-      year: "2024",
-    },
-    {
-      title: "Rock Album - Full Production",
-      artist: "Melbourne Band",
-      description: "Complete mixing and mastering of 10-track rock album",
-      genre: "Alternative Rock",
-      duration: "Album",
-      year: "2024",
-    },
-    {
-      title: "Podcast Series Mix",
-      artist: "Tech Podcast",
-      description:
-        "Audio post-production for weekly tech podcast including noise reduction and EQ",
-      genre: "Podcast",
-      duration: "Series",
-      year: "2024",
-    },
-  ];
-
   return (
-    <Grid sx={{ my: 4 }} container spacing={2}>
+    <Grid container spacing={2}>
       {devProjects.map((project, index) => (
         <Grid size={{ sm: 12, md: 6 }} key={index}>
           <Card
             variant="outlined"
             sx={{
+              bgcolor: theme.palette.background.paper,
               height: "100%",
               "&:hover": {
                 transform: "scale(1.005)",
-                bgcolor: theme.palette.background.default,
+                bgcolor: theme.palette.background.hover,
+                "& .description-text": {
+                  color: theme.palette.text.primary,
+                },
               },
             }}
           >
-            <CardContent sx={{ p: 3 }}>
+            <CardContent sx={{ p: 3, height: "100%" }}>
               <CardHeader
                 sx={{ p: 0 }}
                 title={
@@ -105,11 +79,12 @@ const DevWork = () => {
                   >
                     {project.title}
                     <Chip
-                      variant="outlined"
                       sx={{
-                        color: theme.palette.techChip.type,
+                        bgcolor: theme.palette.techChip.background,
+                        color: theme.palette.techChip.primary,
                         fontWeight: 700,
                         border: 0,
+                        ml: 1,
                       }}
                       label={project.type}
                     />
@@ -119,20 +94,19 @@ const DevWork = () => {
                   <Box
                     sx={{
                       display: "flex",
-                      flexWrap: "wrap",
-                      my: 1,
-                      ml: -0.5,
+                      ml: -0.2,
                       gap: 1,
                     }}
                   >
                     {project.technologies.map((tech) => (
                       <Chip
+                        size="small"
                         key={tech}
                         label={tech}
                         sx={{
                           fontWeight: 500,
-                          border: 0,
-                          bgcolor: theme.palette.techChip.background
+                          mt: 0.5,
+                          color: theme.palette.techChip.background,
                         }}
                       />
                     ))}
@@ -140,6 +114,7 @@ const DevWork = () => {
                 }
               />
               <Typography
+                className="description-text"
                 variant="body2"
                 sx={{ my: 3, color: theme.palette.text.secondary }}
               >
@@ -159,19 +134,21 @@ const DevWork = () => {
                     <GitHub sx={{ color: theme.palette.gitHub.button }} />
                   </IconButton>
                 </Link>
-                <Link target="_blank" rel="noreferrer" href={project.demo}>
-                  <IconButton
-                    sx={{
-                      bgcolor: theme.palette.gitHub.background,
-                      "&:hover": {
-                        transform: "scale(1.1)",
+                {project.demo && (
+                  <Link target="_blank" rel="noreferrer" href={project.demo}>
+                    <IconButton
+                      sx={{
                         bgcolor: theme.palette.gitHub.background,
-                      },
-                    }}
-                  >
-                    <OpenInNew sx={{ color: theme.palette.gitHub.button }} />
-                  </IconButton>
-                </Link>
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                          bgcolor: theme.palette.gitHub.background,
+                        },
+                      }}
+                    >
+                      <OpenInNew sx={{ color: theme.palette.gitHub.button }} />
+                    </IconButton>
+                  </Link>
+                )}
               </Box>
             </CardContent>
           </Card>
