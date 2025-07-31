@@ -22,6 +22,8 @@ declare module "@mui/material/styles" {
     };
     button: {
       hover: string;
+      themeIconHover: string;
+      themeButtonHover: string;
     };
   }
 }
@@ -55,6 +57,8 @@ const createAppTheme = (isDark: boolean) => {
         },
         button: {
           hover: "#262b33",
+          themeIconHover: "#262b33",
+          themeButtonHover: "#ffe071",
         },
       }
     : {
@@ -84,6 +88,8 @@ const createAppTheme = (isDark: boolean) => {
         },
         button: {
           hover: "#fffbf8ff",
+          themeIconHover: "#262b33",
+          themeButtonHover: "#ffe071",
         },
       };
 

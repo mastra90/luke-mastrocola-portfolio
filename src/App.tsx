@@ -8,8 +8,8 @@ import AudioWork from "./components/AudioWork";
 import ServicesSwitch from "./components/ServicesSwitch";
 
 const App = () => {
-  const [isDark, setIsDark] = useState(true);
-  const [showWebDev, setShowWebDev] = useState(true);
+  const [isDark, setIsDark] = useState<boolean>(true);
+  const [showWebDev, setShowWebDev] = useState<boolean>(true);
   const theme = createAppTheme(isDark);
   const toggleTheme = () => setIsDark(!isDark);
 
@@ -23,7 +23,7 @@ const App = () => {
         }}
       >
         <CssBaseline />
-        <ToggleThemeButton toggleTheme={toggleTheme} />
+        <ToggleThemeButton toggleTheme={toggleTheme} isDark={isDark} />
         <Header />
         <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
         {showWebDev ? <DevWork /> : <AudioWork />}
