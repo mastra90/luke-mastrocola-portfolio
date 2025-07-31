@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import createAppTheme from "./theme";
 import HeroSection from "./components/HeroSection";
-import ToggleTheme from "./components/ToggleTheme";
+import ToggleThemeButton from "./components/ToggleThemeButton";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -13,7 +13,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg" sx={{ mx: "auto", my: 4 }}>
         <CssBaseline />
-        <ToggleTheme toggleTheme={toggleTheme} />
+        <ToggleThemeButton toggleTheme={toggleTheme} />
         <HeroSection />
       </Container>
     </ThemeProvider>

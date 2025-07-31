@@ -1,7 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 import { Brightness4 as ToggleThemeIcon } from "@mui/icons-material";
 
-const ToggleTheme = ({ toggleTheme }) => {
+const ToggleThemeButton = ({ toggleTheme }) => {
   const theme = useTheme();
   return (
     <Box
@@ -29,4 +29,4 @@ const ToggleTheme = ({ toggleTheme }) => {
   );
 };
 
-export default ToggleTheme;
+export default ToggleThemeButton;

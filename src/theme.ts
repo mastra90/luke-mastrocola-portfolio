@@ -18,7 +18,6 @@ declare module "@mui/material/styles" {
 const createAppTheme = (isDark: boolean) => {
   const palette = isDark
     ? {
-        mode: 'dark' as const,
         background: {
           default: "#0C151D",
           paper: "#171f26",
@@ -35,7 +34,6 @@ const createAppTheme = (isDark: boolean) => {
         },
       }
     : {
-        mode: 'light' as const,
         background: {
           default: "#e9ebec",
           paper: "#ffffff",
@@ -44,7 +42,7 @@ const createAppTheme = (isDark: boolean) => {
         },
         text: {
           primary: "#3d3d3d",
-          secondary: "#a3abb2",
+          secondary: "#575757",
         },
         border: {
           primary: "#ffe071",
@@ -55,7 +53,7 @@ const createAppTheme = (isDark: boolean) => {
   return createTheme({
     palette,
     typography: {
-      fontFamily: "'IBM Plex Sans', sans-serif",
+      fontFamily: "'Poppins', sans-serif",
       h1: { fontWeight: 600 },
       body1: {},
       body2: {},
