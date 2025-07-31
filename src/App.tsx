@@ -4,14 +4,10 @@ import createAppTheme from "./theme";
 import HeroSection from "./components/HeroSection";
 
 function App() {
-  const [isDark, setIsDark] = useState(true); // Defaults to true (dark mode)
-  
-  const theme = React.useMemo(() => {
-    const themeResult = createAppTheme(isDark);
-    console.log('Theme created:', typeof themeResult);
-    return themeResult;
-  }, [isDark]);
-  
+  const [isDark, setIsDark] = useState(true);
+
+  const theme = createAppTheme(isDark);
+
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
