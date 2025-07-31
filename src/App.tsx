@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import createAppTheme from "./theme";
-import HeroSection from "./components/HeroSection";
+import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       <Container maxWidth="lg" sx={{ mx: "auto", my: 4 }}>
         <CssBaseline />
         <ToggleThemeButton toggleTheme={toggleTheme} />
-        <HeroSection />
+        <Header />
       </Container>
     </ThemeProvider>
   );
