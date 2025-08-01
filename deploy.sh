@@ -17,7 +17,7 @@ fi
 
 # Clone repository
 echo "Cloning repository..."
-git clone "$REPO_URL"
+git clone --recursive "$REPO_URL"
 
 # Navigate to project
 cd "$PROJECT_DIR"
@@ -47,8 +47,8 @@ else
 fi
 
 echo "✅ Portfolio deployed successfully!"
-echo "✅ Access at: http://localhost:$PORT"
-echo "✅ -> 🌐 Opening application in browser..."
+echo "🌐 Access at: http://localhost:$PORT"
+echo "🌐 Opening application in browser..."
 python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
 python -m webbrowser http://localhost:$PORT 2>/dev/null || \
 open http://localhost:$PORT 2>/dev/null || \
