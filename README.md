@@ -16,7 +16,7 @@ A modern and responsive portfolio website showcasing Luke Mastrocola's web devel
 
 [Back to top](#table-of-contents)
 
-**Install with the following terminal command:**
+**Open the Docker desktop app and input the following command into your bash terminal:**
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/mastra90/luke-mastrocola-portfolio/master/deploy.sh | bash && cd luke-mastrocola-portfolio
