@@ -24,9 +24,9 @@ cd "$PROJECT_DIR"
 
 # Stop any existing containers
 echo "Stopping existing containers..."
-docker-compose down 2>/dev/null || true
+COMPOSE_API_VERSION=auto docker-compose down 2>/dev/null || true
 
-# Kill any containers using port 3000
+# Kill any containers using port 5173
 echo "🔧 Freeing up port 5173..."
 CONTAINERS_ON_5173=$(docker ps --filter "publish=5173" -q 2>/dev/null)
 
@@ -37,20 +37,23 @@ fi
 
 echo "✅ Port cleared!"
 
-# Build and run with fallback
+# Build and run with fallback (suppress warnings)
 echo "Building and starting application..."
-if docker-compose up --build -d 2>/dev/null; then
+if COMPOSE_API_VERSION=auto docker-compose up --build -d 2>/dev/null; then
     echo "✅ Started with docker-compose"
 else
     echo "   → Trying modern docker compose..."
-    docker compose up --build -d
+    docker compose up --build -d 2>/dev/null
 fi
 
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
 
-# Show running containers
-docker-compose ps 2>/dev/null || docker compose ps
+# Show running containers (suppress warnings and clean output)
+echo ""
+echo "📋 Container Status:"
+COMPOSE_API_VERSION=auto docker-compose ps --format "table {{.Service}}\t{{.State}}\t{{.Ports}}" 2>/dev/null || \
+docker compose ps --format "table {{.Service}}\t{{.State}}\t{{.Ports}}" 2>/dev/null
 
 echo "🌐 Opening application in browser..."
 python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
