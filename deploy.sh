@@ -5,7 +5,7 @@ set -e
 
 REPO_URL="https://github.com/mastra90/portfolio_2.0.git"
 PROJECT_DIR="portfolio_2.0"
-PORT=3000
+PORT=5173
 
 echo "🚀 Deploying portfolio..."
 
@@ -26,12 +26,35 @@ cd "$PROJECT_DIR"
 echo "Stopping existing containers..."
 docker-compose down 2>/dev/null || true
 
-# Build and run
+# Kill any containers using port 3000
+echo "🔧 Freeing up port 5173..."
+CONTAINERS_ON_5173=$(docker ps --filter "publish=5173" -q 2>/dev/null)
+
+if [ ! -z "$CONTAINERS_ON_5173" ]; then
+    echo "   → Stopping containers using port 5173..."
+    docker stop $CONTAINERS_ON_5173 2>/dev/null || true
+fi
+
+echo "✅ Port cleared!"
+
+# Build and run with fallback
 echo "Building and starting application..."
-docker-compose up --build -d
+if docker-compose up --build -d 2>/dev/null; then
+    echo "✅ Started with docker-compose"
+else
+    echo "   → Trying modern docker compose..."
+    docker compose up --build -d
+fi
 
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
 
 # Show running containers
-docker-compose ps
+docker-compose ps 2>/dev/null || docker compose ps
+
+echo "🌐 Opening application in browser..."
+python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
+python -m webbrowser http://localhost:$PORT 2>/dev/null || \
+open http://localhost:$PORT 2>/dev/null || \
+start http://localhost:$PORT 2>/dev/null || \
+echo "   → Please open http://localhost:$PORT manually"
