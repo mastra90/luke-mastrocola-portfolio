@@ -47,15 +47,8 @@ else
 fi
 
 echo "✅ Portfolio deployed successfully!"
-echo "🌐 Access at: http://localhost:$PORT"
-
-# Show running containers (suppress warnings and clean output)
-echo ""
-echo "📋 Container Status:"
-COMPOSE_API_VERSION=auto docker-compose ps --format "table {{.Service}}\t{{.State}}\t{{.Ports}}" 2>/dev/null || \
-docker compose ps --format "table {{.Service}}\t{{.State}}\t{{.Ports}}" 2>/dev/null
-
-echo "🌐 Opening application in browser..."
+echo "✅ Access at: http://localhost:$PORT"
+echo "✅ -> 🌐 Opening application in browser..."
 python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
 python -m webbrowser http://localhost:$PORT 2>/dev/null || \
 open http://localhost:$PORT 2>/dev/null || \
