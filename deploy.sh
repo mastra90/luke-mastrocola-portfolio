@@ -12,10 +12,13 @@ echo "🚀 Deploying portfolio..."
 # Store the parent directory path
 PARENT_DIR=$(pwd)
 
-# Clean up existing directory
+# Clean up existing directory (using TSA script approach)
 if [ -d "$PROJECT_DIR" ]; then
-    echo "Removing existing directory..."
-    rm -rf "$PROJECT_DIR"
+    echo "🗑️ Removing existing directory..."
+    # Try to make files writable first, then remove
+    chmod -R u+w "$PROJECT_DIR" 2>/dev/null || true
+    rm -rf "$PROJECT_DIR" 2>/dev/null || sudo rm -rf "$PROJECT_DIR"
+    echo "✅ Directory cleaned up!"
 fi
 
 # Clone repository
@@ -30,8 +33,8 @@ echo "📚 Installing dependencies..."
 npm install
 
 # Stop any existing containers
-echo "Stopping existing containers..."
-COMPOSE_API_VERSION=auto docker-compose down 2>/dev/null || true
+echo "🔄 Stopping any existing containers..."
+docker compose down 2>/dev/null || true
 
 # Kill any containers using port 5173
 echo "🔧 Freeing up port 5173..."
@@ -44,15 +47,13 @@ fi
 
 echo "✅ Port cleared!"
 
-# Build and run with fallback
+# Build and run with fallback (like TSA script)
 echo "Building and starting application..."
-if COMPOSE_API_VERSION=auto docker-compose --profile dev up --build -d; then
-    echo "✅ Started with docker-compose"
-elif docker compose --profile dev up --build -d; then
+if docker compose --profile dev up --build -d 2>/dev/null; then
     echo "✅ Started with docker compose"
 else
-    echo "❌ Failed to start containers"
-    exit 1
+    echo "   → Trying legacy docker-compose..."
+    docker-compose --profile dev up --build -d
 fi
 
 # Clean up the downloaded deploy.sh from parent directory
@@ -63,7 +64,7 @@ echo "🌐 Access at: http://localhost:$PORT"
 
 # Wait for container to be ready
 echo "⏳ Waiting for container to start..."
-sleep 5
+sleep 3
 
 echo "🌐 Opening application in browser..."
 python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
