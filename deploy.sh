@@ -25,6 +25,10 @@ git clone --recursive "$REPO_URL"
 # Navigate to project
 cd "$PROJECT_DIR"
 
+# Install dependencies
+echo "📚 Installing dependencies..."
+npm install
+
 # Stop any existing containers
 echo "Stopping existing containers..."
 COMPOSE_API_VERSION=auto docker-compose down 2>/dev/null || true
