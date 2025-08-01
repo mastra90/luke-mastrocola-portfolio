@@ -45,7 +45,7 @@ else
     echo "   → Trying modern docker compose..."
     docker compose up --build -d 2>/dev/null
 fi
-
+cd "$PROJECT_DIR"
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
 echo "🌐 Opening application in browser..."
