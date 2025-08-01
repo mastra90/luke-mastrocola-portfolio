@@ -46,11 +46,11 @@ echo "✅ Port cleared!"
 
 # Build and run with fallback (suppress warnings)
 echo "Building and starting application..."
-if COMPOSE_API_VERSION=auto docker-compose up --build -d 2>/dev/null; then
+if COMPOSE_API_VERSION=auto docker-compose --profile dev up --build -d 2>/dev/null; then
     echo "✅ Started with docker-compose"
 else
     echo "   → Trying modern docker compose..."
-    docker compose up --build -d 2>/dev/null
+    docker compose --profile dev up --build -d 2>/dev/null
 fi
 
 # Clean up the downloaded deploy.sh from parent directory
