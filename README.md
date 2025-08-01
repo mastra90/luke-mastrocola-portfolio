@@ -38,14 +38,10 @@ _Note: The installation will create a `luke-mastrocola-portfolio` folder in your
 
 ## Prerequisites
 
-[Back to top](#table-of-contents)
-
 - **Docker Desktop** - [Download here](https://www.docker.com/products/docker-desktop/)
 - **Git** - Usually pre-installed on Mac/Linux, [download for Windows](https://git-scm.com/)
 
 ## What You'll Get
-
-[Back to top](#table-of-contents)
 
 After the command is successful, the application will be available at:
 
