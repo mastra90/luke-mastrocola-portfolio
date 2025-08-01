@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   portfolio:
@@ -8,8 +8,8 @@ services:
     restart: unless-stopped
     profiles:
       - prod
-    
-  # Development service (optional)
+
+  # Development service
   portfolio-dev:
     build:
       context: .

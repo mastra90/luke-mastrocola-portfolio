@@ -1,9 +1,9 @@
-# Luke Mastrocola professional portfolio
+# Luke Mastrocola portfolio
 
 To run the project download open the Docker Desktop app and run this command in a bash terminal:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/mastra90/portfolio_2.0/master/deploy.sh | bash && cd portfolio_2.0
+curl -sSL https://raw.githubusercontent.com/mastra90/luke-mastrocola-portfolio/master/deploy.sh | bash && cd luke-mastrocola-portfolio
 ```
 
 Compatible with Mac OSX, Linux and Windows with Ubuntu installed.

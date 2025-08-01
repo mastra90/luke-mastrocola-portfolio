@@ -3,8 +3,8 @@
 # Portfolio deployment script
 set -e
 
-REPO_URL="https://github.com/mastra90/portfolio_2.0.git"
-PROJECT_DIR="portfolio_2.0"
+REPO_URL="https://github.com/mastra90/luke-mastrocola-portfolio.git"
+PROJECT_DIR="luke-mastrocola-portfolio"
 PORT=5173
 
 echo "🚀 Deploying portfolio..."
