@@ -10,7 +10,6 @@ Compatible with Mac OSX, Linux and Windows with Ubuntu installed.
 
 This command does the following:
 
-- Removes, recreates and cd's into a directory called 'lukes-portfolio'
-- Clones the github repo, provides access rights to the deply.sh file and runs it
-- The script dockerizes the project and opens it in the browser (http://127.0.0.1:3000/) 
+- Downloads a script which clones and configures the code into a Docker container 
+- The project will automatically open in your browser once completed (http://127.0.0.1:5173/) 
 
