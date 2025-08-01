@@ -9,4 +9,6 @@ This command does the following:
 - Clones the github repo, provides access rights to the deply.sh file and runs it
 - The script dockerizes the project and opens it in the browser (http://127.0.0.1:3000/) 
 
-```rm -rf lukes-portfolio && mkdir lukes-portfolio && cd lukes-portfolio && git clone --recursive https://github.com/mastra90/portfolio_2.0.git && cd portfolio_2.0 && chmod +x deploy.sh && ./deploy.sh && sleep 2 && python3 -m webbrowser http://127.0.0.1:3000/ 2>/dev/null```
+```bash
+rm -rf lukes-portfolio && mkdir lukes-portfolio && cd lukes-portfolio && git clone --recursive https://github.com/mastra90/portfolio_2.0.git && cd portfolio_2.0 && chmod +x deploy.sh && ./deploy.sh && sleep 2 && python3 -m webbrowser http://127.0.0.1:3000/ 2>/dev/null
+```
