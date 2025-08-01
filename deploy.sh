@@ -58,9 +58,13 @@ rm -f "$PARENT_DIR/deploy.sh"
 
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
+
+echo "🔧 Waiting to start..."
+sleep 3
+
 echo "🌐 Opening application in browser..."
-python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
-python -m webbrowser http://localhost:$PORT 2>/dev/null || \
-open http://localhost:$PORT 2>/dev/null || \
-start http://localhost:$PORT 2>/dev/null || \
+# Try different methods with explicit paths
+/usr/bin/python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
+/usr/bin/python -m webbrowser http://localhost:$PORT 2>/dev/null || \
+/usr/bin/open http://localhost:$PORT 2>/dev/null || \
 echo "   → Please open http://localhost:$PORT manually"
