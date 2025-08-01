@@ -3,7 +3,7 @@
 To run the project download open the Docker Desktop app and run this command in a bash terminal:
 
 ```bash
-rm -rf lukes-portfolio && mkdir lukes-portfolio && cd lukes-portfolio && git clone --recursive https://github.com/mastra90/portfolio_2.0.git && cd portfolio_2.0 && chmod +x deploy.sh && ./deploy.sh
+curl -sSL https://raw.githubusercontent.com/mastra90/portfolio_2.0/master/deploy.sh | bash && cd portfolio_2.0
 ```
 
 Compatible with Mac OSX, Linux and Windows with Ubuntu installed.
