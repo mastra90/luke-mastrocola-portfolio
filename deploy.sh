@@ -44,13 +44,15 @@ fi
 
 echo "✅ Port cleared!"
 
-# Build and run with fallback (suppress warnings)
+# Build and run with fallback
 echo "Building and starting application..."
-if COMPOSE_API_VERSION=auto docker-compose --profile dev up --build -d 2>/dev/null; then
+if COMPOSE_API_VERSION=auto docker-compose --profile dev up --build -d; then
     echo "✅ Started with docker-compose"
+elif docker compose --profile dev up --build -d; then
+    echo "✅ Started with docker compose"
 else
-    echo "   → Trying modern docker compose..."
-    docker compose --profile dev up --build -d 2>/dev/null
+    echo "❌ Failed to start containers"
+    exit 1
 fi
 
 # Clean up the downloaded deploy.sh from parent directory
@@ -59,12 +61,13 @@ rm -f "$PARENT_DIR/deploy.sh"
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
 
-echo "🔧 Waiting to start..."
-sleep 3
+# Wait for container to be ready
+echo "⏳ Waiting for container to start..."
+sleep 5
 
 echo "🌐 Opening application in browser..."
-# Try different methods with explicit paths
-/usr/bin/python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
-/usr/bin/python -m webbrowser http://localhost:$PORT 2>/dev/null || \
-/usr/bin/open http://localhost:$PORT 2>/dev/null || \
+python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
+python -m webbrowser http://localhost:$PORT 2>/dev/null || \
+open http://localhost:$PORT 2>/dev/null || \
+start http://localhost:$PORT 2>/dev/null || \
 echo "   → Please open http://localhost:$PORT manually"
