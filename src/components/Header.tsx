@@ -36,7 +36,7 @@ const Header = () => {
       }}
     >
       <Avatar
-        src="/src/assets/Headshot.jpg"
+        src="/Headshot.jpg"
         alt="Luke Mastrocola"
         sx={{
           width: 150,
