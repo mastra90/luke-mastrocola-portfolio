@@ -49,11 +49,11 @@ echo "✅ Port cleared!"
 
 # Build and run with fallback (like TSA script)
 echo "Building and starting application..."
-if docker compose --profile dev up --build -d 2>/dev/null; then
+if docker compose --profile dev up --build -d --remove-orphans 2>/dev/null; then
     echo "✅ Started with docker compose"
 else
     echo "   → Trying legacy docker-compose..."
-    docker-compose --profile dev up --build -d
+    docker-compose --profile dev up --build -d --remove-orphans
 fi
 
 # Clean up the downloaded deploy.sh from parent directory
