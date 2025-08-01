@@ -1,5 +1,5 @@
 import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { Box, useTheme, Avatar, Typography, Button } from "@mui/material";
+import { Box, useTheme, Avatar, Typography } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 
 const Header = () => {
