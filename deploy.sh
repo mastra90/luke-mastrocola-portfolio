@@ -9,6 +9,9 @@ PORT=5173
 
 echo "🚀 Deploying portfolio..."
 
+# Store the parent directory path
+PARENT_DIR=$(pwd)
+
 # Clean up existing directory
 if [ -d "$PROJECT_DIR" ]; then
     echo "Removing existing directory..."
@@ -45,8 +48,10 @@ else
     echo "   → Trying modern docker compose..."
     docker compose up --build -d 2>/dev/null
 fi
-rm deploy.sh
-cd "$PROJECT_DIR"
+
+# Clean up the downloaded deploy.sh from parent directory
+rm -f "$PARENT_DIR/deploy.sh"
+
 echo "✅ Portfolio deployed successfully!"
 echo "🌐 Access at: http://localhost:$PORT"
 echo "🌐 Opening application in browser..."
