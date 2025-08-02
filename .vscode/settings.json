@@ -3,20 +3,31 @@
 
 {
   "files.exclude": {
+    // Folders
+    "node_modules": true,
+    "public": true,
+
+    // Docker files
     ".dockerignore": true,
-    ".gitignore": true,
-    "deploy.sh": true,
     "docker-compose.yml": true,
     "Dockerfile": true,
+
+    // Git files
+    ".gitignore": true,
+
+    // Configuration files
     "eslint.config.js": true,
-    "index.html": true,
-    "nginx.conf": true,
-    "package-lock.json": true,
-    "package.json": true,
-    "README.md": true,
     "tsconfig.json": true,
     "vite.config.js": true,
-    "public": true,
-    "node_modules": true
+
+    // Package management
+    "package-lock.json": true,
+    "package.json": true,
+
+    // Other files
+    "deploy.sh": true,
+    "index.html": true,
+    "nginx.conf": true,
+    "README.md": true
   }
 }
