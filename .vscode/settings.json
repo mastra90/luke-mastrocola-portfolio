@@ -15,6 +15,8 @@
     "package.json": true,
     "README.md": true,
     "tsconfig.json": true,
-    "vite.config.js": true
+    "vite.config.js": true,
+    "public": true,
+    "node_modules": true
   }
 }
