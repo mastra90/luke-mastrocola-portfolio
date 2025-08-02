@@ -1,0 +1,20 @@
+// Hides configuration files from VS Code explorer.
+// To view them, comment out the entire "files.exclude" object to show hidden files
+
+{
+  "files.exclude": {
+    ".dockerignore": true,
+    ".gitignore": true,
+    "deploy.sh": true,
+    "docker-compose.yml": true,
+    "Dockerfile": true,
+    "eslint.config.js": true,
+    "index.html": true,
+    "nginx.conf": true,
+    "package-lock.json": true,
+    "package.json": true,
+    "README.md": true,
+    "tsconfig.json": true,
+    "vite.config.js": true
+  }
+}
