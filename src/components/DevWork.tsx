@@ -1,10 +1,9 @@
-import { GitHub, OpenInNew } from "@mui/icons-material";
+import { ArrowOutward, GitHub, Public } from "@mui/icons-material";
 import {
   Box,
   Card,
   CardContent,
   CardHeader,
-  Chip,
   Grid,
   IconButton,
   Link,
@@ -12,48 +11,124 @@ import {
   useTheme,
 } from "@mui/material";
 
+type DevProjects = {
+  year: number;
+  title: string;
+  description: string;
+  type: string;
+  links: { github: string; demo?: string };
+};
+
 const DevWork = () => {
   const theme = useTheme();
 
-  const devProjects = [
+  const devProjects: DevProjects[] = [
     {
-      title: "Dr. Andrew Thomas",
+      year: 2025,
+      title: "Academic Portfolio",
       description:
-        "Dr Andrew Thomas is a scholar and lecturer at Deakin University. This website was developed to showcase his work and offer a method of contact.",
-      technologies: ["React", "JavaScript", "Express.js"],
-      github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
-      demo: "https://www.drandrewthomasir.com/",
+        "Showcasing the academic work and research of Deakin University lecturer Dr. Andrew Thomas.",
       type: "Professional website",
+      links: {
+        github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
+        demo: "https://www.drandrewthomasir.com/",
+      },
     },
     {
+      year: 2025,
       title: "Fullard Boats",
       description:
         "Fullard Boats is boat building business based in Gippsland. The website showcases their work and  services as well as a method of contact.",
-      technologies: ["React", "JavaScript", "Express.js"],
-      github: "https://github.com/FullardBoats-Website/fullard-boats-frontend",
-      demo: "https://www.fullardboats.com.au/",
       type: "Professional website",
+      links: {
+        github:
+          "https://github.com/FullardBoats-Website/fullard-boats-frontend",
+        demo: "https://www.fullardboats.com.au/",
+      },
     },
     {
+      year: 2025,
       title: "Task Tracker",
       description:
         "A modern task tracking web application built with React frontend and NestJS backend, fully containerized with Docker for easy deployment and development.",
-      technologies: ["React", "TypeScript", "NestJS", "Docker"],
-      github: "https://github.com/mastra90/tsa-task-tracker",
       type: "React web app",
+      links: {
+        github: "https://github.com/mastra90/tsa-task-tracker",
+      },
     },
     {
+      year: 2025,
       title: "SRTainty",
       description:
         "A Python application for cleaning and processing .srt subtitle files. This tool provides various functions to improve subtitle readability and timing, making it easier to prepare subtitles for viewing.",
-      technologies: ["Python", "pysrt"],
-      github: "https://github.com/mastra90/tsa-task-tracker",
       type: "Python app",
+      links: {
+        github: "https://github.com/mastra90/SRTainty",
+      },
     },
   ];
 
+  type ActionLinkProps = {
+    links: DevProjects["links"];
+  };
+
+  const ActionLink = ({ links }: ActionLinkProps) => {
+    const buttonConfig = [
+      {
+        icon: <GitHub className="card-icon" />,
+        label: "View code",
+        link: links.github,
+      },
+      {
+        icon: <Public className="card-icon" />,
+        label: "Open site",
+        link: links.demo,
+      },
+    ];
+
+    return (
+      <>
+        {buttonConfig.map(
+          (button, key) =>
+            button.link && (
+              <Link
+                key={key}
+                target="_blank"
+                rel="noreferrer"
+                href={button.link}
+              >
+                <IconButton>
+                  {button.icon}
+                  <Typography
+                    className="card-text"
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      ml: 1,
+                      color: theme.palette.text.primary,
+                    }}
+                  >
+                    {button.label}
+                  </Typography>
+                  <ArrowOutward
+                    className="card-arrow"
+                    sx={{
+                      ml: 1,
+                      transition: "transform 0.1s ease-in",
+                      color: theme.palette.gitHub.button,
+                      fontSize: 16,
+                    }}
+                  />
+                </IconButton>
+              </Link>
+            )
+        )}
+      </>
+    );
+  };
+
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ width: 800, m: "auto" }}>
       {devProjects.map((project, index) => (
         <Grid size={{ sm: 12, md: 6 }} key={index}>
           <Card
@@ -62,7 +137,6 @@ const DevWork = () => {
               bgcolor: theme.palette.background.paper,
               height: "100%",
               "&:hover": {
-                transform: "scale(1.005)",
                 bgcolor: theme.palette.background.hover,
                 "& .description-text": {
                   color: theme.palette.text.primary,
@@ -75,41 +149,17 @@ const DevWork = () => {
                 sx={{ p: 0 }}
                 title={
                   <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    {project.title}
-                    <Chip
-                      sx={{
-                        bgcolor: theme.palette.techChip.background,
-                        color: theme.palette.techChip.primary,
-                        fontWeight: 700,
-                        border: 0,
-                        ml: 1,
-                      }}
-                      label={project.type}
-                    />
-                  </Box>
-                }
-                subheader={
-                  <Box
                     sx={{
                       display: "flex",
-                      ml: -0.2,
-                      gap: 1,
+                      justifyContent: "space-between",
+                      fontSize: 20,
+                      fontWeight: 500,
                     }}
                   >
-                    {project.technologies.map((tech) => (
-                      <Chip
-                        size="small"
-                        key={tech}
-                        label={tech}
-                        sx={{
-                          fontWeight: 500,
-                          mt: 0.5,
-                          color: theme.palette.techChip.background,
-                        }}
-                      />
-                    ))}
+                    {project.title}
+                    <Typography sx={{ fontSize: 12 }}>
+                      {project.year}
+                    </Typography>
                   </Box>
                 }
               />
@@ -121,34 +171,7 @@ const DevWork = () => {
                 {project.description}
               </Typography>
               <Box sx={{ display: "flex", gap: 1 }}>
-                <Link target="_blank" rel="noreferrer" href={project.github}>
-                  <IconButton
-                    sx={{
-                      bgcolor: theme.palette.gitHub.background,
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                        bgcolor: theme.palette.gitHub.background,
-                      },
-                    }}
-                  >
-                    <GitHub sx={{ color: theme.palette.gitHub.button }} />
-                  </IconButton>
-                </Link>
-                {project.demo && (
-                  <Link target="_blank" rel="noreferrer" href={project.demo}>
-                    <IconButton
-                      sx={{
-                        bgcolor: theme.palette.gitHub.background,
-                        "&:hover": {
-                          transform: "scale(1.1)",
-                          bgcolor: theme.palette.gitHub.background,
-                        },
-                      }}
-                    >
-                      <OpenInNew sx={{ color: theme.palette.gitHub.button }} />
-                    </IconButton>
-                  </Link>
-                )}
+                <ActionLink links={project.links} />
               </Box>
             </CardContent>
           </Card>

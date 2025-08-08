@@ -108,7 +108,9 @@ const createAppTheme = (isDark: boolean) => {
       MuiIconButton: {
         styleOverrides: {
           root: {
-            //
+            "&:hover": {
+              background: "none",
+            },
           },
         },
       },
@@ -138,7 +140,27 @@ const createAppTheme = (isDark: boolean) => {
       MuiLink: {
         styleOverrides: {
           root: {
-            //
+            "&:hover": {
+              "& .card-icon, & .card-arrow": {
+                color: palette.text.secondary,
+              },
+              "& .card-text": {
+                color: palette.text.secondary,
+                textDecoration: "underline",
+                textUnderlineOffset: 5,
+              },
+              "& .card-arrow": {
+                transform: "translate(2px, -2px)",
+              },
+            },
+          },
+        },
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: palette.gitHub.button,
+            fontSize: 16,
           },
         },
       },
