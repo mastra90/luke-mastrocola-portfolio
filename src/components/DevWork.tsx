@@ -16,6 +16,7 @@ type DevProjects = {
   title: string;
   description: string;
   type: string;
+  image: string;
   links: { github: string; demo?: string };
 };
 
@@ -29,6 +30,7 @@ const DevWork = () => {
       description:
         "Showcasing the academic work and research of Deakin University lecturer Dr. Andrew Thomas.",
       type: "Professional website",
+      image: "src/assets/andrew-thomas3.jpg",
       links: {
         github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
         demo: "https://www.drandrewthomasir.com/",
@@ -36,22 +38,24 @@ const DevWork = () => {
     },
     {
       year: 2025,
-      title: "Fullard Boats",
+      title: "Marine services showcase",
       description:
-        "Fullard Boats is boat building business based in Gippsland. The website showcases their work and  services as well as a method of contact.",
+        "Digital showcase for Fullard Boats Co, highlighting their expertise in custom boat building and marine services",
       type: "Professional website",
+      image: "src/assets/fullard-boats2.jpg",
       links: {
         github:
           "https://github.com/FullardBoats-Website/fullard-boats-frontend",
-        demo: "https://www.fullardboats.com.au/",
+        demo: "https://www.fullardboats2.com.au/",
       },
     },
     {
       year: 2025,
-      title: "Task Tracker",
+      title: "Task Tracker web app",
       description:
         "A modern task tracking web application built with React frontend and NestJS backend, fully containerized with Docker for easy deployment and development.",
       type: "React web app",
+      image: "src/assets/task-tracker.jpg",
       links: {
         github: "https://github.com/mastra90/tsa-task-tracker",
       },
@@ -62,6 +66,7 @@ const DevWork = () => {
       description:
         "A Python application for cleaning and processing .srt subtitle files. This tool provides various functions to improve subtitle readability and timing, making it easier to prepare subtitles for viewing.",
       type: "Python app",
+      image: "src/assets/SRTainty.jpg",
       links: {
         github: "https://github.com/mastra90/SRTainty",
       },
@@ -144,6 +149,19 @@ const DevWork = () => {
               },
             }}
           >
+            {project.image && (
+              <Box
+                component="img"
+                src={project.image}
+                alt={project.title}
+                sx={{
+                  width: "100%",
+                  height: 200,
+                  objectFit: "cover",
+                  opacity: 0.8,
+                }}
+              />
+            )}
             <CardContent sx={{ p: 3, height: "100%" }}>
               <CardHeader
                 sx={{ p: 0 }}

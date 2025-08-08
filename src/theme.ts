@@ -150,7 +150,7 @@ const createAppTheme = (isDark: boolean) => {
                 textUnderlineOffset: 5,
               },
               "& .card-arrow": {
-                transform: "translate(2px, -2px)",
+                transform: "translate(1px, -1px)",
               },
             },
           },
