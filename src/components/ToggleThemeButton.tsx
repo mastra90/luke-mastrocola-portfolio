@@ -1,7 +1,12 @@
 import { Box, Tooltip, useTheme } from "@mui/material";
 import { Bedtime, WbSunny } from "@mui/icons-material";
 
-const ToggleThemeButton = ({ toggleTheme, isDark }) => {
+type ToggleThemeButtonProps = {
+  toggleTheme: () => void;
+  isDark: boolean;
+};
+
+const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
   const theme = useTheme();
   return (
     <Tooltip

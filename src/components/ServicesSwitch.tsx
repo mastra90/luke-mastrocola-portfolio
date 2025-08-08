@@ -1,9 +1,13 @@
 import { Button, Box, useTheme } from "@mui/material";
 
-const ServicesSwitch = ({ showWebDev, setShowWebDev }) => {
-  const theme = useTheme();
+type ServicesSwitchProps = {
+  showWebDev: boolean;
+  setShowWebDev: (value: boolean) => void;
+};
 
-  const buttonStyles = (isActive) => ({
+const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
+  const theme = useTheme();
+  const buttonStyles = (isActive: boolean) => ({
     boxShadow: "none",
     transition: "0.0s",
     fontSize: { xs: 12, sm: 14 },
