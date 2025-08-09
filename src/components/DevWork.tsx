@@ -124,7 +124,7 @@ const DevWork = () => {
                         width: 0,
                         height: "1px",
                         backgroundColor: theme.palette.techChip.background,
-                        transition: "width 0.2s ease-in-out",
+                        transition: "width 0.3s ease-in-out",
                       },
                     }}
                   >
@@ -178,7 +178,7 @@ const DevWork = () => {
               },
               "&:hover": {
                 "& .card-images": {
-                  transform: "scale(1.03)",
+                  transform: "scale(1.02)",
                 },
               },
               "& .demo-btn:hover .card-text": {
@@ -191,19 +191,26 @@ const DevWork = () => {
           >
             {project.image && (
               <Box
-                className="card-images"
-                component="img"
-                src={project.image}
-                alt={project.title}
                 sx={{
                   mb: 3,
-                  width: "100%",
                   height: 190,
-                  objectFit: "cover",
                   borderRadius: 2,
-                  transition: "all 0.2s ease-in-out",
+                  overflow: "hidden",
                 }}
-              />
+              >
+                <Box
+                  className="card-images"
+                  component="img"
+                  src={project.image}
+                  alt={project.title}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "all 0.3s ease-in-out",
+                  }}
+                />
+              </Box>
             )}
             <CardContent
               sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
