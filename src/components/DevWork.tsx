@@ -60,7 +60,7 @@ const DevWork = () => {
       year: 2025,
       title: "Task Tracker web app",
       description:
-        "A modern task tracking web application built with React frontend and NestJS backend, fully containerized with Docker for easy deployment and development.",
+        "Modern task tracking app built with React and NestJS, containerized with Docker for easy deployment.",
       type: "React web app",
       image: "src/assets/task-tracker.jpg",
       links: {
@@ -71,7 +71,7 @@ const DevWork = () => {
       year: 2025,
       title: "SRTainty",
       description:
-        "A Python application for cleaning and processing .srt subtitle files. This tool provides various functions to improve subtitle readability and timing, making it easier to prepare subtitles for viewing.",
+        "Python tool for cleaning and refining .srt subtitle files for better readability and timing.",
       type: "Python app",
       image: "src/assets/SRTainty.jpg",
       links: {
@@ -128,7 +128,7 @@ const DevWork = () => {
                       ml: 1,
                       transition: "transform 0.1s ease-in",
                       color: theme.palette.gitHub.button,
-                      fontSize: 16,
+                      fontSize: 20,
                     }}
                   />
                 </IconButton>
@@ -167,7 +167,9 @@ const DevWork = () => {
                 />
               </Box>
             )}
-            <CardContent>
+            <CardContent
+              sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
+            >
               <CardHeader
                 sx={{ p: 0 }}
                 title={

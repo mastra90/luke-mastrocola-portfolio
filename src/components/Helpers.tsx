@@ -1,8 +1,8 @@
 import { Theme } from "@mui/material/styles";
 
 export const actionLinkTextStyles = (theme: Theme) => ({
-  fontSize: 12,
-  fontWeight: 600,
+  fontSize: 14,
+  fontWeight: 500,
   ml: 1,
   color: theme.palette.text.primary,
   position: "relative",
@@ -34,10 +34,11 @@ export const cardBaseStyles = (theme: Theme) => ({
   width: 340,
   border: "none",
   bgcolor: theme.palette.background.default,
-  height: 500,
+  height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
+  marginBottom: 8,
 });
 
 export const makeCardHoverStyles = (

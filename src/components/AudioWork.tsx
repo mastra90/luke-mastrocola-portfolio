@@ -31,7 +31,7 @@ type AudioProject = {
 const audioProjects: AudioProject[] = [
   {
     year: 2024,
-    title: "Dire, Dire Docks (Acoustic Cover)",
+    title: "Dire, Dire Docks (cover)",
     description:
       "A warm acoustic rendition focusing on intimate guitar layers and gentle transient control.",
     platform: "soundcloud",
@@ -84,7 +84,7 @@ const ActionLink = ({ url, platform }: { url: string; platform: Platform }) => {
       href={url}
       onClick={(e) => e.stopPropagation()}
     >
-      <IconButton className={isYT ? "watch-btn" : "listen-btn"}>
+      <IconButton sx={{ p: 0 }} className={isYT ? "watch-btn" : "listen-btn"}>
         <Icon className="card-icon" />
         <Typography className="card-text" sx={actionLinkTextStyles(theme)}>
           {label}
@@ -95,7 +95,7 @@ const ActionLink = ({ url, platform }: { url: string; platform: Platform }) => {
             ml: 1,
             transition: "transform 0.1s ease-in",
             color: theme.palette.gitHub.button,
-            fontSize: 16,
+            fontSize: 20,
           }}
         />
       </IconButton>
@@ -145,7 +145,9 @@ const AudioWork = () => {
               />
             </Box>
 
-            <CardContent>
+            <CardContent
+              sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
+            >
               <CardHeader
                 sx={{ p: 0 }}
                 title={
