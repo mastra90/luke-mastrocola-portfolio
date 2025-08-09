@@ -46,7 +46,7 @@ const DevWork = () => {
       links: {
         github:
           "https://github.com/FullardBoats-Website/fullard-boats-frontend",
-        demo: "https://www.fullardboats2.com.au/",
+        demo: "https://www.fullardboats.com.au/",
       },
     },
     {
@@ -103,6 +103,7 @@ const DevWork = () => {
                 target="_blank"
                 rel="noreferrer"
                 href={button.link}
+                onClick={(e) => e.stopPropagation()}
               >
                 <IconButton
                   className={button.isGithub ? "github-btn" : "demo-btn"}
