@@ -19,7 +19,7 @@ const App = () => {
         sx={{
           mx: "auto",
           my: 4,
-          maxWidth: "1050px !important",
+          maxWidth: "1800px !important",
         }}
       >
         <CssBaseline />

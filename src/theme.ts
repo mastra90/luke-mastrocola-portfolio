@@ -141,12 +141,11 @@ const createAppTheme = (isDark: boolean) => {
         styleOverrides: {
           root: {
             "&:hover": {
-              "& .card-icon, & .card-arrow": {
-                color: palette.text.secondary,
+              "& .card-icon": {
+                color: palette.techChip.background,
               },
               "& .card-text": {
-                color: palette.text.secondary,
-                textDecoration: "underline",
+                color: palette.techChip.background,
                 textUnderlineOffset: 5,
               },
               "& .card-arrow": {

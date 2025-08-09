@@ -83,11 +83,13 @@ const DevWork = () => {
         icon: <GitHub className="card-icon" />,
         label: "View code",
         link: links.github,
+        isGithub: true,
       },
       {
         icon: <Public className="card-icon" />,
-        label: "Open site",
+        label: "Go to site",
         link: links.demo,
+        isGithub: false,
       },
     ];
 
@@ -102,7 +104,9 @@ const DevWork = () => {
                 rel="noreferrer"
                 href={button.link}
               >
-                <IconButton>
+                <IconButton
+                  className={button.isGithub ? "github-btn" : "demo-btn"}
+                >
                   {button.icon}
                   <Typography
                     className="card-text"
@@ -111,6 +115,17 @@ const DevWork = () => {
                       fontWeight: 600,
                       ml: 1,
                       color: theme.palette.text.primary,
+                      position: "relative",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        bottom: -6,
+                        left: 0,
+                        width: 0,
+                        height: "1px",
+                        backgroundColor: theme.palette.techChip.background,
+                        transition: "width 0.2s ease-in-out",
+                      },
                     }}
                   >
                     {button.label}
@@ -133,58 +148,81 @@ const DevWork = () => {
   };
 
   return (
-    <Grid container spacing={2} sx={{ width: 800, m: "auto" }}>
+    <Grid container sx={{ width: 1500, m: "auto" }}>
       {devProjects.map((project, index) => (
-        <Grid size={{ sm: 12, md: 6 }} key={index}>
+        <Grid size={{ sm: 12, md: 3 }} key={index}>
           <Card
             variant="outlined"
+            onClick={() => window.open(project.links.github, "_blank")}
             sx={{
-              bgcolor: theme.palette.background.paper,
-              height: "100%",
+              width: 340,
+              border: "none",
+              bgcolor: theme.palette.background.default,
+              height: 500,
+              display: "flex",
+              cursor: "pointer",
+              flexDirection: "column",
+              "&:hover:not(:has(.demo-btn:hover))": {
+                "& .github-btn .card-icon": {
+                  color: theme.palette.techChip.background,
+                },
+                "& .github-btn .card-text": {
+                  color: theme.palette.techChip.background,
+                  "&::after": {
+                    width: "100%",
+                  },
+                },
+                "& .github-btn .card-arrow": {
+                  transform: "translate(1.5px, -1.5px)",
+                },
+              },
               "&:hover": {
-                bgcolor: theme.palette.background.hover,
-                "& .description-text": {
-                  color: theme.palette.text.primary,
+                "& .card-images": {
+                  transform: "scale(1.03)",
+                },
+              },
+              "& .demo-btn:hover .card-text": {
+                color: theme.palette.techChip.background,
+                "&::after": {
+                  width: "100%",
                 },
               },
             }}
           >
             {project.image && (
               <Box
+                className="card-images"
                 component="img"
                 src={project.image}
                 alt={project.title}
                 sx={{
+                  mb: 3,
                   width: "100%",
-                  height: 200,
+                  height: 190,
                   objectFit: "cover",
-                  opacity: 0.8,
+                  borderRadius: 2,
+                  transition: "all 0.2s ease-in-out",
                 }}
               />
             )}
-            <CardContent sx={{ p: 3, height: "100%" }}>
+            <CardContent
+              sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
+            >
               <CardHeader
                 sx={{ p: 0 }}
                 title={
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: 20,
-                      fontWeight: 500,
-                    }}
-                  >
-                    {project.title}
-                    <Typography sx={{ fontSize: 12 }}>
+                  <Box>
+                    <Typography sx={{ fontWeight: 500 }}>
                       {project.year}
                     </Typography>
+                    {project.title}
                   </Box>
                 }
               />
               <Typography
                 className="description-text"
                 variant="body2"
-                sx={{ my: 3, color: theme.palette.text.secondary }}
+                sx={{ my: 3, color: theme.palette.text.secondary, flex: 1 }}
               >
                 {project.description}
               </Typography>
