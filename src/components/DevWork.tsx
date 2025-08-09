@@ -10,6 +10,13 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import {
+  actionLinkTextStyles,
+  gridContainerSx,
+  mediaBoxSx,
+  cardBaseStyles,
+  makeCardHoverStyles,
+} from "./Helpers";
 
 type DevProjects = {
   year: number;
@@ -111,23 +118,7 @@ const DevWork = () => {
                   {button.icon}
                   <Typography
                     className="card-text"
-                    sx={{
-                      fontSize: 12,
-                      fontWeight: 600,
-                      ml: 1,
-                      color: theme.palette.text.primary,
-                      position: "relative",
-                      "&::after": {
-                        content: '""',
-                        position: "absolute",
-                        bottom: -6,
-                        left: 0,
-                        width: 0,
-                        height: "1px",
-                        backgroundColor: theme.palette.techChip.background,
-                        transition: "width 0.3s ease-in-out",
-                      },
-                    }}
+                    sx={actionLinkTextStyles(theme)}
                   >
                     {button.label}
                   </Typography>
@@ -149,56 +140,19 @@ const DevWork = () => {
   };
 
   return (
-    <Grid container sx={{ width: 1500, m: "auto" }}>
+    <Grid container sx={gridContainerSx}>
       {devProjects.map((project, index) => (
         <Grid size={{ sm: 12, md: 3 }} key={index}>
           <Card
             variant="outlined"
             onClick={() => window.open(project.links.github, "_blank")}
             sx={{
-              width: 340,
-              border: "none",
-              bgcolor: theme.palette.background.default,
-              height: 500,
-              display: "flex",
-              cursor: "pointer",
-              flexDirection: "column",
-              "&:hover:not(:has(.demo-btn:hover))": {
-                "& .github-btn .card-icon": {
-                  color: theme.palette.techChip.background,
-                },
-                "& .github-btn .card-text": {
-                  color: theme.palette.techChip.background,
-                  "&::after": {
-                    width: "100%",
-                  },
-                },
-                "& .github-btn .card-arrow": {
-                  transform: "translate(1.5px, -1.5px)",
-                },
-              },
-              "&:hover": {
-                "& .card-images": {
-                  transform: "scale(1.02)",
-                },
-              },
-              "& .demo-btn:hover .card-text": {
-                color: theme.palette.techChip.background,
-                "&::after": {
-                  width: "100%",
-                },
-              },
+              ...cardBaseStyles(theme),
+              ...makeCardHoverStyles("github-btn", "demo-btn", theme),
             }}
           >
             {project.image && (
-              <Box
-                sx={{
-                  mb: 3,
-                  height: 190,
-                  borderRadius: 2,
-                  overflow: "hidden",
-                }}
-              >
+              <Box sx={mediaBoxSx}>
                 <Box
                   className="card-images"
                   component="img"
@@ -213,9 +167,7 @@ const DevWork = () => {
                 />
               </Box>
             )}
-            <CardContent
-              sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
-            >
+            <CardContent>
               <CardHeader
                 sx={{ p: 0 }}
                 title={
