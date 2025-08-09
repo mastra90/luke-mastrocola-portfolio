@@ -18,19 +18,22 @@ import {
   makeCardHoverStyles,
 } from "./Helpers";
 
-type DevProjects = {
+type DevProjectProps = {
   year: number;
   title: string;
   description: string;
   type: string;
   image: string;
-  links: { github: string; demo?: string };
+  links: {
+    github: string;
+    demo?: string;
+  };
 };
 
 const DevWork = () => {
   const theme = useTheme();
 
-  const devProjects: DevProjects[] = [
+  const devProjects: DevProjectProps[] = [
     {
       year: 2025,
       title: "Academic Portfolio",
@@ -81,7 +84,7 @@ const DevWork = () => {
   ];
 
   type ActionLinkProps = {
-    links: DevProjects["links"];
+    links: DevProjectProps["links"];
   };
 
   const ActionLink = ({ links }: ActionLinkProps) => {
