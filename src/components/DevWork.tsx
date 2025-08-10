@@ -152,6 +152,9 @@ const DevWork = () => {
             sx={{
               ...cardBaseStyles(theme),
               ...makeCardHoverStyles("github-btn", "demo-btn", theme),
+              "&:hover": {
+                "& .card-images": { transform: "scale(1.02)" },
+              },
             }}
           >
             {project.image && (

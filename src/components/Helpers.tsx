@@ -58,7 +58,6 @@ export const makeCardHoverStyles = (
       transform: "translate(1.5px, -1.5px)",
     },
   },
-  "&:hover": { "& .card-images": { transform: "scale(1.02)" } },
   [`& .${exceptionClass}:hover .card-text`]: {
     color: theme.palette.techChip.background,
     "&::after": { width: "100%" },

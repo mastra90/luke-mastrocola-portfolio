@@ -131,6 +131,18 @@ const AudioWork = () => {
             sx={{
               ...cardBaseStyles(theme),
               ...makeCardHoverStyles("listen-btn", "watch-btn", theme),
+              "&:hover": {
+                "& .watch-btn .card-icon": {
+                  color: theme.palette.techChip.background,
+                },
+                "& .watch-btn .card-text": {
+                  color: theme.palette.techChip.background,
+                  "&::after": { width: "100%" },
+                },
+                "& .watch-btn .card-arrow": {
+                  transform: "translate(1.5px, -1.5px)",
+                },
+              },
             }}
           >
             <Box sx={{ ...mediaBoxSx, position: "relative" }}>
