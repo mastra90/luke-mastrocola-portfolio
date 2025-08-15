@@ -7,50 +7,56 @@ import DevWork from "./components/DevWork";
 import AudioWork from "./components/AudioWork";
 import ServicesSwitch from "./components/ServicesSwitch";
 
-const PortfolioView = ({
-  active,
+function KeepMountedHidden({
+  hidden,
   children,
 }: {
-  active: boolean;
+  hidden: boolean;
   children: ReactNode;
-}) => (
-  <Box
-    sx={{
-      position: active ? "static" : "absolute",
-      opacity: active ? 1 : 0,
-    }}
-  >
-    {children}
-  </Box>
-);
+}) {
+  return (
+    <Box
+      aria-hidden={hidden}
+      sx={
+        hidden
+          ? {
+              position: "absolute",
+              left: 0,
+              top: 0,
+              width: "100%",
+              height: 0,
+              overflow: "hidden",
+              pointerEvents: "none",
+            }
+          : { position: "static" }
+      }
+    >
+      {children}
+    </Box>
+  );
+}
 
 const App = () => {
-  const [isDark, setIsDark] = useState<boolean>(true);
-  const [showWebDev, setShowWebDev] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState(true);
+  const [showWebDev, setShowWebDev] = useState(true);
   const theme = createAppTheme(isDark);
-  const toggleTheme = () => setIsDark(!isDark);
 
   return (
     <ThemeProvider theme={theme}>
-      <Container
-        sx={{
-          mx: "auto",
-          my: 4,
-          maxWidth: "1800px !important",
-        }}
-      >
+      <Container sx={{ mx: "auto", my: 4, maxWidth: "1800px !important" }}>
         <CssBaseline />
-        <ToggleThemeButton toggleTheme={toggleTheme} isDark={isDark} />
+        <ToggleThemeButton
+          toggleTheme={() => setIsDark(!isDark)}
+          isDark={isDark}
+        />
         <Header />
         <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
-        <Box>
-          <PortfolioView active={showWebDev}>
-            <DevWork />
-          </PortfolioView>
-          <PortfolioView active={!showWebDev}>
-            <AudioWork />
-          </PortfolioView>
-        </Box>
+        <KeepMountedHidden hidden={!showWebDev}>
+          <DevWork />
+        </KeepMountedHidden>
+        <KeepMountedHidden hidden={showWebDev}>
+          <AudioWork />
+        </KeepMountedHidden>
       </Container>
     </ThemeProvider>
   );

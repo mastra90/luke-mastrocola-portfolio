@@ -1,4 +1,60 @@
 import { Theme } from "@mui/material/styles";
+import { ArrowOutward } from "@mui/icons-material";
+import { IconButton, Link, Typography } from "@mui/material";
+import { ReactElement } from "react";
+
+type ActionButtonConfig = {
+  icon: ReactElement;
+  label: string;
+  link?: string;
+  className: string;
+};
+
+export const ActionLink = ({
+  buttons,
+  theme,
+}: {
+  buttons: ActionButtonConfig | ActionButtonConfig[];
+  theme: any;
+}) => {
+  const buttonArray = Array.isArray(buttons) ? buttons : [buttons];
+
+  return (
+    <>
+      {buttonArray.map(
+        (button, key) =>
+          button.link && (
+            <Link
+              key={key}
+              target="_blank"
+              rel="noreferrer"
+              href={button.link}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <IconButton className={button.className}>
+                {button.icon}
+                <Typography
+                  className="card-text"
+                  sx={actionLinkTextStyles(theme)}
+                >
+                  {button.label}
+                </Typography>
+                <ArrowOutward
+                  className="card-arrow"
+                  sx={{
+                    ml: 1,
+                    transition: "transform 0.1s ease-in",
+                    color: theme.palette.gitHub.button,
+                    fontSize: 20,
+                  }}
+                />
+              </IconButton>
+            </Link>
+          )
+      )}
+    </>
+  );
+};
 
 export const actionLinkTextStyles = (theme: Theme) => ({
   fontSize: 14,
