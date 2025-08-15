@@ -24,9 +24,9 @@ import {
   makeCardHoverStyles,
   getYouTubeId,
   ActionLink,
-} from "./Helpers";
+} from "../Helpers";
 import { useState } from "react";
-import { AudioProjectItems, audioProjects } from "../Data/AudioProjectsData";
+import { AudioProjectItems, audioProjects } from "../../Data/AudioProjectsData";
 
 const AudioCard = ({ project }: { project: AudioProjectItems }) => {
   const theme = useTheme();

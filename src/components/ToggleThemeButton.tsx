@@ -32,13 +32,14 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           cursor: "pointer",
           position: "relative",
           "&:hover": {
-            color: theme.palette.button.themeButtonHover,
             bgcolor: theme.palette.button.themeIconHover,
             "& .bedtime-icon": {
               opacity: isDark ? 0 : 1,
+              color: theme.palette.button.themeButtonHover,
             },
             "& .sunny-icon": {
               opacity: isDark ? 1 : 0,
+              color: theme.palette.button.themeButtonHover,
             },
           },
         }}

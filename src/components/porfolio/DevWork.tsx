@@ -14,8 +14,8 @@ import {
   cardBaseStyles,
   makeCardHoverStyles,
   ActionLink,
-} from "./Helpers";
-import { devProjects } from "../Data/DevProjectsData";
+} from "../Helpers";
+import { devProjects } from "../../Data/DevProjectsData";
 
 const DevWork = () => {
   const theme = useTheme();

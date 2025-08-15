@@ -1,40 +1,10 @@
-import { ReactNode, useState } from "react";
-import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
+import { useState } from "react";
+import { ThemeProvider, CssBaseline, Container } from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
-import DevWork from "./components/DevWork";
-import AudioWork from "./components/AudioWork";
 import ServicesSwitch from "./components/ServicesSwitch";
-
-function KeepMountedHidden({
-  hidden,
-  children,
-}: {
-  hidden: boolean;
-  children: ReactNode;
-}) {
-  return (
-    <Box
-      aria-hidden={hidden}
-      sx={
-        hidden
-          ? {
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "100%",
-              height: 0,
-              overflow: "hidden",
-              pointerEvents: "none",
-            }
-          : { position: "static" }
-      }
-    >
-      {children}
-    </Box>
-  );
-}
+import Portfolio from "./components/porfolio/Portfolio";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -51,12 +21,7 @@ const App = () => {
         />
         <Header />
         <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
-        <KeepMountedHidden hidden={!showWebDev}>
-          <DevWork />
-        </KeepMountedHidden>
-        <KeepMountedHidden hidden={showWebDev}>
-          <AudioWork />
-        </KeepMountedHidden>
+        <Portfolio showWebDev={showWebDev} />
       </Container>
     </ThemeProvider>
   );
