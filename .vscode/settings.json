@@ -28,6 +28,7 @@
     "deploy.sh": true,
     "index.html": true,
     "nginx.conf": true,
-    "README.md": true
+    "README.md": true,
+    "List of music.txt": true
   }
 }

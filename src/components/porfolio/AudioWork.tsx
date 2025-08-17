@@ -60,13 +60,14 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
           title={project.title}
           src={
             project.links.platform === "youtube"
-              ? `https://www.youtube.com/embed/${getYouTubeId(
+              ? `https://www.youtube-nocookie.com/embed/${getYouTubeId(
                   project.links.url!
                 )}?rel=0`
               : `https://w.soundcloud.com/player/?url=
                 ${encodeURIComponent(project.links.url!)}
-                &visual=true`
+                &visual=true&show_teaser=false&hide_related=true&auto_play=false&show_bpm=false&show_genre=false&sharing=false&liking=false`
           }
+          allow="encrypted-media;"
           allowFullScreen
           loading="lazy"
           sx={{
@@ -197,9 +198,9 @@ const AudioWork = () => {
         </IconButton>
       </Box>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto">
         {otherSections.map((section) => (
-          <Grid container sx={gridContainerSx}>
+          <Grid container sx={gridContainerSx} key={section.header}>
             <Grid size={{ sm: 12, md: 12 }}>
               <Typography variant="h6" sx={{ mb: 2 }}>
                 {section.header}
