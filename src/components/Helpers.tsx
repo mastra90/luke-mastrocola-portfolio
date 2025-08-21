@@ -31,7 +31,7 @@ export const ActionLink = ({
               href={button.link}
               onClick={(e) => e.stopPropagation()}
             >
-              <IconButton className={button.className}>
+              <IconButton className={button.className} sx={{ p: 0 }}>
                 {button.icon}
                 <Typography
                   className="card-text"
@@ -74,11 +74,6 @@ export const actionLinkTextStyles = (theme: Theme) => ({
   },
 });
 
-export const gridContainerSx = {
-  width: 1500,
-  m: "auto",
-};
-
 export const mediaBoxSx = {
   mb: 3,
   height: 190,
@@ -87,14 +82,14 @@ export const mediaBoxSx = {
 };
 
 export const cardBaseStyles = (theme: Theme) => ({
-  width: 340,
+  width: "100%",
   border: "none",
   bgcolor: theme.palette.background.default,
   height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
-  marginBottom: 8,
+  marginBottom: 2,
 });
 
 export const makeCardHoverStyles = (

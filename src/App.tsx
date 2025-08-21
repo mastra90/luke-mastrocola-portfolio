@@ -13,7 +13,17 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container sx={{ mx: "auto", my: 4, maxWidth: "1800px !important" }}>
+      <Container
+        sx={{
+          mx: "auto",
+          my: 4,
+          maxWidth: {
+            xl: 1600,
+            lg: 800,
+            md: 800,
+          },
+        }}
+      >
         <CssBaseline />
         <ToggleThemeButton
           toggleTheme={() => setIsDark(!isDark)}

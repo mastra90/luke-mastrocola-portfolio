@@ -18,7 +18,6 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  gridContainerSx,
   mediaBoxSx,
   cardBaseStyles,
   makeCardHoverStyles,
@@ -89,7 +88,7 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
           title={
             <Box>
               <Typography sx={{ fontWeight: 500 }}>{project.year}</Typography>
-              <Typography variant="h5" sx={{ fontWeight: 400 }}>
+              <Typography variant="h6" sx={{ fontWeight: 400 }}>
                 {project.title}
               </Typography>
               <Typography
@@ -158,9 +157,9 @@ const AudioWork = () => {
     <>
       {/* Feature music at top */}
       {musicSection && (
-        <Grid container sx={gridContainerSx}>
-          <Box sx={{ mt: -6, height: 480 }}>
-            <Grid container sx={gridContainerSx}>
+        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 12 }}>
+          <Box sx={{ mt: -6, width: "100%" }}>
+            <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
               <Grid size={{ sm: 12, md: 12 }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>
                   {musicSection.header}
@@ -168,7 +167,14 @@ const AudioWork = () => {
               </Grid>
 
               {musicSection.items.map((p, i) => (
-                <Grid size={{ sm: 12, md: 3 }} key={`music-${i}`}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    xl: 3,
+                  }}
+                  key={`music-${i}`}
+                >
                   <AudioCard project={p} />
                 </Grid>
               ))}
@@ -177,7 +183,7 @@ const AudioWork = () => {
         </Grid>
       )}
 
-      {/* Feature music at top */}
+      {/* Expand/Collapse button */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 1, mb: 3 }}>
         <IconButton
           onClick={() => setOpen((v) => !v)}
@@ -200,7 +206,12 @@ const AudioWork = () => {
 
       <Collapse in={open} timeout="auto">
         {otherSections.map((section) => (
-          <Grid container sx={gridContainerSx} key={section.header}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ maxWidth: 1500, mx: "auto" }}
+            key={section.header}
+          >
             <Grid size={{ sm: 12, md: 12 }}>
               <Typography variant="h6" sx={{ mb: 2 }}>
                 {section.header}
@@ -208,7 +219,14 @@ const AudioWork = () => {
             </Grid>
 
             {section.items.map((p, i) => (
-              <Grid size={{ sm: 12, md: 3 }} key={`${section.header}-${i}`}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  xl: 3,
+                }}
+                key={`${section.header}-${i}`}
+              >
                 <AudioCard project={p} />
               </Grid>
             ))}

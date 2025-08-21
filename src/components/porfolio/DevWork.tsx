@@ -9,7 +9,6 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  gridContainerSx,
   mediaBoxSx,
   cardBaseStyles,
   makeCardHoverStyles,
@@ -21,9 +20,16 @@ const DevWork = () => {
   const theme = useTheme();
 
   return (
-    <Grid container sx={gridContainerSx}>
+    <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
       {devProjects.map((project, index) => (
-        <Grid size={{ sm: 12, md: 3 }} key={index}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 6,
+            xl: 3,
+          }}
+          key={index}
+        >
           <Card
             variant="outlined"
             onClick={() => window.open(project.links.github, "_blank")}
@@ -61,7 +67,9 @@ const DevWork = () => {
                     <Typography sx={{ fontWeight: 500 }}>
                       {project.year}
                     </Typography>
-                    {project.title}
+                    <Typography variant="h6" sx={{ fontWeight: 500 }}>
+                      {project.title}
+                    </Typography>
                   </Box>
                 }
               />
@@ -72,7 +80,15 @@ const DevWork = () => {
               >
                 {project.description}
               </Typography>
-              <Box sx={{ display: "flex", gap: 1 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: {
+                    xs: 2,
+                    md: 3,
+                  },
+                }}
+              >
                 <ActionLink
                   theme={theme}
                   buttons={[
