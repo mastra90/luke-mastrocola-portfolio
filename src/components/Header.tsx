@@ -5,21 +5,27 @@ import { Link as MuiLink } from "@mui/material";
 const Header = () => {
   const theme = useTheme();
 
+  const socialIconss = {
+    fontSize: 24,
+    transition: "all 0.1s ease-in-out",
+    "&:hover": { color: theme.palette.text.secondary },
+  };
+
   const socials = [
     {
-      icon: <GitHub />,
+      icon: <GitHub sx={socialIconss} />,
       link: "https://github.com/mastra90?tab=repositories",
     },
     {
-      icon: <LinkedIn />,
+      icon: <LinkedIn sx={socialIconss} />,
       link: "https://www.linkedin.com/in/luke-mastrocola-aab00427a/",
     },
     {
-      icon: <Twitter />,
+      icon: <Twitter sx={socialIconss} />,
       link: "https://x.com/Mastra_90",
     },
     {
-      icon: <Instagram />,
+      icon: <Instagram sx={socialIconss} />,
       link: "https://www.instagram.com/luke.mastrocola/",
     },
   ];

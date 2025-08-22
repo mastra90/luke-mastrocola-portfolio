@@ -184,15 +184,29 @@ const AudioWork = () => {
       )}
 
       {/* Expand/Collapse button */}
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 1, mb: 3 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 1,
+          mb: 3,
+          mx: { sm: 0, md: 0, lg: 0 },
+        }}
+      >
         <IconButton
           onClick={() => setOpen((v) => !v)}
+          disableRipple
           sx={{
-            border: `1px solid ${theme.palette.border.secondary}`,
-            borderRadius: "50%",
-            bgcolor: theme.palette.background.paper,
+            display: "flex",
+            justifyContent: "center",
+            gap: 0,
+            width: {
+              xs: "100%",
+              xl: 600,
+            },
+            borderRadius: 3,
+            bgcolor: theme.palette.background.switch,
             "&:hover": { bgcolor: theme.palette.button.hover },
-            fontSize: 50,
           }}
           aria-label={open ? "Show less" : "Show more"}
         >
@@ -201,6 +215,15 @@ const AudioWork = () => {
           ) : (
             <KeyboardArrowDown sx={{ fontSize: 36 }} />
           )}
+          <Typography
+            sx={{
+              alignContent: "center",
+              p: 2,
+              color: theme.palette.text.primary,
+            }}
+          >
+            {!open ? "Show more" : "Show less"}
+          </Typography>
         </IconButton>
       </Box>
 
