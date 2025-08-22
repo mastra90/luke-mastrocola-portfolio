@@ -150,8 +150,8 @@ const AudioWork = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
-  const musicSection = audioProjects.find((p) => p.header === "Music");
-  const otherSections = audioProjects.filter((p) => p.header !== "Music");
+  const musicSection = audioProjects.find((p) => p.header === "Featured");
+  const otherSections = audioProjects.filter((p) => p.header !== "Featured");
 
   return (
     <>

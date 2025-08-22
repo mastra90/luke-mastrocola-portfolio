@@ -16,7 +16,7 @@ export type AudioProjectProps = {
 
 export const audioProjects: AudioProjectProps[] = [
   {
-    header: "Music",
+    header: "Featured",
     items: [
       {
         year: 2025,
@@ -48,6 +48,21 @@ export const audioProjects: AudioProjectProps[] = [
           url: "https://www.youtube.com/watch?v=5cP_RVuzsQk",
         },
       },
+      {
+        year: 2014,
+        title: "Transience",
+        subheader: " Bad Things (True Blood Theme Cover)",
+        chips: ["Mixing", "Mastering", "Drumming"],
+        links: {
+          platform: "youtube",
+          url: "https://www.youtube.com/watch?v=MQo_G5XFulo",
+        },
+      },
+    ],
+  },
+  {
+    header: "Music",
+    items: [
       {
         year: 2018,
         title: "Above All (EP)",
