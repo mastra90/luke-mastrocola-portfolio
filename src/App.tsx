@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
 import ServicesSwitch from "./components/ServicesSwitch";
 import Portfolio from "./components/porfolio/Portfolio";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -33,6 +34,7 @@ const App = () => {
         <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
         <Portfolio showWebDev={showWebDev} />
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };

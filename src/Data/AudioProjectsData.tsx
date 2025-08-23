@@ -89,7 +89,7 @@ export const audioProjects: AudioProjectProps[] = [
         year: 2025,
         title: "In a Place Like This",
         subheader: "Short film by Shannon Glover",
-        chips: ["Music composition", "Post-production", "Sound design"],
+        chips: ["Music composition", "Mixing", "Mastering"],
         links: {
           platform: "youtube",
           url: "https://www.youtube.com/watch?v=BcKYqoWTy20",
