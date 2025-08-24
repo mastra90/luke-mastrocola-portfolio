@@ -105,13 +105,6 @@ const createAppTheme = (isDark: boolean) => {
       },
     },
     components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          html: {
-            scrollbarGutter: "stable both-edges",
-          },
-        },
-      },
       MuiIconButton: {
         styleOverrides: {
           root: {

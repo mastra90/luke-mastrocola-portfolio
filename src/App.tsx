@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ThemeProvider, CssBaseline, Container } from "@mui/material";
+import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
@@ -14,10 +14,17 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Box sx={{ height: "auto" }}>
+        <ToggleThemeButton
+          toggleTheme={() => setIsDark(!isDark)}
+          isDark={isDark}
+        />
+        <Header />
+      </Box>
+
       <Container
         sx={{
           mx: "auto",
-          my: 4,
           maxWidth: {
             xl: 1600,
             lg: 800,
@@ -26,11 +33,6 @@ const App = () => {
         }}
       >
         <CssBaseline />
-        <ToggleThemeButton
-          toggleTheme={() => setIsDark(!isDark)}
-          isDark={isDark}
-        />
-        <Header />
         <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
         <Portfolio showWebDev={showWebDev} />
       </Container>

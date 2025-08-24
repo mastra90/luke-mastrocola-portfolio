@@ -39,7 +39,7 @@ const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
         bgcolor: theme.palette.background.switch,
         width: { xs: "100%", sm: "100%", md: 600 },
         m: "auto",
-        my: 8,
+        mb: 8,
         borderRadius: 3,
       }}
     >

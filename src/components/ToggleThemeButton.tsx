@@ -22,7 +22,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           justifyContent: "center",
           alignItems: "center",
           m: "auto",
-          mb: 2,
+          my: 4,
           width: 60,
           height: 60,
           color: theme.palette.text.primary,
