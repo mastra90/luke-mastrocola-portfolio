@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ThemeProvider,
-  CssBaseline,
-  Container,
-  Box,
-  useMediaQuery,
-} from "@mui/material";
+import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
 import ToggleThemeButton from "./components/ToggleThemeButton";
@@ -19,20 +13,15 @@ const App = () => {
   const [showWebDev, setShowWebDev] = useState(true);
   const theme = createAppTheme(isDark);
 
-  const isMobileHeight = useMediaQuery("(max-height: 480px)");
-  const isMobileWidth = useMediaQuery("(max-width: 600px)");
-  const isMobile = isMobileHeight || isMobileWidth ? true : false;
-
   return (
     <ThemeProvider theme={theme}>
       <Box>
         <ToggleThemeButton
-          isMobile={isMobile}
           toggleTheme={() => setIsDark(!isDark)}
           isDark={isDark}
         />
-        <Header isMobile={isMobile} />
-        <Welcome isMobile={isMobile} />
+        <Header />
+        <Welcome />
       </Box>
 
       <Container

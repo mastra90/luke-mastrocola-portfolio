@@ -25,7 +25,7 @@ import {
   ActionLink,
 } from "../Helpers";
 import { useState } from "react";
-import { AudioProjectItems, audioProjects } from "../../Data/AudioProjectsData";
+import { AudioProjectItems, audioProjects } from "../../data/AudioProjectsData";
 
 const AudioCard = ({ project }: { project: AudioProjectItems }) => {
   const theme = useTheme();

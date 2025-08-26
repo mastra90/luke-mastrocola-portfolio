@@ -1,13 +1,11 @@
 import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { Box, useTheme, Avatar, Typography } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
+import { useResponsive } from "../hooks/useResponsive";
 
-type HeaderProps = {
-  isMobile: boolean;
-};
-
-const Header = ({ isMobile }: HeaderProps) => {
+const Header = () => {
   const theme = useTheme();
+  const isMobile = useResponsive;
 
   const socialIconss = {
     fontSize: 24,
@@ -39,42 +37,42 @@ const Header = ({ isMobile }: HeaderProps) => {
       <Box
         sx={{
           display: "flex",
-          mt: isMobile ? -2 : 8,
-          width: isMobile ? "100%" : 500,
+          mt: isMobile() ? -2 : 8,
+          width: isMobile() ? "100%" : 500,
           mx: "auto",
-          mb: isMobile ? 2 : 8,
+          mb: isMobile() ? 2 : 8,
           alignItems: "center",
-          flexDirection: isMobile ? "column" : "row",
+          flexDirection: isMobile() ? "column" : "row",
         }}
       >
         <Avatar
           src="/Headshot.jpg"
           alt="Luke Mastrocola"
           sx={{
-            width: isMobile ? 80 : 150,
-            height: isMobile ? 80 : 150,
+            width: isMobile() ? 80 : 150,
+            height: isMobile() ? 80 : 150,
             border: `4px solid ${theme.palette.border.primary}`,
-            mt: isMobile ? 4 : 0,
+            mt: isMobile() ? 4 : 0,
           }}
         />
         <Box
           sx={{
             mx: "auto",
-            mt: isMobile ? 2 : 0,
-            textAlign: isMobile ? "center" : "inherit",
+            mt: isMobile() ? 2 : 0,
+            textAlign: isMobile() ? "center" : "inherit",
             color: theme.palette.text.secondary,
           }}
         >
           <Typography
             sx={{
               color: theme.palette.text.primary,
-              typography: isMobile ? "h6" : "h5",
+              typography: isMobile() ? "h6" : "h5",
               fontWeight: 500,
             }}
           >
             Luke Mastrocola
           </Typography>
-          <Typography sx={{ my: isMobile ? 1 : 2, fontWeight: 500 }}>
+          <Typography sx={{ my: isMobile() ? 1 : 2, fontWeight: 500 }}>
             Web developer | Audio producer
           </Typography>
           {socials.map((social, index) => (

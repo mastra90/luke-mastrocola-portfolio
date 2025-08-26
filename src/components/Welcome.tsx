@@ -1,11 +1,10 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import { useResponsive } from "../hooks/useResponsive";
 
-type WelcomeProps = {
-  isMobile: boolean;
-};
-
-const Welcome = ({ isMobile }: WelcomeProps) => {
+const Welcome = () => {
   const theme = useTheme();
+  const isMobile = useResponsive;
+
   return (
     <>
       <Box
@@ -15,8 +14,8 @@ const Welcome = ({ isMobile }: WelcomeProps) => {
           alignItems: "center",
 
           width: "100%",
-          my: isMobile ? 4 : 8,
-          p: isMobile ? 4 : 8,
+          my: isMobile() ? 4 : 8,
+          p: isMobile() ? 4 : 8,
           bgcolor: theme.palette.background.switch,
         }}
       >
@@ -25,7 +24,7 @@ const Welcome = ({ isMobile }: WelcomeProps) => {
             fontWeight: 600,
             mb: 2,
             textAlign: "center",
-            fontSize: isMobile ? 16 : 20,
+            fontSize: isMobile() ? 16 : 20,
           }}
         >
           Welcome to my portfolio.
