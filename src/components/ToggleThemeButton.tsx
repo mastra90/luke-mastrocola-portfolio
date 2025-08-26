@@ -4,9 +4,14 @@ import { Bedtime, WbSunny } from "@mui/icons-material";
 type ToggleThemeButtonProps = {
   toggleTheme: () => void;
   isDark: boolean;
+  isMobile: boolean;
 };
 
-const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
+const ToggleThemeButton = ({
+  toggleTheme,
+  isDark,
+  isMobile,
+}: ToggleThemeButtonProps) => {
   const theme = useTheme();
   return (
     <Tooltip
@@ -21,10 +26,12 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          m: "auto",
-          my: 4,
-          width: 60,
-          height: 60,
+          mx: isMobile ? "inherit" : "auto",
+          my: isMobile ? 0 : 4,
+          top: isMobile ? 16 : "inherit",
+          left: isMobile ? 16 : "inherit",
+          width: isMobile ? 40 : 60,
+          height: isMobile ? 40 : 60,
           color: theme.palette.text.primary,
           bgcolor: theme.palette.background.secondary,
           borderRadius: 50,
