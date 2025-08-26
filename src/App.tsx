@@ -1,12 +1,17 @@
 import { useState } from "react";
-import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
+import {
+  ThemeProvider,
+  CssBaseline,
+  Container,
+  Box,
+  Divider,
+} from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
-import ToggleThemeButton from "./components/ToggleThemeButton";
-import ServicesSwitch from "./components/ServicesSwitch";
 import Portfolio from "./components/porfolio/Portfolio";
 import Footer from "./components/Footer";
 import Welcome from "./components/Welcome";
+import AboutSection from "./components/AboutSection";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -15,6 +20,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Box
         sx={{
           display: "flex",
@@ -22,15 +28,13 @@ const App = () => {
           minHeight: "100vh",
         }}
       >
-        <ToggleThemeButton
-          toggleTheme={() => setIsDark(!isDark)}
-          isDark={isDark}
-        />
-        <Header />
+        <Header isDark={isDark} setIsDark={setIsDark} />
+        <Divider color={theme.palette.background.paper} />
+        {isDark && <Divider color={theme.palette.background.paper} />}
         <Welcome />
+        <AboutSection />
         <Container
           sx={{
-            mx: "auto",
             maxWidth: {
               xl: 1600,
               lg: 800,
@@ -39,12 +43,7 @@ const App = () => {
             flex: 1,
           }}
         >
-          <CssBaseline />
-          <ServicesSwitch
-            showWebDev={showWebDev}
-            setShowWebDev={setShowWebDev}
-          />
-          <Portfolio showWebDev={showWebDev} />
+          <Portfolio showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
         </Container>
         <Footer />
       </Box>

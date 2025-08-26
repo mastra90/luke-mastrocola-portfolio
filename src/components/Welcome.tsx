@@ -1,47 +1,64 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
+import { WavingHand } from "@mui/icons-material";
 
 const Welcome = () => {
   const theme = useTheme();
-  const isMobile = useResponsive;
+  const isMobile = useResponsive();
 
   return (
-    <>
-      <Box
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        mt: isMobile ? 8 : 6,
+        mb: isMobile ? 8 : 8,
+        px: 2,
+      }}
+    >
+      <Typography
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-
-          width: "100%",
-          my: 4,
-          p: isMobile() ? 4 : 8,
-          bgcolor: theme.palette.background.switch,
+          mb: 3,
+          typography: { xs: "h5", md: "h4" },
         }}
       >
-        <Typography
+        Hello{" "}
+        <WavingHand
           sx={{
-            fontWeight: 600,
-            mb: 2,
-            textAlign: "center",
-            fontSize: isMobile() ? 16 : 20,
+            ml: 1,
+            typography: { xs: "h6", md: "h5" },
+            animation: "wave 5s ease-in-out infinite",
+            "@keyframes wave": {
+              "0%": {
+                transform: "rotate(-55deg)",
+              },
+              "4%": {
+                transform: "rotate(-35deg)",
+              },
+              "8%": {
+                transform: "rotate(-55deg)",
+              },
+              "100%": {
+                transform: "rotate(-35deg)",
+              },
+            },
           }}
-        >
-          Welcome to my portfolio.
-        </Typography>
-        <Typography
-          sx={{
-            textAlign: "center",
-            color: theme.palette.text.secondary,
-            maxWidth: 600,
-          }}
-        >
-          I'm a passionate web developer and audio producer. Each project
-          reflects my commitment to intuitive design, and creative innovation.
-          Explore my work below to see how my ideas come to life.
-        </Typography>
-      </Box>
-    </>
+        />{" "}
+      </Typography>
+      <Typography
+        sx={{
+          textAlign: "center",
+          color: theme.palette.text.secondary,
+          maxWidth: 700,
+        }}
+      >
+        I'm a web developer and audio producer who loves problem solving and
+        being creative with code and sound. Here are some projects I've enjoyed
+        working on.
+      </Typography>
+    </Box>
   );
 };
 

@@ -1,5 +1,4 @@
-import { Button, Box, useTheme, Typography } from "@mui/material";
-import { useResponsive } from "../hooks/useResponsive";
+import { Button, Box, useTheme } from "@mui/material";
 
 type ServicesSwitchProps = {
   showWebDev: boolean;
@@ -8,7 +7,6 @@ type ServicesSwitchProps = {
 
 const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
   const theme = useTheme();
-  const isMobile = useResponsive;
 
   const buttonStyles = (isActive: boolean) => ({
     boxShadow: "none",
@@ -34,16 +32,6 @@ const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
 
   return (
     <>
-      <Typography
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mt: isMobile() ? 2 : 6,
-          fontSize: isMobile() ? 16 : 20,
-        }}
-      >
-        Portfolio
-      </Typography>
       <Box
         sx={{
           display: "flex",

@@ -157,7 +157,7 @@ const AudioWork = () => {
     <>
       {/* Feature music at top */}
       {musicSection && (
-        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 12 }}>
+        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 8 }}>
           <Box sx={{ mt: -6, width: "100%" }}>
             <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
               <Grid size={{ sm: 12, md: 12 }}>
@@ -205,7 +205,6 @@ const AudioWork = () => {
               xl: 600,
             },
             borderRadius: 3,
-            bgcolor: theme.palette.background.switch,
             "&:hover": { bgcolor: theme.palette.button.hover },
           }}
           aria-label={open ? "Show less" : "Show more"}

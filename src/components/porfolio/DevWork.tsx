@@ -20,7 +20,7 @@ const DevWork = () => {
   const theme = useTheme();
 
   return (
-    <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
+    <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mb: 8 }}>
       {devProjects.map((project, index) => (
         <Grid
           size={{

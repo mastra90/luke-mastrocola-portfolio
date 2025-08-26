@@ -9,7 +9,7 @@ type ToggleThemeButtonProps = {
 
 const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
   const theme = useTheme();
-  const isMobile = useResponsive;
+  const isMobile = useResponsive();
 
   return (
     <Tooltip
@@ -24,12 +24,12 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          mx: isMobile() ? "inherit" : "auto",
-          my: isMobile() ? 0 : 4,
-          top: isMobile() ? 16 : "inherit",
-          left: isMobile() ? 16 : "inherit",
-          width: isMobile() ? 40 : 60,
-          height: isMobile() ? 40 : 60,
+          mx: isMobile ? "inherit" : "auto",
+          my: isMobile ? 0 : 4,
+          top: isMobile ? 16 : "inherit",
+          left: isMobile ? 16 : "inherit",
+          width: isMobile ? 40 : 60,
+          height: isMobile ? 40 : 60,
           color: theme.palette.text.primary,
           bgcolor: theme.palette.background.secondary,
           borderRadius: 50,

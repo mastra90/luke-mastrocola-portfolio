@@ -1,15 +1,16 @@
-import { Box } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 import DevWork from "./DevWork";
 import AudioWork from "./AudioWork";
+import ServicesSwitch from "./ServicesSwitch";
 
-function KeepMountedHidden({
+const KeepMountedHidden = ({
   hidden,
   children,
 }: {
   hidden: boolean;
   children: ReactNode;
-}) {
+}) => {
   return (
     <Box
       aria-hidden={hidden}
@@ -30,11 +31,35 @@ function KeepMountedHidden({
       {children}
     </Box>
   );
-}
+};
 
-const Portfolio = ({ showWebDev }: { showWebDev: boolean }) => {
+const Portfolio = ({
+  showWebDev,
+  setShowWebDev,
+}: {
+  setShowWebDev: (value: boolean) => void;
+  showWebDev: boolean;
+}) => {
+  const theme = useTheme();
+
   return (
     <>
+      <Box sx={{ textAlign: "center", mt: 8 }}>
+        <Typography sx={{ mb: 2, typography: { xs: "h5", md: "h4" } }}>
+          Portfolio{" "}
+        </Typography>
+        <Typography
+          sx={{
+            mx: "auto",
+            textAlign: "center",
+            color: theme.palette.text.secondary,
+            maxWidth: { sm: "100%", md: 700 },
+          }}
+        >
+          Explore some of my web development and audio production work.
+        </Typography>
+      </Box>
+      <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
       <KeepMountedHidden hidden={!showWebDev}>
         <DevWork />
       </KeepMountedHidden>
