@@ -15,30 +15,39 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
+      >
         <ToggleThemeButton
           toggleTheme={() => setIsDark(!isDark)}
           isDark={isDark}
         />
         <Header />
         <Welcome />
+        <Container
+          sx={{
+            mx: "auto",
+            maxWidth: {
+              xl: 1600,
+              lg: 800,
+              md: 800,
+            },
+            flex: 1,
+          }}
+        >
+          <CssBaseline />
+          <ServicesSwitch
+            showWebDev={showWebDev}
+            setShowWebDev={setShowWebDev}
+          />
+          <Portfolio showWebDev={showWebDev} />
+        </Container>
+        <Footer />
       </Box>
-
-      <Container
-        sx={{
-          mx: "auto",
-          maxWidth: {
-            xl: 1600,
-            lg: 800,
-            md: 800,
-          },
-        }}
-      >
-        <CssBaseline />
-        <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
-        <Portfolio showWebDev={showWebDev} />
-      </Container>
-      <Footer />
     </ThemeProvider>
   );
 };

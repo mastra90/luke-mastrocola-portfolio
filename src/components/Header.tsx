@@ -37,10 +37,9 @@ const Header = () => {
       <Box
         sx={{
           display: "flex",
-          mt: isMobile() ? -2 : 8,
           width: isMobile() ? "100%" : 500,
+          my: isMobile() ? -2 : 4,
           mx: "auto",
-          mb: isMobile() ? 2 : 8,
           alignItems: "center",
           flexDirection: isMobile() ? "column" : "row",
         }}

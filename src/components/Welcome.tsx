@@ -14,7 +14,7 @@ const Welcome = () => {
           alignItems: "center",
 
           width: "100%",
-          my: isMobile() ? 4 : 8,
+          my: 4,
           p: isMobile() ? 4 : 8,
           bgcolor: theme.palette.background.switch,
         }}

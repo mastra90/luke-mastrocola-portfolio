@@ -1,4 +1,5 @@
-import { Button, Box, useTheme } from "@mui/material";
+import { Button, Box, useTheme, Typography } from "@mui/material";
+import { useResponsive } from "../hooks/useResponsive";
 
 type ServicesSwitchProps = {
   showWebDev: boolean;
@@ -7,6 +8,8 @@ type ServicesSwitchProps = {
 
 const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
   const theme = useTheme();
+  const isMobile = useResponsive;
+
   const buttonStyles = (isActive: boolean) => ({
     boxShadow: "none",
     transition: "0.0s",
@@ -30,34 +33,46 @@ const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
   });
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        gap: 2,
-        p: 2,
-        bgcolor: theme.palette.background.switch,
-        width: { xs: "100%", sm: "100%", md: 600 },
-        m: "auto",
-        mb: 8,
-        borderRadius: 3,
-      }}
-    >
-      <Button
-        disableRipple
-        onClick={() => setShowWebDev(true)}
-        sx={buttonStyles(showWebDev)}
+    <>
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: isMobile() ? 2 : 6,
+          fontSize: isMobile() ? 16 : 20,
+        }}
       >
-        Web Development
-      </Button>
-      <Button
-        disableRipple
-        onClick={() => setShowWebDev(false)}
-        sx={buttonStyles(!showWebDev)}
+        Portfolio
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 2,
+          p: 2,
+          bgcolor: theme.palette.background.switch,
+          width: { xs: "100%", sm: "100%", md: 600 },
+          m: "auto",
+          my: 4,
+          borderRadius: 3,
+        }}
       >
-        Audio Production
-      </Button>
-    </Box>
+        <Button
+          disableRipple
+          onClick={() => setShowWebDev(true)}
+          sx={buttonStyles(showWebDev)}
+        >
+          Web Development
+        </Button>
+        <Button
+          disableRipple
+          onClick={() => setShowWebDev(false)}
+          sx={buttonStyles(!showWebDev)}
+        >
+          Audio Production
+        </Button>
+      </Box>
+    </>
   );
 };
 
