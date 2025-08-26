@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ThemeProvider,
-  CssBaseline,
-  Container,
-  Box,
-  Divider,
-} from "@mui/material";
+import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
 import createAppTheme from "./theme";
 import Header from "./components/Header";
 import Portfolio from "./components/porfolio/Portfolio";
@@ -29,8 +23,6 @@ const App = () => {
         }}
       >
         <Header isDark={isDark} setIsDark={setIsDark} />
-        <Divider color={theme.palette.background.paper} />
-        {isDark && <Divider color={theme.palette.background.paper} />}
         <Welcome />
         <AboutSection />
         <Container

@@ -5,6 +5,7 @@ import {
   Handshake as CollaborationIcon,
   TrendingUp as GrowthIcon,
 } from "@mui/icons-material";
+import { useResponsive } from "../hooks/useResponsive";
 
 const principles = [
   {
@@ -35,11 +36,13 @@ const principles = [
 
 const AboutSection = () => {
   const theme = useTheme();
+  const isMobile = useResponsive();
 
   return (
     <Box
       sx={{
         pt: 8,
+        mb: isMobile ? 0 : 16,
         bgcolor: theme.palette.background.switch,
       }}
     >

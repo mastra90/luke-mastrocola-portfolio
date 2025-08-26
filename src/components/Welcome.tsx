@@ -13,8 +13,7 @@ const Welcome = () => {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        mt: isMobile ? 8 : 6,
-        mb: isMobile ? 8 : 8,
+        my: isMobile ? 10 : 12,
         px: 2,
       }}
     >
@@ -52,6 +51,7 @@ const Welcome = () => {
           textAlign: "center",
           color: theme.palette.text.secondary,
           maxWidth: 700,
+          mb: isMobile ? 6 : 10,
         }}
       >
         I'm a web developer and audio producer who loves problem solving and
