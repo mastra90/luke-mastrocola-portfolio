@@ -39,7 +39,7 @@ const Footer = () => {
         py: 8,
         alignItems: "center",
         flexDirection: { xs: "column", sm: "row" },
-        bgcolor: theme.palette.background.switch,
+        bgcolor: theme.palette.background.paper,
       }}
     >
       <Box

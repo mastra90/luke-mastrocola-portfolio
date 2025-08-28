@@ -4,7 +4,6 @@ import createAppTheme from "./theme";
 import Header from "./components/Header";
 import Portfolio from "./components/porfolio/Portfolio";
 import Footer from "./components/Footer";
-import Welcome from "./components/Welcome";
 import AboutSection from "./components/AboutSection";
 
 const App = () => {
@@ -19,11 +18,9 @@ const App = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "100vh",
         }}
       >
         <Header isDark={isDark} setIsDark={setIsDark} />
-        <Welcome />
         <AboutSection />
         <Container
           sx={{

@@ -43,7 +43,7 @@ const AboutSection = () => {
       sx={{
         pt: 8,
         mb: isMobile ? 0 : 16,
-        bgcolor: theme.palette.background.switch,
+        bgcolor: theme.palette.background.paper,
       }}
     >
       <Container>
@@ -79,7 +79,7 @@ const AboutSection = () => {
               maxWidth: { sm: "100%", md: 700 },
             }}
           >
-            I enjoy building digital experiences through code and sound.
+            My passion is building digital experiences through code and sound.
           </Typography>
         </Box>
         <Grid

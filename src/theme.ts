@@ -32,8 +32,9 @@ const createAppTheme = (isDark: boolean) => {
   const palette = isDark
     ? {
         background: {
-          default: "#0C151D",
-          paper: "#171f26",
+          // default: "#0C151D",
+          default: "#081118",
+          paper: "#0C151D",
           secondary: "#262b33",
           hover: "#262b33",
           switch: "#171f26",
@@ -64,7 +65,7 @@ const createAppTheme = (isDark: boolean) => {
     : {
         background: {
           default: "#fefcf8",
-          paper: "#fffbf7",
+          paper: "#f2ede9",
           secondary: "#f2ece8",
           hover: "#fffbf8ff",
           switch: "#f2ede9",
