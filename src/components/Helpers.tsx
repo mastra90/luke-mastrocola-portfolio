@@ -1,7 +1,7 @@
 import { Theme, useTheme } from "@mui/material/styles";
 import { ArrowOutward } from "@mui/icons-material";
-import { IconButton, Link, Typography } from "@mui/material";
-import { ReactElement } from "react";
+import { Box, IconButton, Link, SvgIconProps, Typography } from "@mui/material";
+import { cloneElement, ReactElement } from "react";
 
 type ActionButtonConfig = {
   icon: ReactElement;
@@ -99,6 +99,44 @@ export const Heading = ({ title, variant = "h5" }: HeadingProps) => {
     },
   };
   return <Typography sx={headerStyles}>{title}</Typography>;
+};
+
+type SubHeadingProps = {
+  icon: ReactElement<SvgIconProps>;
+  title: string;
+  sx?: object;
+};
+
+export const SubHeading = ({ title, icon }: SubHeadingProps) => {
+  const theme = useTheme();
+
+  const iconSx = {
+    fontSize: 20,
+    color: theme.palette.techChip.background,
+    alignContent: "center",
+  };
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        alignContent: "center",
+        gap: 2,
+        mb: 1,
+      }}
+    >
+      {cloneElement(icon, { sx: iconSx })}
+      <Typography
+        sx={{
+          fontSize: 20,
+          fontWeight: 500,
+        }}
+      >
+        {title}
+      </Typography>
+    </Box>
+  );
 };
 
 export const mediaBoxSx = {
