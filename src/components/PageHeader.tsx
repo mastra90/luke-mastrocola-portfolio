@@ -4,7 +4,7 @@ import { Link as MuiLink } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 import ToggleThemeButton from "./ToggleThemeButton";
 
-const Header = ({
+const PageHeader = ({
   isDark,
   setIsDark,
 }: {
@@ -50,8 +50,6 @@ const Header = ({
           display: "flex",
           width: isMobile ? "100%" : "auto",
           gap: 4,
-          mt: isMobile ? 4 : 12,
-          mb: 16,
           px: 2,
           mx: "auto",
           alignItems: "center",
@@ -64,8 +62,7 @@ const Header = ({
           sx={{
             width: isMobile ? 150 : 240,
             height: isMobile ? 150 : 240,
-            border: `3px solid ${theme.palette.border.primary}`,
-            mt: isMobile ? 4 : 0,
+            border: `3px solid ${theme.palette.border.avatar}`,
           }}
         />
         <Box
@@ -140,14 +137,13 @@ const Header = ({
                   borderRadius: 2,
                   px: 2,
                   mr: 2,
-                  color: theme.palette.background.default,
-                  bgcolor: theme.palette.techChip.background,
+                  color: theme.palette.text.primary,
+                  bgcolor: theme.palette.background.switch,
                   border: 2,
-                  borderColor: theme.palette.techChip.background,
+                  borderColor: theme.palette.background.paper,
                   "&:hover": {
-                    color: theme.palette.text.primary,
-                    borderColor: theme.palette.techChip.background,
                     bgcolor: theme.palette.background.default,
+                    borderColor: theme.palette.techChip.background,
                   },
                 }}
               >
@@ -202,4 +198,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default PageHeader;

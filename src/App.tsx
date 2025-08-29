@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import createAppTheme from "./theme";
-import Header from "./components/Header";
 import Portfolio from "./components/porfolio/Portfolio";
 import Footer from "./components/Footer";
-import AboutSection from "./components/AboutSection";
+import PageHeader from "./components/PageHeader";
+import About from "./components/About";
+import { useResponsive } from "./hooks/useResponsive";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
   const [showWebDev, setShowWebDev] = useState(true);
   const theme = createAppTheme(isDark);
+  const isMobile = useResponsive();
 
   return (
     <ThemeProvider theme={theme}>
@@ -18,22 +20,13 @@ const App = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
+          gap: isMobile ? 12 : 32,
+          mt: isMobile ? 0 : 4,
         }}
       >
-        <Header isDark={isDark} setIsDark={setIsDark} />
-        <AboutSection />
-        <Container
-          sx={{
-            maxWidth: {
-              xl: 1600,
-              lg: 800,
-              md: 800,
-            },
-            flex: 1,
-          }}
-        >
-          <Portfolio showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
-        </Container>
+        <PageHeader isDark={isDark} setIsDark={setIsDark} />
+        <About />
+        <Portfolio showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
         <Footer />
       </Box>
     </ThemeProvider>

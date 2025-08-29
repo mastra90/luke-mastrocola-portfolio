@@ -112,14 +112,14 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
               size="small"
               variant="outlined"
               sx={{
-                borderColor: theme.palette.border.secondary,
+                borderColor: theme.palette.border.primary,
                 color: theme.palette.text.secondary,
               }}
             />
           ))}
         </Stack>
 
-        <Box sx={{ mt: 2, display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", gap: 1 }}>
           <ActionLink
             theme={theme}
             buttons={{
@@ -157,8 +157,8 @@ const AudioWork = () => {
     <>
       {/* Feature music at top */}
       {musicSection && (
-        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 8 }}>
-          <Box sx={{ mt: -6, width: "100%" }}>
+        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
+          <Box sx={{ width: "100%" }}>
             <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
               <Grid size={{ sm: 12, md: 12 }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>
@@ -188,8 +188,6 @@ const AudioWork = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          mt: 1,
-          mb: 3,
           mx: { sm: 0, md: 0, lg: 0 },
         }}
       >

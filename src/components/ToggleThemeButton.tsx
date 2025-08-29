@@ -25,7 +25,6 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           justifyContent: "center",
           alignItems: "center",
           mx: isMobile ? "inherit" : "auto",
-          my: isMobile ? 0 : 4,
           top: isMobile ? 16 : "inherit",
           left: isMobile ? 16 : "inherit",
           width: isMobile ? 40 : 60,

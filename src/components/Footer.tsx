@@ -34,7 +34,6 @@ const Footer = () => {
     <Box
       sx={{
         display: "flex",
-        mt: { xs: 4, sm: 8 },
         width: "100%",
         py: 8,
         alignItems: "center",
@@ -45,7 +44,6 @@ const Footer = () => {
       <Box
         sx={{
           mx: "auto",
-          mt: { xs: 4, sm: 0 },
           textAlign: "center",
           color: theme.palette.text.secondary,
         }}

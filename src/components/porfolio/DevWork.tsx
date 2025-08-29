@@ -20,7 +20,7 @@ const DevWork = () => {
   const theme = useTheme();
 
   return (
-    <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mb: 8 }}>
+    <Grid container spacing={2} sx={{ mx: "auto" }}>
       {devProjects.map((project, index) => (
         <Grid
           size={{
@@ -58,7 +58,14 @@ const DevWork = () => {
               </Box>
             )}
             <CardContent
-              sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                "&:last-child": {
+                  p: 0,
+                },
+              }}
             >
               <CardHeader
                 sx={{ p: 0 }}

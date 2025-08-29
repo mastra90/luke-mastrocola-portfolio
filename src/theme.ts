@@ -9,7 +9,7 @@ declare module "@mui/material/styles" {
   interface Palette {
     border: {
       primary: string;
-      secondary: string;
+      avatar: string;
     };
     gitHub: {
       button: string;
@@ -44,8 +44,8 @@ const createAppTheme = (isDark: boolean) => {
           secondary: "#a3abb2",
         },
         border: {
-          primary: "#ffe071",
-          secondary: "#313940",
+          primary: "#313940",
+          avatar: "#ffe071",
         },
         gitHub: {
           button: "#f1f2f4",
@@ -75,8 +75,8 @@ const createAppTheme = (isDark: boolean) => {
           secondary: "#5f6b7c",
         },
         border: {
-          primary: "#ffe071",
-          secondary: "#d9dbdcff",
+          primary: "#a3abb2",
+          avatar: "#ffe071",
         },
         gitHub: {
           button: "#313d4f",
@@ -118,7 +118,7 @@ const createAppTheme = (isDark: boolean) => {
       MuiCard: {
         styleOverrides: {
           root: {
-            border: `1px solid ${palette.border.secondary}`,
+            border: `1px solid ${palette.border.primary}`,
             borderRadius: 8,
             backgroundColor: palette.background.paper,
           },

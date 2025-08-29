@@ -1,4 +1,4 @@
-import { Theme } from "@mui/material/styles";
+import { Theme, useTheme } from "@mui/material/styles";
 import { ArrowOutward } from "@mui/icons-material";
 import { IconButton, Link, Typography } from "@mui/material";
 import { ReactElement } from "react";
@@ -74,6 +74,33 @@ export const actionLinkTextStyles = (theme: Theme) => ({
   },
 });
 
+type HeadingProps = {
+  title: string;
+  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  sx?: object;
+};
+
+export const Heading = ({ title, variant = "h5" }: HeadingProps) => {
+  const theme = useTheme();
+  const headerStyles = {
+    mb: 4,
+    typography: variant,
+    fontWeight: 600,
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: -4,
+      left: 1,
+      width: 48,
+      height: 3,
+      backgroundColor: theme.palette.techChip.background,
+      borderRadius: 2,
+    },
+  };
+  return <Typography sx={headerStyles}>{title}</Typography>;
+};
+
 export const mediaBoxSx = {
   mb: 3,
   height: 190,
@@ -89,7 +116,6 @@ export const cardBaseStyles = (theme: Theme) => ({
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
-  marginBottom: 2,
 });
 
 export const makeCardHoverStyles = (

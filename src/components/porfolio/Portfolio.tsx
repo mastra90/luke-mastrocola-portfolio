@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 import DevWork from "./DevWork";
 import AudioWork from "./AudioWork";
@@ -43,9 +43,16 @@ const Portfolio = ({
   const theme = useTheme();
 
   return (
-    <>
-      <Box sx={{ textAlign: "center", mt: 8 }}>
-        <Typography sx={{ mb: 2, typography: { xs: "h5", md: "h4" } }}>
+    <Container
+      sx={{
+        maxWidth: {
+          xl: "xl",
+          md: "md",
+        },
+      }}
+    >
+      <Box sx={{ textAlign: "center" }}>
+        <Typography sx={{ typography: { xs: "h5", md: "h4" } }}>
           Portfolio{" "}
         </Typography>
         <Typography
@@ -66,7 +73,7 @@ const Portfolio = ({
       <KeepMountedHidden hidden={showWebDev}>
         <AudioWork />
       </KeepMountedHidden>
-    </>
+    </Container>
   );
 };
 
