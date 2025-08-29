@@ -9,12 +9,12 @@ import {
   useTheme,
 } from "@mui/material";
 import {
+  portfolioCardHoverSx,
+  portfolioCardSx,
   mediaBoxSx,
-  cardBaseStyles,
-  makeCardHoverStyles,
-  ActionLink,
-} from "../Helpers";
+} from "../../helpers/Styles";
 import { devProjects } from "../../data/DevProjectsData";
+import { PortfolioCardLinks } from "../../helpers/Wrappers";
 
 const DevWork = () => {
   const theme = useTheme();
@@ -34,8 +34,8 @@ const DevWork = () => {
             variant="outlined"
             onClick={() => window.open(project.links.github, "_blank")}
             sx={{
-              ...cardBaseStyles(theme),
-              ...makeCardHoverStyles("github-btn", "demo-btn", theme),
+              ...portfolioCardSx(theme),
+              ...portfolioCardHoverSx("github-btn", "demo-btn", theme),
               "&:hover": {
                 "& .card-images": { transform: "scale(1.02)" },
               },
@@ -96,7 +96,7 @@ const DevWork = () => {
                   },
                 }}
               >
-                <ActionLink
+                <PortfolioCardLinks
                   theme={theme}
                   buttons={[
                     {

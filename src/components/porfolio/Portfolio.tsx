@@ -1,79 +1,42 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
-import { ReactNode } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
 import DevWork from "./DevWork";
 import AudioWork from "./AudioWork";
-import ServicesSwitch from "./ServicesSwitch";
-
-const KeepMountedHidden = ({
-  hidden,
-  children,
-}: {
-  hidden: boolean;
-  children: ReactNode;
-}) => {
-  return (
-    <Box
-      aria-hidden={hidden}
-      sx={
-        hidden
-          ? {
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "100%",
-              height: 0,
-              overflow: "hidden",
-              pointerEvents: "none",
-            }
-          : { position: "static" }
-      }
-    >
-      {children}
-    </Box>
-  );
-};
+import { LayoutWrapper } from "../../helpers/Wrappers";
+import PortfolioTabs from "./PortfolioTabs";
 
 const Portfolio = ({
-  showWebDev,
-  setShowWebDev,
+  isWebDevTab,
+  setIsWebDevTab,
 }: {
-  setShowWebDev: (value: boolean) => void;
-  showWebDev: boolean;
+  setIsWebDevTab: (value: boolean) => void;
+  isWebDevTab: boolean;
 }) => {
   const theme = useTheme();
-
+  const hiddenSx = {
+    height: 0,
+    overflow: "hidden",
+  };
   return (
-    <Container
-      sx={{
-        maxWidth: {
-          xl: "xl",
-          md: "md",
-        },
-      }}
-    >
+    <LayoutWrapper>
       <Box sx={{ textAlign: "center" }}>
         <Typography sx={{ typography: { xs: "h5", md: "h4" } }}>
           Portfolio{" "}
         </Typography>
-        <Typography
-          sx={{
-            mx: "auto",
-            textAlign: "center",
-            color: theme.palette.text.secondary,
-            maxWidth: { sm: "100%", md: 700 },
-          }}
-        >
+        <Typography color={theme.palette.text.secondary}>
           Explore some of my web development and audio production work.
         </Typography>
       </Box>
-      <ServicesSwitch showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
-      <KeepMountedHidden hidden={!showWebDev}>
+      <PortfolioTabs
+        isWebDevTab={isWebDevTab}
+        setIsWebDevTab={setIsWebDevTab}
+      />
+      <Box sx={isWebDevTab ? {} : hiddenSx}>
         <DevWork />
-      </KeepMountedHidden>
-      <KeepMountedHidden hidden={showWebDev}>
+      </Box>
+      <Box sx={!isWebDevTab ? {} : hiddenSx}>
         <AudioWork />
-      </KeepMountedHidden>
-    </Container>
+      </Box>
+    </LayoutWrapper>
   );
 };
 

@@ -1,14 +1,14 @@
 import { Button, Box, useTheme } from "@mui/material";
 
-type ServicesSwitchProps = {
-  showWebDev: boolean;
-  setShowWebDev: (value: boolean) => void;
+type PortfolioTabsProps = {
+  isWebDevTab: boolean;
+  setIsWebDevTab: (value: boolean) => void;
 };
 
-const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
+const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
   const theme = useTheme();
 
-  const buttonStyles = (isActive: boolean) => ({
+  const PortfolioTabsSx = (isActive: boolean) => ({
     boxShadow: "none",
     transition: "0.0s",
     fontSize: { xs: 12, sm: 14 },
@@ -47,15 +47,15 @@ const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
       >
         <Button
           disableRipple
-          onClick={() => setShowWebDev(true)}
-          sx={buttonStyles(showWebDev)}
+          onClick={() => setIsWebDevTab(true)}
+          sx={PortfolioTabsSx(isWebDevTab)}
         >
           Web Development
         </Button>
         <Button
           disableRipple
-          onClick={() => setShowWebDev(false)}
-          sx={buttonStyles(!showWebDev)}
+          onClick={() => setIsWebDevTab(false)}
+          sx={PortfolioTabsSx(!isWebDevTab)}
         >
           Audio Production
         </Button>
@@ -64,4 +64,4 @@ const ServicesSwitch = ({ showWebDev, setShowWebDev }: ServicesSwitchProps) => {
   );
 };
 
-export default ServicesSwitch;
+export default PortfolioTabs;

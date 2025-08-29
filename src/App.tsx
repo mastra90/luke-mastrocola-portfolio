@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import createAppTheme from "./theme";
-import Portfolio from "./components/porfolio/Portfolio";
 import Footer from "./components/Footer";
 import PageHeader from "./components/PageHeader";
 import About from "./components/About";
 import { useResponsive } from "./hooks/useResponsive";
+import Portfolio from "./components/porfolio/Portfolio";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
-  const [showWebDev, setShowWebDev] = useState(true);
+  const [isWebDevTab, setIsWebDevTab] = useState(true);
   const theme = createAppTheme(isDark);
   const isMobile = useResponsive();
 
@@ -26,7 +26,7 @@ const App = () => {
       >
         <PageHeader isDark={isDark} setIsDark={setIsDark} />
         <About />
-        <Portfolio showWebDev={showWebDev} setShowWebDev={setShowWebDev} />
+        <Portfolio isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />
         <Footer />
       </Box>
     </ThemeProvider>

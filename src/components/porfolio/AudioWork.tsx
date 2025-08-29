@@ -14,21 +14,42 @@ import {
   Grid,
   IconButton,
   Stack,
+  Theme,
   Typography,
   useTheme,
 } from "@mui/material";
-import {
-  mediaBoxSx,
-  cardBaseStyles,
-  makeCardHoverStyles,
-  getYouTubeId,
-  ActionLink,
-} from "../Helpers";
 import { useState } from "react";
-import { AudioProjectItems, audioProjects } from "../../data/AudioProjectsData";
+import { audioProjects } from "../../data/AudioProjectsData";
+import { PortfolioCardLinks } from "../../helpers/Wrappers";
+import {
+  portfolioCardHoverSx,
+  portfolioCardSx,
+  mediaBoxSx,
+} from "../../helpers/Styles";
 
-const AudioCard = ({ project }: { project: AudioProjectItems }) => {
+export type AudioCardProps = {
+  year: number;
+  title: string;
+  subheader: string;
+  chips: string[];
+  links: {
+    platform: "soundcloud" | "youtube";
+    url?: string;
+  };
+};
+
+const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
+
+  const getYouTubeId = (url: string): string => {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes("youtu.be")) return u.pathname.slice(1);
+      return u.searchParams.get("v") || "";
+    } catch {
+      return "";
+    }
+  };
 
   return (
     <Card
@@ -39,8 +60,8 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
         }
       }}
       sx={{
-        ...cardBaseStyles(theme),
-        ...makeCardHoverStyles("listen-btn", "watch-btn", theme),
+        ...portfolioCardSx(theme),
+        ...portfolioCardHoverSx("listen-btn", "watch-btn", theme),
         "&:hover": {
           "& .watch-btn .card-icon, & .listen-btn .card-icon": {
             color: theme.palette.techChip.background,
@@ -119,8 +140,8 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
           ))}
         </Stack>
 
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <ActionLink
+        <Box sx={{ mt: 2, display: "flex", gap: 1 }}>
+          <PortfolioCardLinks
             theme={theme}
             buttons={{
               icon:
@@ -146,6 +167,58 @@ const AudioCard = ({ project }: { project: AudioProjectItems }) => {
   );
 };
 
+type ShowMoreButtonProps = {
+  open: boolean;
+  setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  theme: Theme;
+};
+
+const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        mt: 1,
+        mb: 3,
+        mx: { sm: 0, md: 0, lg: 0 },
+      }}
+    >
+      <IconButton
+        onClick={() => setOpen((v) => !v)}
+        disableRipple
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 0,
+          width: {
+            xs: "100%",
+            xl: 600,
+          },
+          borderRadius: 3,
+          "&:hover": { bgcolor: theme.palette.button.hover },
+        }}
+        aria-label={open ? "Show less" : "Show more"}
+      >
+        {open ? (
+          <KeyboardArrowUp sx={{ fontSize: 36 }} />
+        ) : (
+          <KeyboardArrowDown sx={{ fontSize: 36 }} />
+        )}
+        <Typography
+          sx={{
+            alignContent: "center",
+            p: 2,
+            color: theme.palette.text.primary,
+          }}
+        >
+          {!open ? "Show more" : "Show less"}
+        </Typography>
+      </IconButton>
+    </Box>
+  );
+};
+
 const AudioWork = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -157,8 +230,8 @@ const AudioWork = () => {
     <>
       {/* Feature music at top */}
       {musicSection && (
-        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
-          <Box sx={{ width: "100%" }}>
+        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 8 }}>
+          <Box sx={{ mt: -6, width: "100%" }}>
             <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
               <Grid size={{ sm: 12, md: 12 }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>
@@ -183,47 +256,7 @@ const AudioWork = () => {
         </Grid>
       )}
 
-      {/* Expand/Collapse button */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mx: { sm: 0, md: 0, lg: 0 },
-        }}
-      >
-        <IconButton
-          onClick={() => setOpen((v) => !v)}
-          disableRipple
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 0,
-            width: {
-              xs: "100%",
-              xl: 600,
-            },
-            borderRadius: 3,
-            "&:hover": { bgcolor: theme.palette.button.hover },
-          }}
-          aria-label={open ? "Show less" : "Show more"}
-        >
-          {open ? (
-            <KeyboardArrowUp sx={{ fontSize: 36 }} />
-          ) : (
-            <KeyboardArrowDown sx={{ fontSize: 36 }} />
-          )}
-          <Typography
-            sx={{
-              alignContent: "center",
-              p: 2,
-              color: theme.palette.text.primary,
-            }}
-          >
-            {!open ? "Show more" : "Show less"}
-          </Typography>
-        </IconButton>
-      </Box>
-
+      <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       <Collapse in={open} timeout="auto">
         {otherSections.map((section) => (
           <Grid
@@ -252,6 +285,7 @@ const AudioWork = () => {
             ))}
           </Grid>
         ))}
+        <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       </Collapse>
     </>
   );

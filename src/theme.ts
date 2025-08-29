@@ -32,7 +32,6 @@ const createAppTheme = (isDark: boolean) => {
   const palette = isDark
     ? {
         background: {
-          // default: "#0C151D",
           default: "#081118",
           paper: "#0C151D",
           secondary: "#262b33",

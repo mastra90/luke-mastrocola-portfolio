@@ -176,16 +176,15 @@ const PageHeader = ({
                 transition: "all 0.1s ease",
                 borderRadius: 2,
                 px: 2,
+                mr: 2,
                 my: 2,
-                mx: 1,
-                color: theme.palette.background.default,
-                bgcolor: theme.palette.techChip.background,
+                color: theme.palette.text.primary,
+                bgcolor: theme.palette.background.switch,
                 border: 2,
-                borderColor: theme.palette.techChip.background,
+                borderColor: theme.palette.background.paper,
                 "&:hover": {
-                  color: theme.palette.text.primary,
-                  borderColor: theme.palette.techChip.background,
                   bgcolor: theme.palette.background.default,
+                  borderColor: theme.palette.techChip.background,
                 },
               }}
             >
