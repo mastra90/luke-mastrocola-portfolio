@@ -99,7 +99,7 @@ const createAppTheme = (isDark: boolean) => {
       fontFamily: "'Poppins', sans-serif",
       h1: { fontWeight: 600 },
       body1: {},
-      body2: {},
+      body2: { color: palette.text.secondary },
       button: {
         textTransform: "none",
       },
@@ -117,9 +117,10 @@ const createAppTheme = (isDark: boolean) => {
       MuiCard: {
         styleOverrides: {
           root: {
-            border: `1px solid ${palette.border.primary}`,
             borderRadius: 8,
+            boxShadow: "none",
             backgroundColor: palette.background.paper,
+            border: `1px solid ${palette.border.primary}`,
           },
         },
       },

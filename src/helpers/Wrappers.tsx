@@ -11,16 +11,25 @@ import {
 import { cloneElement, ReactElement, ReactNode } from "react";
 
 type LayoutWrapperProps = {
+  maxWidthXl?: number;
+  maxWidthSm?: number;
   children: ReactNode;
   variant?: "default" | "paper";
 };
 
 export const LayoutWrapper = ({
+  maxWidthXl = 1537,
+  maxWidthSm = 1000,
   children,
   variant = "default",
 }: LayoutWrapperProps) => {
   const isPaper = variant === "paper";
-  const containerSx = { maxWidth: { xl: 1537, sm: 800 } };
+  const containerSx = {
+    maxWidth: { xl: maxWidthXl, sm: maxWidthSm },
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+  };
   const boxSx = {
     py: isPaper ? { xs: 4, sm: 8 } : 0,
     bgcolor: (theme: Theme) =>
@@ -41,7 +50,7 @@ type HeadingProps = {
 export const Heading = ({ title }: HeadingProps) => {
   const theme = useTheme();
   const headerStyles = {
-    mb: 4,
+    mb: 1,
     typography: "h5",
     fontWeight: 600,
     position: "relative",
@@ -61,11 +70,12 @@ export const Heading = ({ title }: HeadingProps) => {
 };
 
 type SubHeadingProps = {
-  icon: ReactElement<SvgIconProps>;
+  icon?: ReactElement<SvgIconProps>;
   title: string;
+  fontSize?: 16 | 18 | 20;
 };
 
-export const SubHeading = ({ title, icon }: SubHeadingProps) => {
+export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
   const theme = useTheme();
   const iconSx = {
     fontSize: 20,
@@ -79,14 +89,13 @@ export const SubHeading = ({ title, icon }: SubHeadingProps) => {
         display: "flex",
         alignItems: "center",
         alignContent: "center",
-        gap: 2,
-        mb: 1,
+        gap: 1,
       }}
     >
-      {cloneElement(icon, { sx: iconSx })}
+      {icon && cloneElement(icon, { sx: iconSx })}
       <Typography
         sx={{
-          fontSize: 20,
+          fontSize: fontSize,
           fontWeight: 500,
         }}
       >
