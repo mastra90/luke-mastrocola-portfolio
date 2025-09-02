@@ -3,93 +3,45 @@ import { createTheme } from "@mui/material/styles";
 declare module "@mui/material/styles" {
   interface TypeBackground {
     secondary: string;
-    hover: string;
-    switch: string;
   }
   interface Palette {
-    border: {
-      primary: string;
-      avatar: string;
-    };
-    gitHub: {
-      button: string;
-      background: string;
-    };
-    techChip: {
-      primary: string;
-      background: string;
-      type: string;
-    };
-    button: {
-      hover: string;
-      themeIconHover: string;
-      themeButtonHover: string;
-    };
+    green: string;
+    yellow: string;
+    border: string;
+    buttonHover: string;
   }
 }
 
 const createAppTheme = (isDark: boolean) => {
   const palette = isDark
     ? {
+        green: "#37bab2",
+        yellow: "#ffe071",
+        border: "#262b33",
+        buttonHover: "#262b33",
         background: {
           default: "#081118",
+          secondary: "#171f26",
           paper: "#0C151D",
-          secondary: "#262b33",
-          hover: "#262b33",
-          switch: "#171f26",
         },
         text: {
           primary: "#f1f2f4",
           secondary: "#a3abb2",
         },
-        border: {
-          primary: "#313940",
-          avatar: "#ffe071",
-        },
-        gitHub: {
-          button: "#f1f2f4",
-          background: "#313940",
-        },
-        techChip: {
-          primary: "#0f3d3a",
-          background: "#37bab2",
-          type: "#37bab2",
-        },
-        button: {
-          hover: "#262b33",
-          themeIconHover: "#262b33",
-          themeButtonHover: "#ffe071",
-        },
       }
     : {
+        green: "#37bab2",
+        yellow: "#ffe071",
+        border: "#a3abb2",
+        buttonHover: "#fffbf8",
         background: {
           default: "#fefcf8",
+          secondary: "#f2ede9",
           paper: "#f2ede9",
-          secondary: "#f2ece8",
-          hover: "#fffbf8ff",
-          switch: "#f2ede9",
         },
         text: {
-          primary: "#313d4f",
+          primary: "#081118",
           secondary: "#5f6b7c",
-        },
-        border: {
-          primary: "#a3abb2",
-          avatar: "#ffe071",
-        },
-        gitHub: {
-          button: "#313d4f",
-          background: "#ebe7e5",
-        },
-        techChip: {
-          primary: "#fffbf7",
-          background: "#37bab2",
-          type: "#37bab2",
-        },
-        button: {
-          hover: "#fffbf8ff",
-          themeIconHover: "#262b33",
-          themeButtonHover: "#ffe071",
         },
       };
 
@@ -98,6 +50,8 @@ const createAppTheme = (isDark: boolean) => {
     typography: {
       fontFamily: "'Poppins', sans-serif",
       h1: { fontWeight: 600 },
+      h3: { fontWeight: 500 },
+      h5: { fontWeight: 500 },
       body1: {},
       body2: { color: palette.text.secondary },
       button: {
@@ -105,11 +59,12 @@ const createAppTheme = (isDark: boolean) => {
       },
     },
     components: {
-      MuiIconButton: {
+      MuiButton: {
         styleOverrides: {
           root: {
+            backgroundColor: palette.background.secondary,
             "&:hover": {
-              background: "none",
+              backgroundColor: "transparent",
             },
           },
         },
@@ -119,34 +74,28 @@ const createAppTheme = (isDark: boolean) => {
           root: {
             borderRadius: 8,
             boxShadow: "none",
-            backgroundColor: palette.background.paper,
-            border: `1px solid ${palette.border.primary}`,
+            backgroundColor: "transparent",
           },
         },
       },
       MuiChip: {
         styleOverrides: {
           root: {
-            color: palette.techChip.primary,
-          },
-        },
-      },
-      MuiToolbar: {
-        styleOverrides: {
-          root: {
-            //
+            color: palette.text.secondary,
+            borderColor: palette.border,
           },
         },
       },
       MuiLink: {
         styleOverrides: {
           root: {
+            color: palette.green,
             "&:hover": {
               "& .card-icon": {
-                color: palette.techChip.background,
+                color: palette.green,
               },
               "& .card-text": {
-                color: palette.techChip.background,
+                color: palette.green,
                 textUnderlineOffset: 5,
               },
               "& .card-arrow": {
@@ -159,29 +108,8 @@ const createAppTheme = (isDark: boolean) => {
       MuiSvgIcon: {
         styleOverrides: {
           root: {
-            color: palette.gitHub.button,
+            color: palette.text.primary,
             fontSize: 16,
-          },
-        },
-      },
-      MuiListItemIcon: {
-        styleOverrides: {
-          root: {
-            //
-          },
-        },
-      },
-      MuiInput: {
-        styleOverrides: {
-          root: {
-            //
-          },
-        },
-      },
-      MuiInputBase: {
-        styleOverrides: {
-          root: {
-            //
           },
         },
       },

@@ -1,14 +1,17 @@
 import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { Box, useTheme, Typography } from "@mui/material";
+import { useTheme, Typography } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
+import { FlexBox } from "../helpers/Wrappers";
 
 const Footer = () => {
   const theme = useTheme();
+  const text = theme.palette.text;
+  const bgcolor = theme.palette.background;
 
   const socialIconss = {
     fontSize: 24,
     transition: "all 0.1s ease-in-out",
-    "&:hover": { color: theme.palette.text.secondary },
+    "&:hover": { color: text.secondary },
   };
 
   const socials = [
@@ -31,56 +34,35 @@ const Footer = () => {
   ];
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        py: 8,
-        alignItems: "center",
-        flexDirection: { xs: "column", sm: "row" },
-        bgcolor: theme.palette.background.paper,
-      }}
-    >
-      <Box
-        sx={{
-          mx: "auto",
-          textAlign: "center",
-          color: theme.palette.text.secondary,
-        }}
-      >
-        <Typography
-          sx={{
-            color: theme.palette.text.primary,
-            typography: "h6",
-            fontWeight: { xs: 500, sm: 500 },
-          }}
-        >
+    <FlexBox>
+      <FlexBox py={8} textAlign={"center"} bgcolor={bgcolor.paper}>
+        <Typography sx={{ typography: "h6", fontWeight: 600 }}>
           Luke Mastrocola
         </Typography>
-        <Typography sx={{ my: 2 }}>Web developer | Audio producer</Typography>
-        {socials.map((social, index) => (
-          <MuiLink
-            key={index}
-            href={social.link}
-            target="_blank"
-            rel="noopener"
-            sx={{
-              color: theme.palette.text.secondary,
-              pr: 2,
-              transition: "all 0.1s ease",
-              "&:hover": {
-                color: theme.palette.text.primary,
-              },
-            }}
-          >
-            {social.icon}
-          </MuiLink>
-        ))}
-        <Typography sx={{ mt: 6, fontSize: 14 }}>
+        <Typography variant="body2">Web developer | Audio producer</Typography>
+        <FlexBox row mx="auto">
+          {socials.map((social, index) => (
+            <MuiLink
+              key={index}
+              href={social.link}
+              target="_blank"
+              rel="noopener"
+              sx={{
+                transition: "all 0.1s ease",
+                "&:hover": {
+                  color: text.primary,
+                },
+              }}
+            >
+              {social.icon}
+            </MuiLink>
+          ))}
+        </FlexBox>
+        <Typography py={4} variant="body2">
           © 2025 Luke Mastrocola. All rights reserved.
         </Typography>
-      </Box>
-    </Box>
+      </FlexBox>
+    </FlexBox>
   );
 };
 

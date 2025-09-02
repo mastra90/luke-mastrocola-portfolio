@@ -11,14 +11,14 @@ import {
 import {
   portfolioCardHoverSx,
   portfolioCardSx,
-  mediaBoxSx,
+  portfolioMediaSx,
 } from "../../helpers/Styles";
 import { devProjects } from "../../data/DevProjectsData";
 import { PortfolioCardLinks } from "../../helpers/Wrappers";
 
 const DevWork = () => {
   const theme = useTheme();
-
+  const text = theme.palette.text;
   return (
     <Grid container spacing={2} sx={{ mx: "auto" }}>
       {devProjects.map((project, index) => (
@@ -34,15 +34,15 @@ const DevWork = () => {
             variant="outlined"
             onClick={() => window.open(project.links.github, "_blank")}
             sx={{
-              ...portfolioCardSx(theme),
-              ...portfolioCardHoverSx("github-btn", "demo-btn", theme),
+              ...portfolioCardSx(),
+              ...portfolioCardHoverSx("github-btn", "demo-btn"),
               "&:hover": {
                 "& .card-images": { transform: "scale(1.02)" },
               },
             }}
           >
             {project.image && (
-              <Box sx={mediaBoxSx}>
+              <Box sx={portfolioMediaSx}>
                 <Box
                   className="card-images"
                   component="img"
@@ -83,7 +83,7 @@ const DevWork = () => {
               <Typography
                 className="description-text"
                 variant="body2"
-                sx={{ my: 3, color: theme.palette.text.secondary, flex: 1 }}
+                sx={{ my: 3, color: text.secondary, flex: 1 }}
               >
                 {project.description}
               </Typography>

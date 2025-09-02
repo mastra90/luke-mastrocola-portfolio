@@ -3,6 +3,7 @@ import { Box, useTheme, Avatar, Typography, Button } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 import ToggleThemeButton from "./ToggleThemeButton";
+import { FlexBox } from "../helpers/Wrappers";
 
 const PageHeader = ({
   isDark,
@@ -12,12 +13,16 @@ const PageHeader = ({
   setIsDark: (value: boolean) => void;
 }) => {
   const theme = useTheme();
+  const { green, yellow } = theme.palette;
+  const text = theme.palette.text;
+  const bgcolor = theme.palette.background;
   const isMobile = useResponsive();
 
   const socialIconss = {
+    display: "flex",
     fontSize: isMobile ? 24 : 28,
     transition: "all 0.1s ease-in-out",
-    "&:hover": { color: theme.palette.text.secondary },
+    "&:hover": { color: text.secondary },
   };
 
   const socials = [
@@ -45,154 +50,90 @@ const PageHeader = ({
         toggleTheme={() => setIsDark(!isDark)}
         isDark={isDark}
       />
-      <Box
-        sx={{
-          display: "flex",
-          width: isMobile ? "100%" : "auto",
-          gap: 4,
-          px: 2,
-          mx: "auto",
-          alignItems: "center",
-          flexDirection: isMobile ? "column" : "row",
-        }}
-      >
+      <FlexBox spacious rowOnDesktop mx={"auto"}>
         <Avatar
           src="/Headshot.jpg"
           alt="Luke Mastrocola"
           sx={{
             width: isMobile ? 150 : 240,
             height: isMobile ? 150 : 240,
-            border: `3px solid ${theme.palette.border.avatar}`,
+            border: `3px solid ${yellow}`,
+            mx: isMobile ? "auto" : "inherit",
           }}
         />
-        <Box
-          sx={{
-            mx: "auto",
-            mt: isMobile ? 2 : 0,
-            textAlign: isMobile ? "center" : "inherit",
-            color: theme.palette.text.secondary,
-          }}
-        >
+        <FlexBox textAlign={isMobile ? "center" : "inherit"}>
           <Typography
             sx={{
-              mb: 1,
-              color: theme.palette.techChip.background,
-              maxWidth: 340,
+              color: green,
               mx: isMobile ? "center" : "none",
               fontWeight: 500,
-              pl: 0.3,
             }}
           >
             Hello! I'm
           </Typography>
-          <Typography
-            sx={{
-              color: theme.palette.text.primary,
-              typography: isMobile ? "h5" : "h3",
-              fontWeight: 500,
-            }}
+
+          <FlexBox
+            row
+            mx="auto"
+            gap={1}
+            sx={{ "& > :last-child": { color: green } }}
           >
-            Luke{" "}
-            <Box
-              component="span"
-              sx={{
-                color: theme.palette.techChip.background,
-                typography: isMobile ? "h5" : "h3",
-                fontWeight: 500,
-              }}
-            >
-              Mastrocola
-            </Box>
-          </Typography>
-          <Typography
-            sx={{
-              my: 1,
-              fontWeight: 300,
-              fontSize: isMobile ? 20 : 22,
-            }}
-          >
+            <Typography variant={isMobile ? "h5" : "h3"}>Luke</Typography>
+            <Typography variant={isMobile ? "h5" : "h3"}>
+              {" "}
+              Mastrocola{" "}
+            </Typography>
+          </FlexBox>
+
+          <Typography variant="body2" fontSize={isMobile ? 20 : 22}>
             Web developer | Audio producer
           </Typography>
           <Typography
             sx={{
-              mb: 2,
-              color: theme.palette.text.secondary,
+              color: text.secondary,
               maxWidth: 340,
-              mx: isMobile ? "center" : "none",
             }}
           >
             My passion is building digital experiences through code and sound.
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              mt: 3,
-              justifyContent: isMobile ? "center" : "inherit",
-            }}
+          <FlexBox
+            flexDirection={isMobile ? "column" : "row"}
+            alignItems="center"
+            gap={isMobile ? 2 : 4}
           >
-            {!isMobile && (
-              <Button
-                sx={{
-                  transition: "all 0.1s ease",
-                  borderRadius: 2,
-                  px: 2,
-                  mr: 2,
-                  color: theme.palette.text.primary,
-                  bgcolor: theme.palette.background.switch,
-                  border: 2,
-                  borderColor: theme.palette.background.paper,
-                  "&:hover": {
-                    bgcolor: theme.palette.background.default,
-                    borderColor: theme.palette.techChip.background,
-                  },
-                }}
-              >
-                View projects
-              </Button>
-            )}
-            {socials.map((social, index) => (
-              <MuiLink
-                key={index}
-                href={social.link}
-                target="_blank"
-                rel="noopener"
-                sx={{
-                  color: theme.palette.text.secondary,
-                  px: 1,
-                  pt: 1,
-                  transition: "all 0.1s ease",
-                  "&:hover": {
-                    color: theme.palette.text.primary,
-                  },
-                }}
-              >
-                {social.icon}
-              </MuiLink>
-            ))}
-          </Box>
-          {isMobile && (
+            <Box sx={{ display: "flex", gap: isMobile ? 1.5 : 2 }}>
+              {socials.map((social, index) => (
+                <MuiLink
+                  key={index}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener"
+                  sx={{
+                    color: text.secondary,
+                    transition: "all 0.1s ease",
+                    "&:hover": { color: text.primary },
+                  }}
+                >
+                  {social.icon}
+                </MuiLink>
+              ))}
+            </Box>
             <Button
               sx={{
                 transition: "all 0.1s ease",
                 borderRadius: 2,
                 px: 2,
-                mr: 2,
-                my: 2,
-                color: theme.palette.text.primary,
-                bgcolor: theme.palette.background.switch,
+                color: text.primary,
                 border: 2,
-                borderColor: theme.palette.background.paper,
-                "&:hover": {
-                  bgcolor: theme.palette.background.default,
-                  borderColor: theme.palette.techChip.background,
-                },
+                borderColor: bgcolor.paper,
+                "&:hover": { borderColor: green },
               }}
             >
               View projects
             </Button>
-          )}
-        </Box>
-      </Box>
+          </FlexBox>
+        </FlexBox>
+      </FlexBox>
     </>
   );
 };

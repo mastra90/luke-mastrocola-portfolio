@@ -1,7 +1,8 @@
-import { Theme, useTheme } from "@mui/material/styles";
+import { SxProps, Theme, useTheme } from "@mui/material/styles";
 import { ArrowOutward } from "@mui/icons-material";
 import {
   Box,
+  BoxProps,
   Container,
   IconButton,
   Link,
@@ -9,6 +10,51 @@ import {
   Typography,
 } from "@mui/material";
 import { cloneElement, ReactElement, ReactNode } from "react";
+import { useResponsive } from "../hooks/useResponsive";
+
+type FlexBoxProps = BoxProps & {
+  children: ReactNode;
+  bgcolor?: string;
+  spacious?: boolean;
+  rowOnDesktop?: boolean;
+  row?: boolean;
+  flexDirection?: "column" | "row";
+  gap?: number;
+  sx?: SxProps<Theme>;
+};
+
+export const FlexBox = ({
+  children,
+  bgcolor = "transparent",
+  rowOnDesktop,
+  spacious,
+  row,
+  flexDirection = "column",
+  gap = spacious ? 4 : 2,
+  sx,
+  ...boxProps
+}: FlexBoxProps) => {
+  const isMobile = useResponsive();
+  const FlexBoxSx = {
+    display: "flex",
+    flexDirection: rowOnDesktop
+      ? isMobile
+        ? "column"
+        : "row"
+      : row
+      ? "row"
+      : flexDirection,
+    gap,
+    bgcolor: bgcolor,
+    ...sx,
+  };
+
+  return (
+    <Box sx={FlexBoxSx} {...boxProps}>
+      {children}
+    </Box>
+  );
+};
 
 type LayoutWrapperProps = {
   maxWidthXl?: number;
@@ -23,6 +69,8 @@ export const LayoutWrapper = ({
   children,
   variant = "default",
 }: LayoutWrapperProps) => {
+  const theme = useTheme();
+  const bgcolor = theme.palette.background;
   const isPaper = variant === "paper";
   const containerSx = {
     maxWidth: { xl: maxWidthXl, sm: maxWidthSm },
@@ -32,8 +80,7 @@ export const LayoutWrapper = ({
   };
   const boxSx = {
     py: isPaper ? { xs: 4, sm: 8 } : 0,
-    bgcolor: (theme: Theme) =>
-      isPaper ? theme.palette.background.paper : "transparent",
+    bgcolor: () => (isPaper ? bgcolor.paper : "transparent"),
   };
 
   return (
@@ -49,6 +96,7 @@ type HeadingProps = {
 
 export const Heading = ({ title }: HeadingProps) => {
   const theme = useTheme();
+  const { green } = theme.palette;
   const headerStyles = {
     mb: 1,
     typography: "h5",
@@ -61,7 +109,7 @@ export const Heading = ({ title }: HeadingProps) => {
       left: 1,
       width: 48,
       height: 3,
-      backgroundColor: theme.palette.techChip.background,
+      backgroundColor: green,
       borderRadius: 2,
     },
   };
@@ -77,9 +125,10 @@ type SubHeadingProps = {
 
 export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
   const theme = useTheme();
+  const { green } = theme.palette;
   const iconSx = {
     fontSize: 20,
-    color: theme.palette.techChip.background,
+    color: green,
     alignContent: "center",
   };
 
@@ -114,18 +163,19 @@ type PortfolioCardLinksProps = {
 
 export const PortfolioCardLinks = ({
   buttons,
-  theme,
 }: {
   buttons: PortfolioCardLinksProps | PortfolioCardLinksProps[];
   theme: Theme;
 }) => {
+  const theme = useTheme();
   const buttonArray = Array.isArray(buttons) ? buttons : [buttons];
-
-  const portfolioCardLinksSx = (theme: Theme) => ({
+  const { green } = theme.palette;
+  const text = theme.palette.text;
+  const portfolioCardLinksSx = () => ({
     fontSize: 14,
     fontWeight: 500,
     ml: 1,
-    color: theme.palette.text.primary,
+    color: text.primary,
     position: "relative",
     "&::after": {
       content: '""',
@@ -134,7 +184,7 @@ export const PortfolioCardLinks = ({
       left: 0,
       width: 0,
       height: "1px",
-      backgroundColor: theme.palette.techChip.background,
+      color: green,
       transition: "width 0.3s ease-in-out",
     },
   });
@@ -153,10 +203,7 @@ export const PortfolioCardLinks = ({
             >
               <IconButton className={button.className} sx={{ p: 0 }}>
                 {button.icon}
-                <Typography
-                  className="card-text"
-                  sx={portfolioCardLinksSx(theme)}
-                >
+                <Typography className="card-text" sx={portfolioCardLinksSx()}>
                   {button.label}
                 </Typography>
                 <ArrowOutward
@@ -164,7 +211,6 @@ export const PortfolioCardLinks = ({
                   sx={{
                     ml: 1,
                     transition: "transform 0.1s ease-in",
-                    color: theme.palette.gitHub.button,
                     fontSize: 20,
                   }}
                 />

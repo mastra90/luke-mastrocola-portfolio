@@ -12,6 +12,7 @@ const Portfolio = ({
   isWebDevTab: boolean;
 }) => {
   const theme = useTheme();
+  const text = theme.palette.text;
   const hiddenSx = {
     height: 0,
     overflow: "hidden",
@@ -22,7 +23,7 @@ const Portfolio = ({
         <Typography sx={{ typography: { xs: "h5", md: "h4" } }}>
           Portfolio{" "}
         </Typography>
-        <Typography color={theme.palette.text.secondary}>
+        <Typography color={text.secondary}>
           Explore some of my web development and audio production work.
         </Typography>
       </Box>

@@ -1,16 +1,18 @@
-import { Theme } from "@mui/material";
+import { useTheme } from "@mui/material";
 
-export const mediaBoxSx = {
+const theme = useTheme();
+const { green } = theme.palette;
+
+export const portfolioMediaSx = {
   mb: 3,
   height: 190,
   borderRadius: 2,
   overflow: "hidden",
 };
 
-export const portfolioCardSx = (theme: Theme) => ({
+export const portfolioCardSx = () => ({
   width: "100%",
   border: "none",
-  bgcolor: theme.palette.background.default,
   height: 440,
   display: "flex",
   cursor: "pointer",
@@ -19,15 +21,14 @@ export const portfolioCardSx = (theme: Theme) => ({
 
 export const portfolioCardHoverSx = (
   defaultBtnClass: string,
-  exceptionClass: string,
-  theme: Theme
+  exceptionClass: string
 ) => ({
   [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
     [`& .${defaultBtnClass} .card-icon`]: {
-      color: theme.palette.techChip.background,
+      color: green,
     },
     [`& .${defaultBtnClass} .card-text`]: {
-      color: theme.palette.techChip.background,
+      color: green,
       "&::after": { width: "100%" },
     },
     [`& .${defaultBtnClass} .card-arrow`]: {
@@ -35,7 +36,7 @@ export const portfolioCardHoverSx = (
     },
   },
   [`& .${exceptionClass}:hover .card-text`]: {
-    color: theme.palette.techChip.background,
+    color: green,
     "&::after": { width: "100%" },
   },
 });

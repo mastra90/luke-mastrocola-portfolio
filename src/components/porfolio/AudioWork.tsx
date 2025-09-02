@@ -24,7 +24,7 @@ import { PortfolioCardLinks } from "../../helpers/Wrappers";
 import {
   portfolioCardHoverSx,
   portfolioCardSx,
-  mediaBoxSx,
+  portfolioMediaSx,
 } from "../../helpers/Styles";
 
 export type AudioCardProps = {
@@ -40,6 +40,8 @@ export type AudioCardProps = {
 
 const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
+  const { green } = theme.palette;
+  const text = theme.palette.text;
 
   const getYouTubeId = (url: string): string => {
     try {
@@ -60,20 +62,20 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
         }
       }}
       sx={{
-        ...portfolioCardSx(theme),
-        ...portfolioCardHoverSx("listen-btn", "watch-btn", theme),
+        ...portfolioCardSx(),
+        ...portfolioCardHoverSx("listen-btn", "watch-btn"),
         "&:hover": {
           "& .watch-btn .card-icon, & .listen-btn .card-icon": {
-            color: theme.palette.techChip.background,
+            color: green,
           },
           "& .watch-btn .card-text, & .listen-btn .card-text": {
-            color: theme.palette.techChip.background,
+            color: green,
             "&::after": { width: "100%" },
           },
         },
       }}
     >
-      <Box sx={{ ...mediaBoxSx, position: "relative" }}>
+      <Box sx={{ ...portfolioMediaSx, position: "relative" }}>
         <Box
           className="card-images"
           component="iframe"
@@ -112,9 +114,7 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
               <Typography variant="h6" sx={{ fontWeight: 400 }}>
                 {project.title}
               </Typography>
-              <Typography
-                sx={{ fontWeight: 400, color: theme.palette.text.secondary }}
-              >
+              <Typography sx={{ fontWeight: 400, color: text.secondary }}>
                 {project.subheader}
               </Typography>
             </Box>
@@ -127,16 +127,7 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
           sx={{ mt: 2, mb: "auto", flexWrap: "wrap" }}
         >
           {project.chips.map((c) => (
-            <Chip
-              key={c}
-              label={c}
-              size="small"
-              variant="outlined"
-              sx={{
-                borderColor: theme.palette.border.primary,
-                color: theme.palette.text.secondary,
-              }}
-            />
+            <Chip key={c} label={c} size="small" variant="outlined" />
           ))}
         </Stack>
 
@@ -174,6 +165,8 @@ type ShowMoreButtonProps = {
 };
 
 const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
+  const { buttonHover } = theme.palette;
+  const text = theme.palette.text;
   return (
     <Box
       sx={{
@@ -196,7 +189,7 @@ const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
             xl: 600,
           },
           borderRadius: 3,
-          "&:hover": { bgcolor: theme.palette.button.hover },
+          "&:hover": { buttonHover },
         }}
         aria-label={open ? "Show less" : "Show more"}
       >
@@ -209,7 +202,7 @@ const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
           sx={{
             alignContent: "center",
             p: 2,
-            color: theme.palette.text.primary,
+            color: text.primary,
           }}
         >
           {!open ? "Show more" : "Show less"}

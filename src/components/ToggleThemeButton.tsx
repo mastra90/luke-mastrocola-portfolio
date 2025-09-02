@@ -9,6 +9,9 @@ type ToggleThemeButtonProps = {
 
 const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
   const theme = useTheme();
+  const { yellow } = theme.palette;
+  const white = theme.palette.text.primary;
+  const bgcolor = theme.palette.background;
   const isMobile = useResponsive();
 
   return (
@@ -29,21 +32,21 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           left: isMobile ? 16 : "inherit",
           width: isMobile ? 40 : 60,
           height: isMobile ? 40 : 60,
-          color: theme.palette.text.primary,
-          bgcolor: theme.palette.background.secondary,
+          color: white,
+          bgcolor: bgcolor.paper,
           borderRadius: 50,
           transition: "all 0.2s ease",
           cursor: "pointer",
           position: "relative",
           "&:hover": {
-            bgcolor: theme.palette.button.themeIconHover,
+            bgcolor: !isDark ? white : bgcolor.paper,
             "& .bedtime-icon": {
               opacity: isDark ? 0 : 1,
-              color: theme.palette.button.themeButtonHover,
+              color: yellow,
             },
             "& .sunny-icon": {
               opacity: isDark ? 1 : 0,
-              color: theme.palette.button.themeButtonHover,
+              color: yellow,
             },
           },
         }}

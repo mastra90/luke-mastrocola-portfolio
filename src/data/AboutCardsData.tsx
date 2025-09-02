@@ -9,7 +9,6 @@ const gridSizeSecondary = { xs: 12, md: 3 };
 
 export const aboutCardsData = [
   {
-    bio: "I'm a full stack web developer and audio producer who loves problemsolving and being creative. My passion for creativity started early inlife through music, and my love for analytical thinking and attention todetail translated seamlessly as I changed careers into full stack web development.",
     title: "Education",
     icon: <EducationIcon />,
     gridSize: gridSizePrimary,

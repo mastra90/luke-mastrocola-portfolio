@@ -1,4 +1,4 @@
-import { Button, Box, useTheme } from "@mui/material";
+import { Button, Box, useTheme, Typography } from "@mui/material";
 
 type PortfolioTabsProps = {
   isWebDevTab: boolean;
@@ -7,25 +7,15 @@ type PortfolioTabsProps = {
 
 const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
   const theme = useTheme();
-
+  const { buttonHover } = theme.palette;
+  const text = theme.palette.text;
+  const bgcolor = theme.palette.background;
   const PortfolioTabsSx = (isActive: boolean) => ({
-    boxShadow: "none",
-    transition: "0.0s",
-    fontSize: { xs: 12, sm: 14 },
-    color: isActive
-      ? theme.palette.background.default
-      : theme.palette.text.primary,
-    bgcolor: isActive
-      ? theme.palette.text.primary
-      : theme.palette.background.switch,
-    border: 0,
+    color: isActive ? bgcolor.default : "inherit",
+    bgcolor: isActive ? text.primary : "transparent",
     width: { xs: "100%", sm: "100%", md: 280 },
     "&:hover": {
-      boxShadow: "none",
-      bgcolor: isActive
-        ? theme.palette.text.primary
-        : theme.palette.button.hover,
-      opacity: isActive ? 0.95 : 1,
+      bgcolor: isActive ? text.primary : buttonHover,
     },
     cursor: "auto",
   });
@@ -35,10 +25,9 @@ const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
           gap: 2,
           p: 2,
-          bgcolor: theme.palette.background.switch,
+          bgcolor: bgcolor.secondary,
           width: { xs: "100%", sm: "100%", md: 600 },
           m: "auto",
           my: 4,
@@ -50,14 +39,18 @@ const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
           onClick={() => setIsWebDevTab(true)}
           sx={PortfolioTabsSx(isWebDevTab)}
         >
-          Web Development
+          <Typography fontSize={{ xs: 12, sm: 14 }} fontWeight={500}>
+            Web Development
+          </Typography>
         </Button>
         <Button
           disableRipple
           onClick={() => setIsWebDevTab(false)}
           sx={PortfolioTabsSx(!isWebDevTab)}
         >
-          Audio Production
+          <Typography fontSize={{ xs: 12, sm: 14 }} fontWeight={500}>
+            Audio Production
+          </Typography>
         </Button>
       </Box>
     </>
