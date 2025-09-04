@@ -15,10 +15,6 @@ declare module "@mui/material/styles" {
 const createAppTheme = (isDark: boolean) => {
   const palette = isDark
     ? {
-        green: "#37bab2",
-        yellow: "#ffe071",
-        border: "#262b33",
-        buttonHover: "#262b33",
         background: {
           default: "#081118",
           secondary: "#171f26",
@@ -28,12 +24,12 @@ const createAppTheme = (isDark: boolean) => {
           primary: "#f1f2f4",
           secondary: "#a3abb2",
         },
-      }
-    : {
         green: "#37bab2",
         yellow: "#ffe071",
-        border: "#a3abb2",
-        buttonHover: "#fffbf8",
+        border: "#262b33",
+        buttonHover: "#262b33",
+      }
+    : {
         background: {
           default: "#fefcf8",
           secondary: "#f2ede9",
@@ -43,6 +39,10 @@ const createAppTheme = (isDark: boolean) => {
           primary: "#081118",
           secondary: "#5f6b7c",
         },
+        green: "#37bab2",
+        yellow: "#ffe071",
+        border: "#a3abb2",
+        buttonHover: "#fffbf8",
       };
 
   return createTheme({

@@ -36,9 +36,7 @@ const Footer = () => {
   return (
     <FlexBox>
       <FlexBox py={8} textAlign={"center"} bgcolor={bgcolor.paper}>
-        <Typography sx={{ typography: "h6", fontWeight: 600 }}>
-          Luke Mastrocola
-        </Typography>
+        <Typography sx={{ typography: "h6", fontWeight: 600 }}>Luke Mastrocola</Typography>
         <Typography variant="body2">Web developer | Audio producer</Typography>
         <FlexBox row mx="auto">
           {socials.map((social, index) => (

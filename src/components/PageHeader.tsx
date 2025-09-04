@@ -46,10 +46,7 @@ const PageHeader = ({
 
   return (
     <>
-      <ToggleThemeButton
-        toggleTheme={() => setIsDark(!isDark)}
-        isDark={isDark}
-      />
+      <ToggleThemeButton toggleTheme={() => setIsDark(!isDark)} isDark={isDark} />
       <FlexBox spacious rowOnDesktop mx={"auto"}>
         <Avatar
           src="/Headshot.jpg"
@@ -62,38 +59,19 @@ const PageHeader = ({
           }}
         />
         <FlexBox textAlign={isMobile ? "center" : "inherit"}>
-          <Typography
-            sx={{
-              color: green,
-              mx: isMobile ? "center" : "none",
-              fontWeight: 500,
-            }}
-          >
+          <Typography sx={{ color: green, mx: isMobile ? "center" : "none", fontWeight: 500 }}>
             Hello! I'm
           </Typography>
 
-          <FlexBox
-            row
-            mx="auto"
-            gap={1}
-            sx={{ "& > :last-child": { color: green } }}
-          >
+          <FlexBox row mx="auto" gap={1} sx={{ "& > :last-child": { color: green } }}>
             <Typography variant={isMobile ? "h5" : "h3"}>Luke</Typography>
-            <Typography variant={isMobile ? "h5" : "h3"}>
-              {" "}
-              Mastrocola{" "}
-            </Typography>
+            <Typography variant={isMobile ? "h5" : "h3"}> Mastrocola </Typography>
           </FlexBox>
 
           <Typography variant="body2" fontSize={isMobile ? 20 : 22}>
             Web developer | Audio producer
           </Typography>
-          <Typography
-            sx={{
-              color: text.secondary,
-              maxWidth: 340,
-            }}
-          >
+          <Typography sx={{ color: text.secondary, maxWidth: 340 }}>
             My passion is building digital experiences through code and sound.
           </Typography>
           <FlexBox
