@@ -19,6 +19,7 @@ import { PortfolioCardLinks } from "../../helpers/Wrappers";
 const DevWork = () => {
   const theme = useTheme();
   const text = theme.palette.text;
+  const { green } = theme.palette;
   return (
     <Grid container spacing={2} sx={{ mx: "auto" }}>
       {devProjects.map((project, index) => (
@@ -34,8 +35,8 @@ const DevWork = () => {
             variant="outlined"
             onClick={() => window.open(project.links.github, "_blank")}
             sx={{
-              ...portfolioCardSx(),
-              ...portfolioCardHoverSx("github-btn", "demo-btn"),
+              ...portfolioCardSx,
+              ...portfolioCardHoverSx("github-btn", "demo-btn", green),
               "&:hover": {
                 "& .card-images": { transform: "scale(1.02)" },
               },

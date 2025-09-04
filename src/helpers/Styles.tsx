@@ -1,8 +1,3 @@
-import { useTheme } from "@mui/material";
-
-const theme = useTheme();
-const { green } = theme.palette;
-
 export const portfolioMediaSx = {
   mb: 3,
   height: 190,
@@ -10,18 +5,19 @@ export const portfolioMediaSx = {
   overflow: "hidden",
 };
 
-export const portfolioCardSx = () => ({
+export const portfolioCardSx = {
   width: "100%",
-  border: "none",
+  border: "none", 
   height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
-});
+};
 
 export const portfolioCardHoverSx = (
   defaultBtnClass: string,
-  exceptionClass: string
+  exceptionClass: string,
+  green: string
 ) => ({
   [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
     [`& .${defaultBtnClass} .card-icon`]: {

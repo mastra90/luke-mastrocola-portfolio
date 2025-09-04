@@ -62,8 +62,8 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
         }
       }}
       sx={{
-        ...portfolioCardSx(),
-        ...portfolioCardHoverSx("listen-btn", "watch-btn"),
+        ...portfolioCardSx,
+        ...portfolioCardHoverSx("listen-btn", "watch-btn", green),
         "&:hover": {
           "& .watch-btn .card-icon, & .listen-btn .card-icon": {
             color: green,
