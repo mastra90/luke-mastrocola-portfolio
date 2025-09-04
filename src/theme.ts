@@ -36,7 +36,7 @@ const createAppTheme = (isDark: boolean) => {
           paper: "#f2ede9",
         },
         text: {
-          primary: "#081118",
+          primary: "#1a3449",
           secondary: "#5f6b7c",
         },
         green: "#37bab2",
@@ -111,6 +111,11 @@ const createAppTheme = (isDark: boolean) => {
             color: palette.text.primary,
             fontSize: 16,
           },
+        },
+      },
+      MuiIconButton: {
+        defaultProps: {
+          disableRipple: true,
         },
       },
     },

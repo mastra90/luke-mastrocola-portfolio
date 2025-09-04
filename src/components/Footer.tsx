@@ -46,7 +46,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener"
               sx={{
-                transition: "all 0.1s ease",
+                transition: "all 0.1s ease-in-out",
                 "&:hover": {
                   color: text.primary,
                 },

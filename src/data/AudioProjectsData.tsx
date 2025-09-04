@@ -1,4 +1,10 @@
-export type AudioProjectItems = {
+import { JSX } from "@emotion/react/jsx-runtime";
+import { VolumeUpOutlined as MusicIcon } from "@mui/icons-material";
+import { MovieOutlined as FilmIcon } from "@mui/icons-material";
+import { PersonOutline as PersonalIcon } from "@mui/icons-material";
+import { HeadphonesOutlined as LofiIcon } from "@mui/icons-material";
+
+export type AudioCardProps = {
   year: number;
   title: string;
   subheader: string;
@@ -11,7 +17,8 @@ export type AudioProjectItems = {
 
 export type AudioProjectProps = {
   header: string;
-  items: AudioProjectItems[];
+  items: AudioCardProps[];
+  icon?: JSX.Element;
 };
 
 export const audioProjects: AudioProjectProps[] = [
@@ -62,6 +69,7 @@ export const audioProjects: AudioProjectProps[] = [
   },
   {
     header: "Music",
+    icon: <MusicIcon />,
     items: [
       {
         year: 2018,
@@ -77,6 +85,7 @@ export const audioProjects: AudioProjectProps[] = [
   },
   {
     header: "Film",
+    icon: <FilmIcon />,
     items: [
       // {
       //   year: "TBA",
@@ -106,6 +115,7 @@ export const audioProjects: AudioProjectProps[] = [
   },
   {
     header: "Personal side projects (covers)",
+    icon: <PersonalIcon />,
     items: [
       {
         year: 2024,
@@ -131,6 +141,7 @@ export const audioProjects: AudioProjectProps[] = [
   },
   {
     header: "Lofi beats (original)",
+    icon: <LofiIcon />,
     items: [
       {
         year: 2021,

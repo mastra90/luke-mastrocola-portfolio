@@ -37,13 +37,7 @@ export const FlexBox = ({
   const isMobile = useResponsive();
   const FlexBoxSx = {
     display: "flex",
-    flexDirection: rowOnDesktop
-      ? isMobile
-        ? "column"
-        : "row"
-      : row
-      ? "row"
-      : flexDirection,
+    flexDirection: rowOnDesktop ? (isMobile ? "column" : "row") : row ? "row" : flexDirection,
     gap,
     bgcolor: bgcolor,
     ...sx,
@@ -76,7 +70,6 @@ export const LayoutWrapper = ({
     maxWidth: { xl: maxWidthXl, sm: maxWidthSm },
     display: "flex",
     flexDirection: "column",
-    gap: 2,
   };
   const boxSx = {
     py: isPaper ? { xs: 4, sm: 8 } : 0,
@@ -98,29 +91,33 @@ export const Heading = ({ title }: HeadingProps) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const headerStyles = {
-    mb: 1,
     typography: "h5",
     fontWeight: 600,
     position: "relative",
+    maxHeight: 28,
     "&::after": {
       content: '""',
       position: "absolute",
-      bottom: -4,
+      bottom: -6,
       left: 1,
       width: 48,
-      height: 3,
-      backgroundColor: green,
+      height: 4,
+      bgcolor: green,
       borderRadius: 2,
     },
   };
 
-  return <Typography sx={headerStyles}>{title}</Typography>;
+  return (
+    <Box py={1}>
+      <Typography sx={headerStyles}>{title}</Typography>
+    </Box>
+  );
 };
 
 type SubHeadingProps = {
   icon?: ReactElement<SvgIconProps>;
   title: string;
-  fontSize?: 16 | 18 | 20;
+  fontSize?: number;
 };
 
 export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
@@ -185,7 +182,7 @@ export const PortfolioCardLinks = ({
       width: 0,
       height: "1px",
       color: green,
-      transition: "width 0.3s ease-in-out",
+      transition: "width 0.1s ease-in-out",
     },
   });
 

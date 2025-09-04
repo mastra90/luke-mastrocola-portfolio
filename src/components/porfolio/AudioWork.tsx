@@ -1,9 +1,4 @@
-import {
-  MusicNote,
-  YouTube,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@mui/icons-material";
+import { MusicNote, YouTube, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -19,24 +14,9 @@ import {
   useTheme,
 } from "@mui/material";
 import { useState } from "react";
-import { audioProjects } from "../../data/AudioProjectsData";
-import { PortfolioCardLinks } from "../../helpers/Wrappers";
-import {
-  portfolioCardHoverSx,
-  portfolioCardSx,
-  portfolioMediaSx,
-} from "../../helpers/Styles";
-
-export type AudioCardProps = {
-  year: number;
-  title: string;
-  subheader: string;
-  chips: string[];
-  links: {
-    platform: "soundcloud" | "youtube";
-    url?: string;
-  };
-};
+import { AudioCardProps, audioProjects } from "../../data/AudioProjectsData";
+import { FlexBox, PortfolioCardLinks, SubHeading } from "../../helpers/Wrappers";
+import { portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
 
 const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
@@ -53,24 +33,24 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
     }
   };
 
+  const buttonClass = project.links.platform === "youtube" ? "watch-btn" : "listen-btn";
+
   return (
     <Card
       variant="outlined"
-      onClick={() => {
-        if (project.links.url) {
-          window.open(project.links.url, "_blank");
-        }
-      }}
+      onClick={() => window.open(project.links.url, "_blank")}
       sx={{
         ...portfolioCardSx,
-        ...portfolioCardHoverSx("listen-btn", "watch-btn", green),
         "&:hover": {
-          "& .watch-btn .card-icon, & .listen-btn .card-icon": {
+          "& .card-icon": {
             color: green,
           },
-          "& .watch-btn .card-text, & .listen-btn .card-text": {
+          "& .card-text": {
             color: green,
             "&::after": { width: "100%" },
+          },
+          "& .card-arrow": {
+            transform: "translate(1.5px, -1.5px)",
           },
         },
       }}
@@ -82,9 +62,7 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
           title={project.title}
           src={
             project.links.platform === "youtube"
-              ? `https://www.youtube-nocookie.com/embed/${getYouTubeId(
-                  project.links.url!
-                )}?rel=0`
+              ? `https://www.youtube-nocookie.com/embed/${getYouTubeId(project.links.url!)}?rel=0`
               : `https://w.soundcloud.com/player/?url=
                 ${encodeURIComponent(project.links.url!)}
                 &visual=true&show_teaser=false&hide_related=true&auto_play=false&show_bpm=false&show_genre=false&sharing=false&liking=false`
@@ -104,7 +82,15 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
       </Box>
 
       <CardContent
-        sx={{ p: 0, flex: 1, display: "flex", flexDirection: "column" }}
+        sx={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          transition: "all 0.1s ease-in-out",
+          "&:last-child": {
+            p: 0,
+          },
+        }}
       >
         <CardHeader
           sx={{ p: 0 }}
@@ -115,17 +101,14 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
                 {project.title}
               </Typography>
               <Typography sx={{ fontWeight: 400, color: text.secondary }}>
+                {" "}
                 {project.subheader}
               </Typography>
             </Box>
           }
         />
 
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{ mt: 2, mb: "auto", flexWrap: "wrap" }}
-        >
+        <Stack direction="row" spacing={1} sx={{ mt: 2, mb: "auto", flexWrap: "wrap" }}>
           {project.chips.map((c) => (
             <Chip key={c} label={c} size="small" variant="outlined" />
           ))}
@@ -146,10 +129,7 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
                   ? "Listen on SoundCloud"
                   : "Watch on youtube",
               link: project.links.url,
-              className:
-                project.links.platform === "youtube"
-                  ? "watch-btn"
-                  : "listen-btn",
+              className: buttonClass,
             }}
           />
         </Box>
@@ -168,26 +148,14 @@ const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
   const { buttonHover } = theme.palette;
   const text = theme.palette.text;
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        mt: 1,
-        mb: 3,
-        mx: { sm: 0, md: 0, lg: 0 },
-      }}
-    >
+    <Box sx={{ display: "flex", justifyContent: "center", mt: 1, mb: 3, mx: "auto" }}>
       <IconButton
         onClick={() => setOpen((v) => !v)}
-        disableRipple
         sx={{
           display: "flex",
           justifyContent: "center",
           gap: 0,
-          width: {
-            xs: "100%",
-            xl: 600,
-          },
+          width: { xs: "100%", xl: 600 },
           borderRadius: 3,
           "&:hover": { buttonHover },
         }}
@@ -198,13 +166,7 @@ const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
         ) : (
           <KeyboardArrowDown sx={{ fontSize: 36 }} />
         )}
-        <Typography
-          sx={{
-            alignContent: "center",
-            p: 2,
-            color: text.primary,
-          }}
-        >
+        <Typography sx={{ alignContent: "center", p: 2, color: text.primary }}>
           {!open ? "Show more" : "Show less"}
         </Typography>
       </IconButton>
@@ -220,67 +182,30 @@ const AudioWork = () => {
   const otherSections = audioProjects.filter((p) => p.header !== "Featured");
 
   return (
-    <>
-      {/* Feature music at top */}
-      {musicSection && (
-        <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto", mt: 8 }}>
-          <Box sx={{ mt: -6, width: "100%" }}>
-            <Grid container spacing={2} sx={{ maxWidth: 1500, mx: "auto" }}>
-              <Grid size={{ sm: 12, md: 12 }}>
-                <Typography variant="h6" sx={{ mb: 2 }}>
-                  {musicSection.header}
-                </Typography>
-              </Grid>
+    <Grid container spacing={2} sx={{ mx: "auto" }}>
+      {musicSection?.items.map((project, index) => (
+        <Grid size={{ xs: 12, sm: 6, xl: 3 }} key={`music-${index}`}>
+          <AudioCard project={project} />
+        </Grid>
+      ))}
 
-              {musicSection.items.map((p, i) => (
-                <Grid
-                  size={{
-                    xs: 12,
-                    sm: 6,
-                    xl: 3,
-                  }}
-                  key={`music-${i}`}
-                >
-                  <AudioCard project={p} />
+      <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
+      <Collapse in={open} timeout="auto" sx={{ width: "100%" }}>
+        {otherSections.map((section) => (
+          <FlexBox>
+            <SubHeading fontSize={16} title={section.header} icon={section.icon} />
+            <Grid container spacing={2} key={section.header}>
+              {section.items.map((project, index) => (
+                <Grid mb={8} size={{ xs: 12, sm: 6, xl: 3 }} key={`${section.header}-${index}`}>
+                  <AudioCard project={project} />
                 </Grid>
               ))}
             </Grid>
-          </Box>
-        </Grid>
-      )}
-
-      <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
-      <Collapse in={open} timeout="auto">
-        {otherSections.map((section) => (
-          <Grid
-            container
-            spacing={2}
-            sx={{ maxWidth: 1500, mx: "auto" }}
-            key={section.header}
-          >
-            <Grid size={{ sm: 12, md: 12 }}>
-              <Typography variant="h6" sx={{ mb: 2 }}>
-                {section.header}
-              </Typography>
-            </Grid>
-
-            {section.items.map((p, i) => (
-              <Grid
-                size={{
-                  xs: 12,
-                  sm: 6,
-                  xl: 3,
-                }}
-                key={`${section.header}-${i}`}
-              >
-                <AudioCard project={p} />
-              </Grid>
-            ))}
-          </Grid>
+          </FlexBox>
         ))}
         <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       </Collapse>
-    </>
+    </Grid>
   );
 };
 

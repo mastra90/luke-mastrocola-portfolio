@@ -1,23 +1,30 @@
-import { Button, Box, useTheme, Typography } from "@mui/material";
+import { Code, Headphones } from "@mui/icons-material";
+import { Button, Box, useTheme } from "@mui/material";
 
 type PortfolioTabsProps = {
   isWebDevTab: boolean;
   setIsWebDevTab: (value: boolean) => void;
+  isActive: boolean;
 };
 
-const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
+const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab, isActive }: PortfolioTabsProps) => {
   const theme = useTheme();
   const { buttonHover } = theme.palette;
   const text = theme.palette.text;
   const bgcolor = theme.palette.background;
+
   const PortfolioTabsSx = (isActive: boolean) => ({
+    minWidth: { xs: 48, md: 56 },
+    cursor: isActive ? "auto" : "pointer",
+    borderRadius: 8,
     color: isActive ? bgcolor.default : "inherit",
     bgcolor: isActive ? text.primary : "transparent",
-    width: { xs: "100%", sm: "100%", md: 280 },
-    "&:hover": {
-      bgcolor: isActive ? text.primary : buttonHover,
-    },
-    cursor: "auto",
+    "&:hover": { bgcolor: isActive ? text.primary : buttonHover },
+  });
+
+  const PortfolioIconsSx = (isActive: boolean) => ({
+    fontSize: 24,
+    color: isActive ? bgcolor.default : "inherit",
   });
 
   return (
@@ -25,32 +32,17 @@ const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
       <Box
         sx={{
           display: "flex",
-          gap: 2,
-          p: 2,
+          gap: 1,
+          p: 1,
           bgcolor: bgcolor.secondary,
-          width: { xs: "100%", sm: "100%", md: 600 },
-          m: "auto",
-          my: 4,
-          borderRadius: 3,
+          borderRadius: 8,
         }}
       >
-        <Button
-          disableRipple
-          onClick={() => setIsWebDevTab(true)}
-          sx={PortfolioTabsSx(isWebDevTab)}
-        >
-          <Typography fontSize={{ xs: 12, sm: 14 }} fontWeight={500}>
-            Web Development
-          </Typography>
+        <Button onClick={() => setIsWebDevTab(true)} sx={PortfolioTabsSx(isWebDevTab)}>
+          <Code sx={PortfolioIconsSx(isActive)} />
         </Button>
-        <Button
-          disableRipple
-          onClick={() => setIsWebDevTab(false)}
-          sx={PortfolioTabsSx(!isWebDevTab)}
-        >
-          <Typography fontSize={{ xs: 12, sm: 14 }} fontWeight={500}>
-            Audio Production
-          </Typography>
+        <Button onClick={() => setIsWebDevTab(false)} sx={PortfolioTabsSx(!isWebDevTab)}>
+          <Headphones sx={PortfolioIconsSx(isActive)} />
         </Button>
       </Box>
     </>

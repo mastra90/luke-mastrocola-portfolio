@@ -88,7 +88,7 @@ const PageHeader = ({
                   rel="noopener"
                   sx={{
                     color: text.secondary,
-                    transition: "all 0.1s ease",
+                    transition: "all 0.1s ease-in-out",
                     "&:hover": { color: text.primary },
                   }}
                 >
@@ -98,7 +98,7 @@ const PageHeader = ({
             </Box>
             <Button
               sx={{
-                transition: "all 0.1s ease",
+                transition: "all 0.1s ease-in-out",
                 borderRadius: 2,
                 px: 2,
                 color: text.primary,

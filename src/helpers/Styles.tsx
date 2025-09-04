@@ -7,18 +7,18 @@ export const portfolioMediaSx = {
 
 export const portfolioCardSx = {
   width: "100%",
-  border: "none", 
   height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
+  bgcolor: "#0C151D",
+  "&: hover": {
+    bgcolor: "#171f26",
+  },
+  p: 2,
 };
 
-export const portfolioCardHoverSx = (
-  defaultBtnClass: string,
-  exceptionClass: string,
-  green: string
-) => ({
+export const devCardHoverSx = (defaultBtnClass: string, exceptionClass: string, green: string) => ({
   [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
     [`& .${defaultBtnClass} .card-icon`]: {
       color: green,
