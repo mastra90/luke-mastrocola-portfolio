@@ -6,11 +6,9 @@ import PortfolioTabs from "./PortfolioTabs";
 import { StarOutline as StarIcon } from "@mui/icons-material";
 
 const Portfolio = ({
-  isActive,
   isWebDevTab,
   setIsWebDevTab,
 }: {
-  isActive: boolean;
   isWebDevTab: boolean;
   setIsWebDevTab: (value: boolean) => void;
 }) => {
@@ -21,11 +19,7 @@ const Portfolio = ({
       <FlexBox>
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <Heading title="Portfolio" />
-          <PortfolioTabs
-            isWebDevTab={isWebDevTab}
-            setIsWebDevTab={setIsWebDevTab}
-            isActive={isActive}
-          />
+          <PortfolioTabs isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />
         </Box>
         <Typography variant="body2" fontSize={16} mb={2}>
           Explore some of my web development and audio production work.

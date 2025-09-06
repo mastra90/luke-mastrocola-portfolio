@@ -32,7 +32,6 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           left: isMobile ? 16 : "inherit",
           width: isMobile ? 40 : 60,
           height: isMobile ? 40 : 60,
-          color: text.primary,
           bgcolor: bgcolor.secondary,
           borderRadius: 50,
           transition: "all 0.1s ease-in-out",

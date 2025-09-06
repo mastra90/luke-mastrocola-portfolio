@@ -59,16 +59,6 @@ const createAppTheme = (isDark: boolean) => {
       },
     },
     components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            backgroundColor: palette.background.secondary,
-            "&:hover": {
-              backgroundColor: "transparent",
-            },
-          },
-        },
-      },
       MuiCard: {
         styleOverrides: {
           root: {

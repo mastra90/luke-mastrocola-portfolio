@@ -1,51 +1,52 @@
 import { Code, Headphones } from "@mui/icons-material";
-import { Button, Box, useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
+import { FlexBox } from "../../helpers/Wrappers";
 
 type PortfolioTabsProps = {
   isWebDevTab: boolean;
   setIsWebDevTab: (value: boolean) => void;
-  isActive: boolean;
 };
 
-const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab, isActive }: PortfolioTabsProps) => {
+type TabButtonProps = {
+  isWebDev: boolean;
+  isActive: boolean;
+  onClick: () => void;
+};
+
+const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
   const theme = useTheme();
-  const { buttonHover } = theme.palette;
-  const text = theme.palette.text;
   const bgcolor = theme.palette.background;
-
-  const PortfolioTabsSx = (isActive: boolean) => ({
-    minWidth: { xs: 48, md: 56 },
-    cursor: isActive ? "auto" : "pointer",
-    borderRadius: 8,
-    color: isActive ? bgcolor.default : "inherit",
-    bgcolor: isActive ? text.primary : "transparent",
-    "&:hover": { bgcolor: isActive ? text.primary : buttonHover },
-  });
-
-  const PortfolioIconsSx = (isActive: boolean) => ({
-    fontSize: 24,
-    color: isActive ? bgcolor.default : "inherit",
-  });
+  const text = theme.palette.text;
+  const btnHover = theme.palette.buttonHover;
+  const Icon = isWebDev ? Code : Headphones;
+  const iconColor = isActive ? (isWebDev ? bgcolor.default : bgcolor.secondary) : text.primary;
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          gap: 1,
-          p: 1,
-          bgcolor: bgcolor.secondary,
-          borderRadius: 8,
-        }}
-      >
-        <Button onClick={() => setIsWebDevTab(true)} sx={PortfolioTabsSx(isWebDevTab)}>
-          <Code sx={PortfolioIconsSx(isActive)} />
-        </Button>
-        <Button onClick={() => setIsWebDevTab(false)} sx={PortfolioTabsSx(!isWebDevTab)}>
-          <Headphones sx={PortfolioIconsSx(isActive)} />
-        </Button>
-      </Box>
-    </>
+    <Button
+      disableRipple
+      sx={{
+        borderRadius: 8,
+        bgcolor: isActive ? text.primary : bgcolor.secondary,
+        minWidth: { xs: 48, md: 56 },
+        cursor: isActive ? "auto" : "pointer",
+        "&:hover": { bgcolor: !isActive ? btnHover : text.primary },
+      }}
+      onClick={onClick}
+    >
+      <Icon sx={{ fontSize: 24, color: iconColor }} />
+    </Button>
+  );
+};
+
+const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
+  const theme = useTheme();
+  const bgcolor = theme.palette.background;
+
+  return (
+    <FlexBox row p={1} gap={1} borderRadius={8} bgcolor={bgcolor.secondary}>
+      <TabButton isWebDev={true} isActive={isWebDevTab} onClick={() => setIsWebDevTab(true)} />
+      <TabButton isWebDev={false} isActive={!isWebDevTab} onClick={() => setIsWebDevTab(false)} />
+    </FlexBox>
   );
 };
 

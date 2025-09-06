@@ -103,7 +103,8 @@ const PageHeader = ({
                 px: 2,
                 color: text.primary,
                 border: 2,
-                borderColor: bgcolor.paper,
+                borderColor: bgcolor.secondary,
+                bgcolor: bgcolor.secondary,
                 "&:hover": { borderColor: green },
               }}
             >
