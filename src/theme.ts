@@ -9,6 +9,8 @@ declare module "@mui/material/styles" {
     yellow: string;
     border: string;
     buttonHover: string;
+    portfolioCardBg: string;
+    portfolioCardBgHover: string;
   }
 }
 
@@ -28,6 +30,8 @@ const createAppTheme = (isDark: boolean) => {
         yellow: "#ffe071",
         border: "#262b33",
         buttonHover: "#262b33",
+        portfolioCardBg: "#0c151d",
+        portfolioCardBgHover: "#171f26",
       }
     : {
         background: {
@@ -43,6 +47,8 @@ const createAppTheme = (isDark: boolean) => {
         yellow: "#ffe071",
         border: "#a3abb2",
         buttonHover: "#fffbf8",
+        portfolioCardBg: "#fefcf8",
+        portfolioCardBgHover: "#f2ede9",
       };
 
   return createTheme({

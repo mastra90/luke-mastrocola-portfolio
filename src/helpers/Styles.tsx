@@ -5,18 +5,18 @@ export const portfolioMediaSx = {
   overflow: "hidden",
 };
 
-export const portfolioCardSx = {
+export const portfolioCardSx = (portfolioCardBg: string, portfolioCardBgHover: string) => ({
   width: "100%",
   height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
-  bgcolor: "#0C151D",
+  bgcolor: portfolioCardBg,
   "&: hover": {
-    bgcolor: "#171f26",
+    bgcolor: portfolioCardBgHover,
   },
   p: 2,
-};
+});
 
 export const devCardHoverSx = (defaultBtnClass: string, exceptionClass: string, green: string) => ({
   [`&:hover:not(:has(.${exceptionClass}:hover))`]: {

@@ -7,6 +7,8 @@ import { PortfolioCardLinks } from "../../helpers/Wrappers";
 const DevCard = ({ project }: { project: DevProjectProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
+  const { portfolioCardBg } = theme.palette;
+  const { portfolioCardBgHover } = theme.palette;
   const text = theme.palette.text;
 
   return (
@@ -14,7 +16,7 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
       variant="outlined"
       onClick={() => window.open(project.links.github, "_blank")}
       sx={{
-        ...portfolioCardSx,
+        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
         ...devCardHoverSx("github-btn", "demo-btn", green),
         "&:hover": {
           "& .card-images": { transform: "scale(1.02)" },

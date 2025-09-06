@@ -21,6 +21,8 @@ import { portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
 const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
+  const { portfolioCardBg } = theme.palette;
+  const { portfolioCardBgHover } = theme.palette;
   const text = theme.palette.text;
 
   const getYouTubeId = (url: string): string => {
@@ -40,7 +42,7 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
       variant="outlined"
       onClick={() => window.open(project.links.url, "_blank")}
       sx={{
-        ...portfolioCardSx,
+        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
         "&:hover": {
           "& .card-icon": {
             color: green,
