@@ -1,8 +1,7 @@
 services:
   portfolio-dev:
-    build:
-      context: .
-      target: build
+    image: node:18-alpine
+    working_dir: /app
     volumes:
       - .:/app
       - /app/node_modules
