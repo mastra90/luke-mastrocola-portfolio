@@ -1,7 +1,7 @@
 import { useTheme, Avatar, Typography, Button } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 import ToggleThemeButton from "./ToggleThemeButton";
-import { FlexBox, SocialLinks, SubHeading } from "../helpers/Wrappers";
+import { FlexBox, SocialLinks } from "../helpers/Wrappers";
 import { Link } from "react-scroll";
 
 const Header = ({
@@ -39,12 +39,9 @@ const Header = ({
             <Typography variant={isMobile ? "h5" : "h3"}>Luke</Typography>
             <Typography variant={isMobile ? "h5" : "h3"}> Mastrocola </Typography>
           </FlexBox>
-          <SubHeading
-            title="Web developer | Audio producer"
-            variant="body2"
-            fontSize={isMobile ? 20 : 22}
-            fontWeight={400}
-          />
+          <Typography fontSize={isMobile ? 20 : 22} variant="body2">
+            Web developer | Audio producer
+          </Typography>
           <Typography variant="body2" fontSize={16} sx={{ maxWidth: 340 }}>
             My passion is building digital experiences through code and sound.
           </Typography>

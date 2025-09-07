@@ -1,5 +1,5 @@
-import { useTheme } from "@mui/material";
-import { FlexBox, SocialLinks, SubHeading } from "../helpers/Wrappers";
+import { Typography, useTheme } from "@mui/material";
+import { FlexBox, SocialLinks } from "../helpers/Wrappers";
 
 const Footer = () => {
   const theme = useTheme();
@@ -7,15 +7,12 @@ const Footer = () => {
 
   return (
     <FlexBox py={8} bgcolor={bgcolor.paper} alignItems="center">
-      <SubHeading title="Luke Mastrocola" fontWeight={600} />
-      <SubHeading title="Web developer | Audio producer" variant="body2" fontSize={14} />
+      <Typography variant="h6">Luke Mastrocola</Typography>
+      <Typography variant="body2">Web developer | Audio producer</Typography>
       <SocialLinks sx={{ mt: 1 }} />
-      <SubHeading
-        title="© 2025 Luke Mastrocola. All rights reserved."
-        variant="body2"
-        fontSize={14}
-        sx={{ py: 4 }}
-      />
+      <Typography sx={{ py: 4 }} variant="body2">
+        © 2025 Luke Mastrocola. All rights reserved.
+      </Typography>
     </FlexBox>
   );
 };
