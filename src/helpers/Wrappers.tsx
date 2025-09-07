@@ -1,4 +1,4 @@
-import { SxProps, Theme, useTheme } from "@mui/material/styles";
+import { SxProps, Theme, TypographyVariant, useTheme } from "@mui/material/styles";
 import { ArrowOutward } from "@mui/icons-material";
 import {
   Box,
@@ -118,9 +118,17 @@ type SubHeadingProps = {
   icon?: ReactElement<SvgIconProps>;
   title: string;
   fontSize?: number;
+  variant?: TypographyVariant;
+  sx?: SxProps<Theme>;
 };
 
-export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
+export const SubHeading = ({
+  title,
+  icon,
+  fontSize = 20,
+  variant = "body1",
+  sx,
+}: SubHeadingProps) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const iconSx = {
@@ -136,10 +144,12 @@ export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
         alignItems: "center",
         alignContent: "center",
         gap: 1,
+        ...sx,
       }}
     >
       {icon && cloneElement(icon, { sx: iconSx })}
       <Typography
+        variant={variant}
         sx={{
           fontSize: fontSize,
           fontWeight: 500,
