@@ -17,7 +17,7 @@ const Portfolio = ({
 
   return (
     <LayoutWrapper>
-      <FlexBox>
+      <FlexBox id="portfolio">
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <Heading title="Portfolio" />
           <PortfolioTabs isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />

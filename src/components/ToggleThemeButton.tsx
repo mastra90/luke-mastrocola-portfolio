@@ -39,14 +39,8 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
           position: "relative",
           "&:hover": {
             bgcolor: !isDark ? text.primary : bgcolor.secondary,
-            "& .bedtime-icon": {
-              opacity: isDark ? 0 : 1,
-              color: yellow,
-            },
-            "& .sunny-icon": {
-              opacity: isDark ? 1 : 0,
-              color: yellow,
-            },
+            "& .bedtime-icon": { opacity: isDark ? 0 : 1, color: yellow },
+            "& .sunny-icon": { opacity: isDark ? 1 : 0, color: yellow },
           },
         }}
       >

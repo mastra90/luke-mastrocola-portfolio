@@ -4,6 +4,7 @@ import { Link as MuiLink } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 import ToggleThemeButton from "./ToggleThemeButton";
 import { FlexBox } from "../helpers/Wrappers";
+import { Link } from "react-scroll";
 
 const PageHeader = ({
   isDark,
@@ -96,20 +97,22 @@ const PageHeader = ({
                 </MuiLink>
               ))}
             </Box>
-            <Button
-              sx={{
-                transition: "all 0.1s ease-in-out",
-                borderRadius: 2,
-                px: 2,
-                color: text.primary,
-                border: 2,
-                borderColor: bgcolor.secondary,
-                bgcolor: bgcolor.secondary,
-                "&:hover": { borderColor: green },
-              }}
-            >
-              View projects
-            </Button>
+            <Link to="portfolio" smooth={true} duration={500}>
+              <Button
+                sx={{
+                  transition: "all 0.1s ease-in-out",
+                  borderRadius: 2,
+                  px: 2,
+                  color: text.primary,
+                  border: 2,
+                  borderColor: bgcolor.secondary,
+                  bgcolor: bgcolor.secondary,
+                  "&:hover": { borderColor: green },
+                }}
+              >
+                View projects
+              </Button>
+            </Link>
           </FlexBox>
         </FlexBox>
       </FlexBox>
