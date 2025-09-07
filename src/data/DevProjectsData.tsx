@@ -12,7 +12,7 @@ export type DevProjectProps = {
 
 export const devProjects: DevProjectProps[] = [
   {
-    year: 2025,
+    year: 2024,
     title: "Academic Portfolio",
     description:
       "Showcasing the academic work and research of Deakin University lecturer Dr. Andrew Thomas.",
@@ -24,7 +24,7 @@ export const devProjects: DevProjectProps[] = [
     },
   },
   {
-    year: 2025,
+    year: 2024,
     title: "Marine services showcase",
     description:
       "Digital showcase for Fullard Boats Co, highlighting their expertise in custom boat building and marine services",
@@ -47,7 +47,7 @@ export const devProjects: DevProjectProps[] = [
     },
   },
   {
-    year: 2025,
+    year: 2024,
     title: "SRTainty",
     description:
       "Python tool for cleaning and refining .srt subtitle files for better readability and timing.",

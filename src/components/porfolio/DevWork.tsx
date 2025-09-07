@@ -1,15 +1,24 @@
 import { GitHub, Public } from "@mui/icons-material";
-import { Box, Card, CardContent, CardHeader, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Chip,
+  Grid,
+  Stack,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { devCardHoverSx, portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
 import { DevProjectProps, devProjects } from "../../data/DevProjectsData";
-import { PortfolioCardLinks } from "../../helpers/Wrappers";
+import { FlexBox, PortfolioCardLinks, SubHeading } from "../../helpers/Wrappers";
 
 const DevCard = ({ project }: { project: DevProjectProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const { portfolioCardBg } = theme.palette;
   const { portfolioCardBgHover } = theme.palette;
-  const text = theme.palette.text;
 
   return (
     <Card
@@ -18,9 +27,6 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
       sx={{
         ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
         ...devCardHoverSx("github-btn", "demo-btn", green),
-        "&:hover": {
-          "& .card-images": { transform: "scale(1.02)" },
-        },
       }}
     >
       {project.image && (
@@ -53,22 +59,19 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
         <CardHeader
           sx={{ p: 0 }}
           title={
-            <Box>
-              <Typography sx={{ fontWeight: 500 }}>{project.year}</Typography>
-              <Typography variant="h6" sx={{ fontWeight: 500 }}>
-                {project.title}
-              </Typography>
-            </Box>
+            <FlexBox gap={1}>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <SubHeading fontSize={16} title={project.title} />
+                <Typography>{project.year}</Typography>
+              </Box>
+              <Stack direction="row" sx={{ ml: -1, mb: "auto" }}>
+                <Chip label={project.type} size="small" variant="outlined" sx={{ color: green }} />
+              </Stack>
+              <Typography variant="body2">{project.description}</Typography>
+            </FlexBox>
           }
         />
-        <Typography
-          className="description-text"
-          variant="body2"
-          sx={{ my: 3, color: text.secondary, flex: 1 }}
-        >
-          {project.description}
-        </Typography>
-        <Box sx={{ display: "flex", gap: { xs: 2, md: 3 } }}>
+        <FlexBox row mt="auto">
           <PortfolioCardLinks
             theme={theme}
             buttons={[
@@ -86,7 +89,7 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
               },
             ]}
           />
-        </Box>
+        </FlexBox>
       </CardContent>
     </Card>
   );

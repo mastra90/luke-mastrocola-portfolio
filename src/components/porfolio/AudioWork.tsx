@@ -23,7 +23,6 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const { green } = theme.palette;
   const { portfolioCardBg } = theme.palette;
   const { portfolioCardBgHover } = theme.palette;
-  const text = theme.palette.text;
 
   const getYouTubeId = (url: string): string => {
     try {
@@ -97,26 +96,21 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
         <CardHeader
           sx={{ p: 0 }}
           title={
-            <Box>
-              <Typography sx={{ fontWeight: 500 }}>{project.year}</Typography>
-              <Typography variant="h6" sx={{ fontWeight: 400 }}>
-                {project.title}
-              </Typography>
-              <Typography sx={{ fontWeight: 400, color: text.secondary }}>
-                {" "}
-                {project.subheader}
-              </Typography>
-            </Box>
+            <FlexBox gap={1}>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <SubHeading fontSize={16} title={project.title} />
+                <Typography>{project.year}</Typography>
+              </Box>
+              <Stack direction="row" spacing={1} sx={{ ml: -1, mb: "auto" }}>
+                {project.chips.map((c) => (
+                  <Chip key={c} label={c} size="small" variant="outlined" sx={{ color: green }} />
+                ))}
+              </Stack>
+              <Typography variant="body2"> {project.subheader} </Typography>
+            </FlexBox>
           }
         />
-
-        <Stack direction="row" spacing={1} sx={{ mt: 2, mb: "auto", flexWrap: "wrap" }}>
-          {project.chips.map((c) => (
-            <Chip key={c} label={c} size="small" variant="outlined" />
-          ))}
-        </Stack>
-
-        <Box sx={{ mt: 2, display: "flex", gap: 1 }}>
+        <Box sx={{ mt: "auto" }}>
           <PortfolioCardLinks
             theme={theme}
             buttons={{
@@ -147,28 +141,28 @@ type ShowMoreButtonProps = {
 };
 
 const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
-  const { buttonHover } = theme.palette;
   const text = theme.palette.text;
+  const bgcolor = theme.palette.background;
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", mt: 1, mb: 3, mx: "auto" }}>
+    <Box sx={{ display: "flex", mx: "auto", mt: 2 }}>
       <IconButton
         onClick={() => setOpen((v) => !v)}
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 0,
-          width: { xs: "100%", xl: 600 },
+          p: 2,
+          bgcolor: bgcolor.paper,
           borderRadius: 3,
-          "&:hover": { buttonHover },
+          "&:hover": { bgcolor: bgcolor.secondary },
         }}
         aria-label={open ? "Show less" : "Show more"}
       >
         {open ? (
-          <KeyboardArrowUp sx={{ fontSize: 36 }} />
+          <KeyboardArrowUp sx={{ fontSize: 32 }} />
         ) : (
-          <KeyboardArrowDown sx={{ fontSize: 36 }} />
+          <KeyboardArrowDown sx={{ fontSize: 32 }} />
         )}
-        <Typography sx={{ alignContent: "center", p: 2, color: text.primary }}>
+        <Typography
+          sx={{ display: "flex", justifyContent: "center", color: text.primary, minWidth: 100 }}
+        >
           {!open ? "Show more" : "Show less"}
         </Typography>
       </IconButton>
@@ -194,18 +188,17 @@ const AudioWork = () => {
       <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       <Collapse in={open} timeout="auto" sx={{ width: "100%" }}>
         {otherSections.map((section) => (
-          <FlexBox>
+          <FlexBox sx={{ mt: 8 }}>
             <SubHeading fontSize={16} title={section.header} icon={section.icon} />
             <Grid container spacing={2} key={section.header}>
               {section.items.map((project, index) => (
-                <Grid mb={8} size={{ xs: 12, sm: 6, xl: 3 }} key={`${section.header}-${index}`}>
+                <Grid size={{ xs: 12, sm: 6, xl: 3 }} key={`${section.header}-${index}`}>
                   <AudioCard project={project} />
                 </Grid>
               ))}
             </Grid>
           </FlexBox>
         ))}
-        <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       </Collapse>
     </Grid>
   );
