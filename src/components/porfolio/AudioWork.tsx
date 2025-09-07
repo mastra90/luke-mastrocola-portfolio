@@ -182,7 +182,7 @@ const AudioWork = () => {
       <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
       <Collapse in={open} timeout="auto" sx={{ width: "100%" }}>
         {otherSections.map((section) => (
-          <FlexBox sx={{ mt: 8 }}>
+          <FlexBox key={section.header} sx={{ mt: 8 }}>
             <SubHeading fontSize={16} title={section.header} icon={section.icon} />
             <Grid container spacing={2} key={section.header}>
               {section.items.map((project, index) => (
