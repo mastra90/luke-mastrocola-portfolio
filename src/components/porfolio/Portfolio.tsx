@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import DevWork from "./DevWork";
 import AudioWork from "./AudioWork";
 import { FlexBox, Heading, LayoutWrapper, SubHeading } from "../../helpers/Wrappers";
@@ -22,7 +22,7 @@ const Portfolio = ({
           <Heading title="Portfolio" />
           <PortfolioTabs isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />
         </Box>
-        <SubHeading variant="body2" title={description} fontSize={16} sx={{ mb: 2 }} />
+        <Typography variant="body2" fontSize={16} sx={{ mb: 2 }}> {description} </Typography>
         <SubHeading title="Featured" icon={<StarIcon />} fontSize={16} />
         <Box sx={isWebDevTab ? {} : hiddenSx}> {<DevWork />} </Box>
         <Box sx={!isWebDevTab ? {} : hiddenSx}> {<AudioWork />} </Box>

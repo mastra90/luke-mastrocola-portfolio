@@ -17,7 +17,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Showcasing the academic work and research of Deakin University lecturer Dr. Andrew Thomas.",
     type: "Professional website",
-    image: "src/assets/andrew-thomas3.jpg",
+    image: "src/assets/andrew-thomas.jpg",
     links: {
       github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
       demo: "https://www.drandrewthomasir.com/",
@@ -29,7 +29,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Digital showcase for Fullard Boats Co, highlighting their expertise in custom boat building and marine services",
     type: "Professional website",
-    image: "src/assets/fullard-boats2.jpg",
+    image: "src/assets/fullard-boats.jpg",
     links: {
       github: "https://github.com/FullardBoats-Website/fullard-boats-frontend",
       demo: "https://www.fullardboats.com.au/",
