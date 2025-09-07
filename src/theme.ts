@@ -114,6 +114,15 @@ const createAppTheme = (isDark: boolean) => {
           disableRipple: true,
         },
       },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 8,
+            color: palette.text.primary,
+            backgroundColor: palette.background.secondary,
+          },
+        },
+      },
     },
   });
 };

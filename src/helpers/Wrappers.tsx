@@ -1,4 +1,6 @@
 import { SxProps, Theme, TypographyVariant, useTheme } from "@mui/material/styles";
+import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import { Link as MuiLink } from "@mui/material";
 import { ArrowOutward } from "@mui/icons-material";
 import {
   Box,
@@ -118,6 +120,7 @@ type SubHeadingProps = {
   icon?: ReactElement<SvgIconProps>;
   title: string;
   fontSize?: number;
+  fontWeight?: number;
   variant?: TypographyVariant;
   sx?: SxProps<Theme>;
 };
@@ -126,15 +129,18 @@ export const SubHeading = ({
   title,
   icon,
   fontSize = 20,
+  fontWeight = 500,
   variant = "body1",
   sx,
 }: SubHeadingProps) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const iconSx = {
+    display: "flex",
     fontSize: 20,
     color: green,
     alignContent: "center",
+    alignItems: "center"
   };
 
   return (
@@ -142,7 +148,6 @@ export const SubHeading = ({
       sx={{
         display: "flex",
         alignItems: "center",
-        alignContent: "center",
         gap: 1,
         ...sx,
       }}
@@ -152,7 +157,7 @@ export const SubHeading = ({
         variant={variant}
         sx={{
           fontSize: fontSize,
-          fontWeight: 500,
+          fontWeight: fontWeight,
         }}
       >
         {title}
@@ -226,5 +231,51 @@ export const PortfolioCardLinks = ({
           )
       )}
     </>
+  );
+};
+
+type SocialLinksProps = {
+  sx?: SxProps<Theme>;
+};
+
+export const SocialLinks = ({ sx }: SocialLinksProps) => {
+  const theme = useTheme();
+  const isMobile = useResponsive();
+  const text = theme.palette.text;
+
+  const socialIconss = {
+    ...sx,
+    display: "flex",
+    fontSize: isMobile ? 24 : 28,
+    transition: "all 0.1s ease-in-out",
+    "&:hover": { color: text.secondary },
+  };
+  const socialLinksData = [
+    {
+      icon: <GitHub sx={socialIconss} />,
+      link: "https://github.com/mastra90?tab=repositories",
+    },
+    {
+      icon: <LinkedIn sx={socialIconss} />,
+      link: "https://www.linkedin.com/in/luke-mastrocola-aab00427a/",
+    },
+    {
+      icon: <Twitter sx={socialIconss} />,
+      link: "https://x.com/Mastra_90",
+    },
+    {
+      icon: <Instagram sx={socialIconss} />,
+      link: "https://www.instagram.com/luke.mastrocola/",
+    },
+  ];
+
+  return (
+    <FlexBox row>
+      {socialLinksData.map((social, index) => (
+        <MuiLink key={index} href={social.link} target="_blank" rel="noopener">
+          {social.icon}
+        </MuiLink>
+      ))}
+    </FlexBox>
   );
 };

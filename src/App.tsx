@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import createAppTheme from "./theme";
 import Footer from "./components/Footer";
-import PageHeader from "./components/PageHeader";
+import Header from "./components/Header";
 import About from "./components/About";
 import { useResponsive } from "./hooks/useResponsive";
 import Portfolio from "./components/porfolio/Portfolio";
@@ -24,7 +24,7 @@ const App = () => {
           mt: isMobile ? 0 : 4,
         }}
       >
-        <PageHeader isDark={isDark} setIsDark={setIsDark} />
+        <Header isDark={isDark} setIsDark={setIsDark} />
         <About />
         <Portfolio isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />
         <Footer />
