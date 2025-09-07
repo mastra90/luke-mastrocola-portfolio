@@ -118,17 +118,15 @@ type SubHeadingProps = {
   icon?: ReactElement<SvgIconProps>;
   title: string;
   fontSize?: number;
-  sx?: SxProps<Theme>;
 };
 
-export const SubHeading = ({ title, icon, sx, fontSize = 20 }: SubHeadingProps) => {
+export const SubHeading = ({ title, icon, fontSize = 20 }: SubHeadingProps) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const iconSx = {
     fontSize: 20,
     color: green,
     alignContent: "center",
-    ...sx,
   };
 
   return (

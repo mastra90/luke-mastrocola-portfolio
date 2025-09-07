@@ -20,19 +20,10 @@ export const portfolioCardSx = (portfolioCardBg: string, portfolioCardBgHover: s
 
 export const devCardHoverSx = (defaultBtnClass: string, exceptionClass: string, green: string) => ({
   [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
-    [`& .${defaultBtnClass} .card-icon`]: {
-      color: green,
-    },
-    [`& .${defaultBtnClass} .card-text`]: {
-      color: green,
-      "&::after": { width: "100%" },
-    },
-    [`& .${defaultBtnClass} .card-arrow`]: {
-      transform: "translate(1.5px, -1.5px)",
-    },
+    [`& .${defaultBtnClass} .card-icon`]: { color: green },
+    [`& .${defaultBtnClass} .card-text`]: { color: green },
+    [`& .${defaultBtnClass} .card-chips`]: { color: green },
+    [`& .${defaultBtnClass} .card-arrow`]: { transform: "translate(1.5px, -1.5px)" },
   },
-  [`& .${exceptionClass}:hover .card-text`]: {
-    color: green,
-    "&::after": { width: "100%" },
-  },
+  [`& .${exceptionClass}:hover .card-text`]: { color: green },
 });

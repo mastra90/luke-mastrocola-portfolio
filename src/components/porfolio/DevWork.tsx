@@ -27,6 +27,9 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
       sx={{
         ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
         ...devCardHoverSx("github-btn", "demo-btn", green),
+        "&:hover": {
+          "& .card-chips": { color: green },
+        },
       }}
     >
       {project.image && (
@@ -64,10 +67,10 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
                 <SubHeading fontSize={16} title={project.title} />
                 <Typography>{project.year}</Typography>
               </Box>
-              <Stack direction="row" sx={{ ml: -1, mb: "auto" }}>
-                <Chip label={project.type} size="small" variant="outlined" sx={{ color: green }} />
-              </Stack>
               <Typography variant="body2">{project.description}</Typography>
+              <Stack direction="row" spacing={1} sx={{ ml: -1, mb: "auto" }}>
+                <Chip label={project.type} size="small" variant="outlined" className="card-chips" />
+              </Stack>
             </FlexBox>
           }
         />

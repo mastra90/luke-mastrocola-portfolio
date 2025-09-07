@@ -43,16 +43,10 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
       sx={{
         ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
         "&:hover": {
-          "& .card-icon": {
-            color: green,
-          },
-          "& .card-text": {
-            color: green,
-            "&::after": { width: "100%" },
-          },
-          "& .card-arrow": {
-            transform: "translate(1.5px, -1.5px)",
-          },
+          "& .card-icon": { color: green },
+          "& .card-text": { color: green },
+          "& .card-chips": { color: green },
+          "& .card-arrow": { transform: "translate(1.5px, -1.5px)" },
         },
       }}
     >
@@ -101,12 +95,12 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
                 <SubHeading fontSize={16} title={project.title} />
                 <Typography>{project.year}</Typography>
               </Box>
+              <Typography variant="body2"> {project.subheader} </Typography>
               <Stack direction="row" spacing={1} sx={{ ml: -1, mb: "auto" }}>
                 {project.chips.map((c) => (
-                  <Chip key={c} label={c} size="small" variant="outlined" sx={{ color: green }} />
+                  <Chip key={c} label={c} size="small" variant="outlined" className="card-chips" />
                 ))}
               </Stack>
-              <Typography variant="body2"> {project.subheader} </Typography>
             </FlexBox>
           }
         />
