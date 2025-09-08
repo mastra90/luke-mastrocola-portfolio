@@ -119,6 +119,11 @@ const createAppTheme = (isDark: boolean) => {
         defaultProps: {
           disableRipple: true,
         },
+        styleOverrides: {
+          root: {
+            transition: "none",
+          },
+        },
       },
       MuiButton: {
         styleOverrides: {
