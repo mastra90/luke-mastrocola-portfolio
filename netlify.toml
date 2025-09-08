@@ -1,0 +1,5 @@
+[[redirects]]
+    from = "https://luke-mastrocola.com/"
+    to = "https://lukemastrocola.com.au/"
+    status = 301
+    force = true
