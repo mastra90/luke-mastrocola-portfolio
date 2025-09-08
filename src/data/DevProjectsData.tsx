@@ -17,7 +17,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Showcasing the academic work and research of Deakin University lecturer Dr. Andrew Thomas.",
     type: "Professional website",
-    image: "src/assets/andrew-thomas.jpg",
+    image: "images/andrew-thomas.jpg",
     links: {
       github: "https://github.com/AndrewThomasWebsite/andrew-thomas-frontend",
       demo: "https://www.drandrewthomasir.com/",
@@ -29,7 +29,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Digital showcase for Fullard Boats Co, highlighting their expertise in custom boat building and marine services",
     type: "Professional website",
-    image: "src/assets/fullard-boats.jpg",
+    image: "images/fullard-boats.jpg",
     links: {
       github: "https://github.com/FullardBoats-Website/fullard-boats-frontend",
       demo: "https://www.fullardboats.com.au/",
@@ -41,7 +41,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Modern task tracking app built with React and NestJS, containerized with Docker for easy deployment.",
     type: "React web app",
-    image: "src/assets/task-tracker.jpg",
+    image: "images/task-tracker.jpg",
     links: {
       github: "https://github.com/mastra90/tsa-task-tracker",
     },
@@ -52,7 +52,7 @@ export const devProjects: DevProjectProps[] = [
     description:
       "Python tool for cleaning and refining .srt subtitle files for better readability and timing.",
     type: "Python app",
-    image: "src/assets/SRTainty.jpg",
+    image: "images/SRTainty.jpg",
     links: {
       github: "https://github.com/mastra90/SRTainty",
     },

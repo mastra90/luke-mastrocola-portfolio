@@ -21,7 +21,7 @@ const Header = ({
       <ToggleThemeButton toggleTheme={() => setIsDark(!isDark)} isDark={isDark} />
       <FlexBox spacious rowOnDesktop mx={"auto"}>
         <Avatar
-          src="/Headshot.jpg"
+          src="images/Headshot.jpg"
           alt="Luke Mastrocola"
           sx={{
             width: isMobile ? 150 : 240,
