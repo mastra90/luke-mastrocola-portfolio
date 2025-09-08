@@ -11,10 +11,10 @@ import {
   useTheme,
 } from "@mui/material";
 import { devCardHoverSx, portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
-import { DevProjectProps, devProjects } from "../../data/DevProjectsData";
 import { FlexBox, PortfolioCardLinks, SubHeading } from "../../helpers/Wrappers";
+import { devProjectsData, DevProjectsDataProps } from "../../data/DevProjectsData";
 
-const DevCard = ({ project }: { project: DevProjectProps }) => {
+const DevCard = ({ project }: { project: DevProjectsDataProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const { portfolioCardBg } = theme.palette;
@@ -101,7 +101,7 @@ const DevCard = ({ project }: { project: DevProjectProps }) => {
 const DevWork = () => {
   return (
     <Grid container spacing={2} sx={{ mx: "auto" }}>
-      {devProjects.map((project, index) => (
+      {devProjectsData.map((project, index) => (
         <Grid size={{ xs: 12, sm: 6, xl: 3 }} key={index}>
           <DevCard project={project} />
         </Grid>

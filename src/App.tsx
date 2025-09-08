@@ -28,7 +28,7 @@ const App = () => {
         <About />
         <Portfolio />
         <Contact />
-        <Footer isDark={isDark} toggleTheme={() => setIsDark(!isDark)} />
+        <Footer isDark={isDark} setIsDark={() => setIsDark(!isDark)} />
       </Box>
     </ThemeProvider>
   );

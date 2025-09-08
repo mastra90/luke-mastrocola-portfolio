@@ -1,4 +1,4 @@
-export type DevProjectProps = {
+export type DevProjectsDataProps = {
   year: number;
   title: string;
   description: string;
@@ -10,7 +10,7 @@ export type DevProjectProps = {
   };
 };
 
-export const devProjects: DevProjectProps[] = [
+export const devProjectsData: DevProjectsDataProps[] = [
   {
     year: 2024,
     title: "Academic Portfolio",

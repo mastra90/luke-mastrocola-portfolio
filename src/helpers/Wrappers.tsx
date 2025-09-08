@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { cloneElement, ReactElement, ReactNode } from "react";
 import { useResponsive } from "../hooks/useResponsive";
+import { Link as FooterLink } from "react-scroll";
 
 type FlexBoxProps = BoxProps & {
   children: ReactNode;
@@ -276,6 +277,42 @@ export const SocialLinks = ({ sx }: SocialLinksProps) => {
         <MuiLink key={index} href={social.link} target="_blank" rel="noopener">
           {social.icon}
         </MuiLink>
+      ))}
+    </FlexBox>
+  );
+};
+
+type FooterLinksProps = {
+  sx?: SxProps<Theme>;
+};
+export const FooterLinks = ({ sx }: FooterLinksProps) => {
+  const isMobile = useResponsive();
+
+  const footerLinksx = {
+    fontWeight: 500,
+    cursor: "pointer",
+  };
+  const footerLinksData = [
+    {
+      to: "home",
+      label: "Home",
+    },
+    {
+      to: "about",
+      label: "About me",
+    },
+    {
+      to: "portfolio",
+      label: "View projects",
+    },
+  ];
+
+  return (
+    <FlexBox row gap={isMobile ? 2 : 4} sx={{ ...sx, display: "flex", alignItems: "center" }}>
+      {footerLinksData.map((footerLink, key) => (
+        <FooterLink key={key} to={footerLink.to} smooth={true} duration={500} offset={-32}>
+          <Typography sx={footerLinksx}>{footerLink.label}</Typography>
+        </FooterLink>
       ))}
     </FlexBox>
   );
