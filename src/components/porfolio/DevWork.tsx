@@ -28,7 +28,7 @@ const DevCard = ({ project }: { project: DevProjectsDataProps }) => {
       onClick={() => window.open(project.links.github, "_blank")}
       sx={{
         ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover, isMobile),
-        ...(!isMobile && { ...devCardHoverSx("github-btn", "demo-btn", green) }),
+        ...devCardHoverSx("github-btn", "demo-btn", green, isMobile),
         ...(!isMobile && {
           "&:hover": {
             "& .card-chips": { color: green },

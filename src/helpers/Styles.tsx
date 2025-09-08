@@ -24,12 +24,19 @@ export const portfolioCardSx = (
   p: 2,
 });
 
-export const devCardHoverSx = (defaultBtnClass: string, exceptionClass: string, green: string) => ({
-  [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
-    [`& .${defaultBtnClass} .card-icon`]: { color: green },
-    [`& .${defaultBtnClass} .card-text`]: { color: green },
-    [`& .${defaultBtnClass} .card-chips`]: { color: green },
-    [`& .${defaultBtnClass} .card-arrow`]: { transform: "translate(1.5px, -1.5px)" },
-  },
+export const devCardHoverSx = (
+  defaultBtnClass: string,
+  exceptionClass: string,
+  green: string,
+  isMobile: boolean
+) => ({
+  ...(!isMobile && {
+    [`&:hover:not(:has(.${exceptionClass}:hover))`]: {
+      [`& .${defaultBtnClass} .card-icon`]: { color: green },
+      [`& .${defaultBtnClass} .card-text`]: { color: green },
+      [`& .${defaultBtnClass} .card-chips`]: { color: green },
+      [`& .${defaultBtnClass} .card-arrow`]: { transform: "translate(1.5px, -1.5px)" },
+    },
+  }),
   [`& .${exceptionClass}:hover .card-text`]: { color: green },
 });

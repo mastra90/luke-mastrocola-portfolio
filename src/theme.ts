@@ -88,25 +88,6 @@ const createAppTheme = (isDark: boolean) => {
           },
         },
       },
-      MuiLink: {
-        styleOverrides: {
-          root: {
-            color: palette.green,
-            "&:hover": {
-              "& .card-icon": {
-                color: palette.green,
-              },
-              "& .card-text": {
-                color: palette.green,
-                textUnderlineOffset: 5,
-              },
-              "& .card-arrow": {
-                transform: "translate(1px, -1px)",
-              },
-            },
-          },
-        },
-      },
       MuiSvgIcon: {
         styleOverrides: {
           root: {
