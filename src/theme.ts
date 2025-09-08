@@ -5,8 +5,10 @@ declare module "@mui/material/styles" {
     secondary: string;
   }
   interface Palette {
-    green: string;
     yellow: string;
+    green: string;
+    blue: string;
+    purple: string;
     border: string;
     buttonHover: string;
     portfolioCardBg: string;
@@ -26,8 +28,10 @@ const createAppTheme = (isDark: boolean) => {
           primary: "#f1f2f4",
           secondary: "#a3abb2",
         },
-        green: "#37bab2",
         yellow: "#ffe071",
+        green: "#37bab2",
+        blue: "#3b91f5",
+        purple: "#773ff0",
         border: "#262b33",
         buttonHover: "#262b33",
         portfolioCardBg: "#0c151d",
@@ -43,8 +47,10 @@ const createAppTheme = (isDark: boolean) => {
           primary: "#1a3449",
           secondary: "#5f6b7c",
         },
-        green: "#37bab2",
         yellow: "#ffe071",
+        green: "#37bab2",
+        blue: "#3b91f5",
+        purple: "#773ff0",
         border: "#a3abb2",
         buttonHover: "#fffbf8",
         portfolioCardBg: "#fefcf8",

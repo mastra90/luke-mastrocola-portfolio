@@ -87,13 +87,14 @@ export const LayoutWrapper = ({
 
 type HeadingProps = {
   title: string;
+  typography?: string;
 };
 
-export const Heading = ({ title }: HeadingProps) => {
+export const Heading = ({ title, typography = "h5" }: HeadingProps) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const headerStyles = {
-    typography: "h5",
+    typography: typography,
     fontWeight: 600,
     position: "relative",
     maxHeight: 28,
@@ -140,7 +141,7 @@ export const SubHeading = ({
     fontSize: 20,
     color: green,
     alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   };
 
   return (

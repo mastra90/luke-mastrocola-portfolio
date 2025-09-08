@@ -20,7 +20,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark }: ToggleThemeButtonProps) => {
   };
 
   return (
-    <Box sx={{ m: isMobile ? 2 : "auto", mb: isMobile ? -2 : 0 }}>
+    <Box id="home" sx={{ m: isMobile ? 2 : "auto", mb: isMobile ? -2 : 0 }}>
       <Tooltip disableInteractive title={`Change to ${isDark ? "light" : "dark"} mode`}>
         <Button
           size="small"

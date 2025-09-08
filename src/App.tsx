@@ -6,10 +6,10 @@ import Header from "./components/Header";
 import About from "./components/About";
 import { useResponsive } from "./hooks/useResponsive";
 import Portfolio from "./components/porfolio/Portfolio";
+import Contact from "./components/Contact";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
-  const [isWebDevTab, setIsWebDevTab] = useState(true);
   const theme = createAppTheme(isDark);
   const isMobile = useResponsive();
 
@@ -26,8 +26,9 @@ const App = () => {
       >
         <Header isDark={isDark} setIsDark={setIsDark} />
         <About />
-        <Portfolio isWebDevTab={isWebDevTab} setIsWebDevTab={setIsWebDevTab} />
-        <Footer />
+        <Portfolio />
+        <Contact />
+        <Footer isDark={isDark} toggleTheme={() => setIsDark(!isDark)} />
       </Box>
     </ThemeProvider>
   );

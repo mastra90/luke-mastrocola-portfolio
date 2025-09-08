@@ -9,7 +9,7 @@ const About = () => {
 
   return (
     <LayoutWrapper variant="paper" maxWidthXl={1200}>
-      <FlexBox>
+      <FlexBox id="about">
         <Heading title="About me" />
         <SubHeading title="Bio" icon={<BioIcon />} />
         <Typography variant="body2" fontSize={16}>
