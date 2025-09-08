@@ -24,7 +24,7 @@ const Footer = ({
     >
       <FlexBox row>
         <Typography variant="h6">Luke Mastrocola</Typography>
-        <ToggleThemeButton toggleTheme={() => setIsDark(!isDark)} isDark={isDark} />
+        <ToggleThemeButton isFooter toggleTheme={() => setIsDark(!isDark)} isDark={isDark} />
       </FlexBox>
       <Typography variant="body2" fontSize={16}>
         Web developer | Audio producer

@@ -5,16 +5,22 @@ export const portfolioMediaSx = {
   overflow: "hidden",
 };
 
-export const portfolioCardSx = (portfolioCardBg: string, portfolioCardBgHover: string) => ({
+export const portfolioCardSx = (
+  portfolioCardBg: string,
+  portfolioCardBgHover: string,
+  isMobile: boolean
+) => ({
   width: "100%",
   height: 440,
   display: "flex",
   cursor: "pointer",
   flexDirection: "column",
   bgcolor: portfolioCardBg,
-  "&: hover": {
-    bgcolor: portfolioCardBgHover,
-  },
+  ...(!isMobile && {
+    "&: hover": {
+      bgcolor: portfolioCardBgHover,
+    },
+  }),
   p: 2,
 });
 

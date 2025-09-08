@@ -17,12 +17,14 @@ import { useState } from "react";
 import { AudioCardProps, audioProjects } from "../../data/AudioProjectsData";
 import { FlexBox, PortfolioCardLinks, SubHeading } from "../../helpers/Wrappers";
 import { portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
+import { useResponsive } from "../../hooks/useResponsive";
 
 const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const { portfolioCardBg } = theme.palette;
   const { portfolioCardBgHover } = theme.palette;
+  const isMobile = useResponsive();
 
   const getYouTubeId = (url: string): string => {
     try {
@@ -41,13 +43,15 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
       variant="outlined"
       onClick={() => window.open(project.links.url, "_blank")}
       sx={{
-        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
-        "&:hover": {
-          "& .card-icon": { color: green },
-          "& .card-text": { color: green },
-          "& .card-chips": { color: green },
-          "& .card-arrow": { transform: "translate(1.5px, -1.5px)" },
-        },
+        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover, isMobile),
+        ...(!isMobile && {
+          "&:hover": {
+            "& .card-icon": { color: green },
+            "& .card-text": { color: green },
+            "& .card-chips": { color: green },
+            "& .card-arrow": { transform: "translate(1.5px, -1.5px)" },
+          },
+        }),
       }}
     >
       <Box sx={{ ...portfolioMediaSx, position: "relative" }}>
@@ -132,9 +136,10 @@ type ShowMoreButtonProps = {
   open: boolean;
   setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
   theme: Theme;
+  isMobile: boolean;
 };
 
-const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
+const ShowMoreButton = ({ open, setOpen, theme, isMobile }: ShowMoreButtonProps) => {
   const text = theme.palette.text;
   const bgcolor = theme.palette.background;
   return (
@@ -145,7 +150,9 @@ const ShowMoreButton = ({ open, setOpen, theme }: ShowMoreButtonProps) => {
           p: 2,
           bgcolor: bgcolor.paper,
           borderRadius: 3,
-          "&:hover": { bgcolor: bgcolor.secondary },
+          ...(!isMobile && {
+            "&:hover": { bgcolor: bgcolor.secondary },
+          }),
         }}
         aria-label={open ? "Show less" : "Show more"}
       >
@@ -179,7 +186,7 @@ const AudioWork = () => {
         </Grid>
       ))}
 
-      <ShowMoreButton open={open} setOpen={setOpen} theme={theme} />
+      <ShowMoreButton isMobile open={open} setOpen={setOpen} theme={theme} />
       <Collapse in={open} timeout="auto" sx={{ width: "100%" }}>
         {otherSections.map((section) => (
           <FlexBox key={section.header} sx={{ mt: 8 }}>

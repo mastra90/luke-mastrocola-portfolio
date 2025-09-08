@@ -1,6 +1,7 @@
 import { Code, Headphones } from "@mui/icons-material";
 import { Button, useTheme } from "@mui/material";
 import { FlexBox } from "../../helpers/Wrappers";
+import { useResponsive } from "../../hooks/useResponsive";
 
 type PortfolioTabsProps = {
   isWebDevTab: boolean;
@@ -15,6 +16,7 @@ type TabButtonProps = {
 
 const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
   const theme = useTheme();
+  const isMobile = useResponsive();
   const bgcolor = theme.palette.background;
   const text = theme.palette.text;
   const btnHover = theme.palette.buttonHover;
@@ -29,7 +31,7 @@ const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
         bgcolor: isActive ? text.primary : bgcolor.secondary,
         minWidth: { xs: 48, md: 56 },
         cursor: isActive ? "auto" : "pointer",
-        "&:hover": { bgcolor: !isActive ? btnHover : text.primary },
+        ...(!isMobile && { "&:hover": { bgcolor: !isActive ? btnHover : text.primary } }),
       }}
       onClick={onClick}
     >

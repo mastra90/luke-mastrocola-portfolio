@@ -50,7 +50,10 @@ const Header = ({
             <Link to="portfolio" smooth={true} duration={500} offset={isMobile ? -36 : -48}>
               <Button
                 variant="outlined"
-                sx={{ borderColor: bgcolor.secondary, "&:hover": { borderColor: green } }}
+                sx={{
+                  borderColor: bgcolor.secondary,
+                  ...(!isMobile && { "&:hover": { borderColor: green } }),
+                }}
               >
                 View projects
               </Button>

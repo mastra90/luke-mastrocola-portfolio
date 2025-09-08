@@ -13,23 +13,27 @@ import {
 import { devCardHoverSx, portfolioCardSx, portfolioMediaSx } from "../../helpers/Styles";
 import { FlexBox, PortfolioCardLinks, SubHeading } from "../../helpers/Wrappers";
 import { devProjectsData, DevProjectsDataProps } from "../../data/DevProjectsData";
+import { useResponsive } from "../../hooks/useResponsive";
 
 const DevCard = ({ project }: { project: DevProjectsDataProps }) => {
   const theme = useTheme();
   const { green } = theme.palette;
   const { portfolioCardBg } = theme.palette;
   const { portfolioCardBgHover } = theme.palette;
+  const isMobile = useResponsive();
 
   return (
     <Card
       variant="outlined"
       onClick={() => window.open(project.links.github, "_blank")}
       sx={{
-        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover),
-        ...devCardHoverSx("github-btn", "demo-btn", green),
-        "&:hover": {
-          "& .card-chips": { color: green },
-        },
+        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover, isMobile),
+        ...(!isMobile && { ...devCardHoverSx("github-btn", "demo-btn", green) }),
+        ...(!isMobile && {
+          "&:hover": {
+            "& .card-chips": { color: green },
+          },
+        }),
       }}
     >
       {project.image && (
