@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Luke Mastrocola - Contact Me</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/contact-me.css"> 
+</head>
+
+<header>
+    <nav>
+        <!-- Logo -->
+        <a href="index.html"><img class="logo" src="images/my-logo.png" alt="Logo"></a>
+
+        <!-- Navigation items -->  
+        <div class="nav-items">
+            <li><a href="about-me.html">About Me</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact-me.html">Contact me</a></li>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+  <!-- Contact details -->
+  <div class="contact-containter"> 
+
+      <div class="contact-details">
+        <p>Luke Mastrocola</p>
+        <p>lukemastrocola@example.com</p> 
+      </div>
+      
+      <div class="icons">
+        <a href="https://twitter.com/" target="_blank" class="fa-brands fa-twitter"></a>
+        <a href="https://www.instagram.com/" target="_blank" class="fa-brands fa-instagram"></a>
+        <a href="https://github.com/" target="_blank" class="fa-brands fa-github"></a>
+        <a href="https://au.linkedin.com/" target="_blank" class="fa-brands fa-linkedin"></a>   
+      </div>
+
+      <div class="resume">
+        <a href="resume.pdf">Click here to download resume</a>
+      </div>
+      
+</div>
+
+  
+  <!-- Page heading -->
+  <h1>CONTACT ME</h1>
+
+  <!-- Contact form -->
+  <div class="container">
+    <form>
+      <!-- First name label -->
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  
+      <!-- Last name label -->
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+      
+      <!-- Country dropdown -->
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+        <option value="UK">UK</option>
+      </select>
+      
+      <!-- Subject text -->
+      <label for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="Type here.." style="height:200px"></textarea>
+      
+      <!-- Submit button -->
+      <input type="submit" value="Submit">
+    </form>
+</div>
+<footer></footer>
+</body>   
+</html>

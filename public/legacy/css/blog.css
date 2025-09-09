@@ -1,0 +1,186 @@
+
+/* BLOG PAGE STYLING */
+
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
+}
+/* All content in the body */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 5%;
+  
+}
+
+/* Blog button styling */
+.blog-buttons {
+  background-color: #759242;
+  padding: 1.5vw;
+  margin: 40px;
+  text-align: center;
+  color: #F2F2EF;
+  font-size: 48px;
+  background-size: cover; 
+  opacity: 0.85; 
+  border-radius: 0.6vw;
+  
+  }
+
+/* Blog button hover styling */
+.blog-buttons:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  transition: 0.3s ease-in-out;
+}
+  
+  /* Blog button text styling*/
+  div a {text-decoration: none}
+
+
+/* Blog heading text styling */
+.blog-posts h1 {
+  display: flex;
+  justify-content: start;
+  padding-left: 2rem;
+  margin-top: 6rem;
+  font-size: 40px; 
+  color: #494949;
+}
+
+/* Published date heading text styling */
+.blog-posts h2 {
+  display: flex;
+  justify-content: start;
+  padding-left: 3.3rem;
+  font-size: 24px;
+  color: #494949;
+}
+
+/* Blog content text styling */
+.blog-posts p {
+  display: flex;
+  justify-content: start;
+  padding-left: 3.3rem;
+  font-size: 28px;
+  color: #494949;
+}
+
+/* Blog images styling */
+#blog-image {
+  display: flex;
+  margin: auto;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  width: 92%;
+  border-radius: 0.8vw
+}
+
+/* Blog image hover styling */
+#blog-image:hover {
+  transform: scale(1.02);
+  transition: 0.4s ease;
+}
+
+/* 'Back to top' button styling */
+.top {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 4px 16px;
+  color: #F2F2EF;
+  background: #759242;
+  border-radius: 0.3vw;
+  margin-left: 3.3rem;
+  margin-bottom: 5vw;
+  border: solid #759242 3px;
+}
+
+/* 'Back to top' button hover styling */
+.top:hover {
+  color: #759242;
+  background-color: #F2F2EF;
+  transition: 0.4s ease;
+}
+
+
+/* ------------------------------Blog media query START------------------------------ */
+/* .blog-buttons */
+@media all and (max-width: 1800px) {
+  .blog-buttons {
+    width: 1000px;
+    padding: 2vw;
+    margin-left: 8vw;
+    font-size: 40px;
+  }
+}
+
+@media all and (max-width: 1400px) {
+  .blog-buttons {
+    width: 800px;
+    padding: 2vw;
+    margin-left: 18vw;
+    font-size: 36px
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .blog-buttons {
+    width: 600px;
+    padding: 2vw;
+    margin-left: 26vw;
+    font-size: 28px
+}
+
+@media all and (max-width: 1025px) {
+ .blog-buttons {
+    width: 100%;
+    margin: 0;
+    height: 120px;
+    text-align: center;
+    font-size: 32px;
+    padding-top: 50px;
+    margin-top: 5px;
+    opacity: 1;
+    border-radius: 6px;
+  }
+  
+  /* Blog headings */
+  .blog-posts h1 {
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    padding-left: 0px;
+    }
+    
+  .blog-posts h2 {
+    font-size: 28px;
+    display: block;
+    text-align: center;
+    padding-left: 0px;
+  }
+
+  /* Blog 'Back to top' button */
+  div .top{
+    display: flex;
+    margin: auto;
+    margin-top: 2vw;
+    width: 140px;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  /* Blog images */
+  #blog-image {border-radius: 8px; width: 100%;}
+
+  /* Blog content text */
+  .blog-posts p {padding: 5px;}
+}
+
+ /* Blog headings - smaller screen */  
+@media all and (max-width: 700px) {
+  .blog-posts h1 {font-size: 36px;}
+  .blog-posts h2 {font-size: 24px;} 
+  }
+}
+
+/* ----------Blog media query END---------- */

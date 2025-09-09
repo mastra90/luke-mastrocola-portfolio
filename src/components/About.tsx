@@ -1,11 +1,17 @@
-import { Box, Card, Grid, Typography, useTheme } from "@mui/material";
-import { StickyNote2Outlined as BioIcon } from "@mui/icons-material";
+import { Box, Button, Card, Grid, Typography, useTheme } from "@mui/material";
+import {
+  StickyNote2Outlined as BioIcon,
+  TipsAndUpdatesOutlined as ProgressIcon,
+} from "@mui/icons-material";
 import { Heading, SubHeading, LayoutWrapper, FlexBox } from "../helpers/Wrappers";
 import { aboutCardsData } from "../data/AboutCardsData";
+import { useResponsive } from "../hooks/useResponsive";
 
-const About = () => {
+const About = ({ onShowLegacy }: { onShowLegacy?: () => void }) => {
   const theme = useTheme();
-  const { border } = theme.palette;
+  const { border, green } = theme.palette;
+  const bgcolor = theme.palette.background;
+  const isMobile = useResponsive();
 
   return (
     <LayoutWrapper variant="paper" maxWidthXl={1200}>
@@ -47,6 +53,22 @@ const About = () => {
             </Grid>
           ))}
         </Grid>
+        <SubHeading title="My progress" icon={<ProgressIcon />} sx={{ mt: 4 }} />
+        <Typography variant="body2" fontSize={16}>
+          From basic HTML/CSS to a modern React application with Material-UI theming - see how far
+          I've come!
+        </Typography>
+        <Button
+          onClick={onShowLegacy}
+          variant="outlined"
+          sx={{
+            width: "fit-content",
+            borderColor: bgcolor.secondary,
+            ...(!isMobile && { "&:hover": { borderColor: green } }),
+          }}
+        >
+          Compare to my first website!
+        </Button>
       </FlexBox>
     </LayoutWrapper>
   );
