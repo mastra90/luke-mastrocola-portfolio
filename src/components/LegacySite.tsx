@@ -2,7 +2,7 @@ import { ChevronLeft } from "@mui/icons-material";
 import { Box, Button, useTheme } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 
-const LegacySite = ({ isLegacy, toNewSite }: { isLegacy: boolean; toNewSite: () => void }) => {
+const LegacySite = ({ toNewSite }: { toNewSite: () => void }) => {
   const theme = useTheme();
   const isMobile = useResponsive();
   const bgcolor = theme.palette.background;
@@ -10,15 +10,10 @@ const LegacySite = ({ isLegacy, toNewSite }: { isLegacy: boolean; toNewSite: () 
   return (
     <Box
       sx={{
-        position: "absolute",
-        top: 0,
-        zIndex: isLegacy ? 100 : -100,
-        height: "100vh",
         width: "100%",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
-        opacity: isLegacy ? 1 : 0,
-        
       }}
     >
       <Button
