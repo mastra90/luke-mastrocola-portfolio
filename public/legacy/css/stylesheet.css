@@ -4,6 +4,10 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+html {
+  max-height: 100vh;
+}
+
 header {
 background-color: #F2F2EF;
 
@@ -16,13 +20,13 @@ background-color: #F2F2EF;
 /* logo styling */
 
 .logo {
-width: 120px;
-margin-bottom: 30px;
-margin-top: 30px;
-margin-left: 30px;
-margin-right: 0px;
-opacity: .75;
-border-radius: 50%;
+  width: 120px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 0px;
+  opacity: .75;
+  border-radius: 50%;
 }
 
 /* logo hover styling */
@@ -40,13 +44,13 @@ border-radius: 50%;
   list-style: none;
   float: right;
   padding: 32px;
-  max-width: fit-content; 
+  max-width: fit-content;
 }
 
 /* .nav-items text styling */
 
 .nav-items a {
-  text-decoration: none; 
+  text-decoration: none;
   font-size: 1.5rem;
   color: #f2f0ef;
   border: none;
@@ -54,8 +58,8 @@ border-radius: 50%;
   padding: 4px 16px;
   border: solid #759242 3px;
   border-radius: 8px;
-  
-} 
+
+}
 
 /* .nav-items text hover styling */
 
@@ -66,7 +70,7 @@ border-radius: 50%;
 }
 
 /* Page title styling */
- 
+
 h1 {
   display: flex;
   justify-content: center;
@@ -86,8 +90,8 @@ h1 {
 }
 
 .headshot img {
- width: 100%; /*image position */
- border-radius: 16px;
+  width: 100%; /*image position */
+  border-radius: 16px;
 }
 
 .headshot:hover{
@@ -104,7 +108,7 @@ footer {
 @media all and (max-width: 640px) {
   .nav-items {
     display: grid;
-    padding: 4px; 
+    padding: 4px;
     margin-right: 1%;
     margin-top: 4%;
     row-gap: 30px;
@@ -114,11 +118,11 @@ footer {
     font-size: 24px;
   }
 }
-  
+
 @media all and (max-width: 440px) {
   .nav-items {
     display: grid;
-    padding: 4px; 
+    padding: 4px;
     margin-right: 1%;
     margin-top: 4%;
     row-gap: 30px;
@@ -128,19 +132,19 @@ footer {
     font-size: 20px;
   }
   h1 {
-    font-size: 175%; 
+    font-size: 175%;
   }
   .logo {
     width: 80px;
     margin-left: 10%;
     margin-bottom: 72px;
-    }
   }
-  
+}
+
 @media all and (max-width: 340px) {
   .nav-items {
     display: grid;
-    padding: 4px; 
+    padding: 4px;
     margin-right: 1%;
     margin-top: 4%;
     row-gap: 30px;
@@ -151,13 +155,13 @@ footer {
   }
   h1 {
     font-size: 150%;
-    }
   }
-    
+}
+
 @media all and (max-width: 300px) {
   .nav-items {
     display: grid;
-    padding: 4px; 
+    padding: 4px;
     margin-right: 1%;
     margin-top: 4%;
     row-gap: 30px;
@@ -168,18 +172,18 @@ footer {
   }
   h1 {
     font-size: 130%;
-    }
+  }
 
   .logo {
     width: 60px;
     margin-left: 10%;
-    }
   }
-  
+}
+
 @media all and (max-width: 270px) {
   .nav-items {
     display: grid;
-    padding: 4px; 
+    padding: 4px;
     margin-right: 1%;
     margin-top: 4%;
     row-gap: 30px;
@@ -190,28 +194,28 @@ footer {
   }
   h1 {
     font-size: 18px;
-    }
   }
+}
 
-  @media all and (max-width: 240px) {
-    .nav-items {
-      display: grid;
-      padding: 4px; 
-      margin-right: 1%;
-      margin-top: 4%;
-      row-gap: 20px;
-      background-color: none;
-      margin-bottom: 40px;
-    }
-    .nav-items a {
-      font-size: 12px;
-    }
-    h1 {
-      font-size: 16px;
-      }
-    }
+@media all and (max-width: 240px) {
+  .nav-items {
+    display: grid;
+    padding: 4px;
+    margin-right: 1%;
+    margin-top: 4%;
+    row-gap: 20px;
+    background-color: none;
+    margin-bottom: 40px;
+  }
+  .nav-items a {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+}
 
-  /* For 4k resolution screens */
+/* For 4k resolution screens */
 
 @media all and (min-width: 3800px) {
   .nav-items a {
@@ -219,9 +223,8 @@ footer {
   }
   h1 {
     font-size: 400%;
-    }
   }
+}
 /* ------------------------------Navigation media query END ------------------------------*/
 
 
-  

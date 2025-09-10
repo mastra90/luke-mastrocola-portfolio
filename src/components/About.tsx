@@ -7,7 +7,7 @@ import { Heading, SubHeading, LayoutWrapper, FlexBox } from "../helpers/Wrappers
 import { aboutCardsData } from "../data/AboutCardsData";
 import { useResponsive } from "../hooks/useResponsive";
 
-const About = ({ onShowLegacy }: { onShowLegacy?: () => void }) => {
+const About = ({ toLegacySite }: { toLegacySite?: () => void }) => {
   const theme = useTheme();
   const { border, green } = theme.palette;
   const bgcolor = theme.palette.background;
@@ -59,7 +59,7 @@ const About = ({ onShowLegacy }: { onShowLegacy?: () => void }) => {
           I've come!
         </Typography>
         <Button
-          onClick={onShowLegacy}
+          onClick={toLegacySite}
           variant="outlined"
           sx={{
             width: "fit-content",

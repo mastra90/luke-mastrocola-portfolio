@@ -1,41 +1,47 @@
-import { ArrowBack } from "@mui/icons-material";
+import { ChevronLeft } from "@mui/icons-material";
 import { Box, Button, useTheme } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 
-const LegacySite = ({ toNewSite }: { toNewSite: () => void }) => {
+const LegacySite = ({ isLegacy, toNewSite }: { isLegacy: boolean; toNewSite: () => void }) => {
   const theme = useTheme();
   const isMobile = useResponsive();
-  const { green } = theme.palette;
   const bgcolor = theme.palette.background;
 
   return (
     <Box
       sx={{
+        position: "absolute",
+        top: 0,
+        zIndex: isLegacy ? 100 : -100,
         height: "100vh",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
-        transition: "all 1s ease-in-out",
+        opacity: isLegacy ? 1 : 0,
+        
       }}
     >
       <Button
         onClick={toNewSite}
         variant="outlined"
         sx={{
-          m: 4,
-          width: "fit-content",
-          borderColor: bgcolor.secondary,
-          transition: "all 1s ease-in-out",
-          ...(!isMobile && { "&:hover": { borderColor: green } }),
+          py: 2,
+          border: 0,
+          borderRadius: 0,
+          color: "#f2f2ef",
+          bgcolor: "#759242",
+          transition: "all 0.1s ease-in-out",
+          ...(!isMobile && { "&:hover": { bgcolor: bgcolor.secondary } }),
         }}
       >
-        <ArrowBack sx={{ fontSize: 24, mr: 2, transition: "all 1s ease-in-out" }} />
+        <ChevronLeft sx={{ fontSize: 24, mr: 1, color: "#f2f2ef" }} />
         Back to site
       </Button>
       <iframe
         src="/legacy/index.html"
         width="100%"
         height="100%"
-        style={{ border: "none", transition: "all 1s ease-in-out" }}
+        style={{ border: "none" }}
         title="Legacy Portfolio Site"
       />
     </Box>

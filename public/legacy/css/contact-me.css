@@ -1,6 +1,9 @@
 
 /* CONTACT ME PAGE STYLING */
 
+.container {
+  padding-bottom: 32px;
+}
 
 /* input fields styling */
 input[type=text], select, textarea {
@@ -53,7 +56,6 @@ input[type=text], select, textarea {
     max-width: 600px;
     min-width: 150px; 
     margin-top: 32px;
-    margin-bottom: 48px;
   }
   
   /* button hover styling */

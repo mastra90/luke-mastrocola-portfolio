@@ -10,7 +10,7 @@ html {
   max-width: 1400px;
   margin: auto;
   margin-top: 5%;
-  
+  padding-bottom: 32px;
 }
 
 /* About me button styling */
@@ -35,10 +35,10 @@ html {
   transition: 0.3s ease-in-out;
 }
   
-  /* About me button text styling*/
+/* About me button text styling*/
   div a {text-decoration: none}
 
-
+  
 /* About me heading text styling */
 .about-me-posts h1 {
   display: flex;

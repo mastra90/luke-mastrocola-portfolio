@@ -20,24 +20,22 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {isLegacy ? (
-        <LegacySite toNewSite={toNewSite} />
-      ) : (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: isMobile ? 12 : 32,
-            mt: isMobile ? 0 : 4,
-          }}
-        >
-          <Header isDark={isDark} setIsDark={setIsDark} />
-          <About onShowLegacy={toLegacySite} />
-          <Portfolio />
-          <Contact />
-          <Footer isDark={isDark} setIsDark={() => setIsDark(!isDark)} />
-        </Box>
-      )}
+      <LegacySite isLegacy={isLegacy} toNewSite={toNewSite} />
+      <Box
+        sx={{
+          display: isLegacy ? "none" : "flex",
+          opacity: isLegacy ? 0 : 1,
+          flexDirection: "column",
+          gap: isMobile ? 12 : 32,
+          mt: isMobile ? 0 : 4,
+        }}
+      >
+        <Header isDark={isDark} setIsDark={setIsDark} />
+        <About toLegacySite={toLegacySite} />
+        <Portfolio />
+        <Contact />
+        <Footer isDark={isDark} setIsDark={() => setIsDark(!isDark)} />
+      </Box>
     </ThemeProvider>
   );
 };
