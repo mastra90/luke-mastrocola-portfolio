@@ -1,45 +1,61 @@
 import { ChevronLeft } from "@mui/icons-material";
-import { Box, Button, useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
+import { FlexBox } from "../helpers/Wrappers";
 
 const LegacySite = ({ toNewSite }: { toNewSite: () => void }) => {
   const theme = useTheme();
   const isMobile = useResponsive();
-  const bgcolor = theme.palette.background;
+  const legacy = theme.palette.legacy;
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Button
-        onClick={toNewSite}
-        variant="outlined"
-        sx={{
-          py: 2,
-          border: 0,
-          borderRadius: 0,
-          color: "#f2f2ef",
-          bgcolor: "#759242",
-          transition: "all 0.1s ease-in-out",
-          ...(!isMobile && { "&:hover": { bgcolor: bgcolor.secondary } }),
-        }}
-      >
-        <ChevronLeft sx={{ fontSize: 24, mr: 1, color: "#f2f2ef" }} />
-        Back to site
-      </Button>
-      <iframe
-        src="/legacy/index.html"
-        width="100%"
-        height="100%"
-        style={{ border: "none" }}
-        title="Legacy Portfolio Site"
-      />
-    </Box>
+    <FlexBox sx={{ p: 2, height: "100vh", bgcolor: legacy.blue }}>
+      <FlexBox sx={{ height: "100vh", borderRadius: 2 }}>
+        <Button
+          sx={{
+            display: "flex",
+            width: "fit-content",
+            gap: 1,
+            pl: 1,
+            color: legacy.blue,
+            bgcolor: legacy.white,
+            border: 2,
+            borderColor: legacy.white,
+            ...(!isMobile && {
+              "&:hover": {
+                bgcolor: legacy.blue,
+                borderColor: legacy.white,
+                color: legacy.white,
+                "& .back-icon": { color: legacy.white },
+              },
+            }),
+          }}
+          onClick={toNewSite}
+          variant="outlined"
+        >
+          <ChevronLeft
+            className="back-icon"
+            sx={{
+              fontSize: 24,
+              color: legacy.blue,
+              ...(!isMobile && {
+                "&:hover": {
+                  bgcolor: legacy.blue,
+                  borderColor: legacy.green,
+                  color: legacy.white,
+                },
+              }),
+            }}
+          />
+          Back to site
+        </Button>
+        <iframe
+          title="Legacy Portfolio Site"
+          src="/legacy/index.html"
+          style={{ height: "100%", border: "none", borderRadius: 8 }}
+        />
+      </FlexBox>
+    </FlexBox>
   );
 };
 

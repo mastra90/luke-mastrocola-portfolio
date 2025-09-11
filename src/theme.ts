@@ -13,6 +13,11 @@ declare module "@mui/material/styles" {
     buttonHover: string;
     portfolioCardBg: string;
     portfolioCardBgHover: string;
+    legacy: {
+      blue: string;
+      green: string;
+      white: string;
+    };
   }
 }
 
@@ -36,6 +41,11 @@ const createAppTheme = (isDark: boolean) => {
         buttonHover: "#262b33",
         portfolioCardBg: "#0c151d",
         portfolioCardBgHover: "#171f26",
+        legacy: {
+          blue: "#171f26",
+          green: "#759242",
+          white: "#f2f2ef",
+        },
       }
     : {
         background: {
@@ -55,6 +65,11 @@ const createAppTheme = (isDark: boolean) => {
         buttonHover: "#fffbf8",
         portfolioCardBg: "#fefcf8",
         portfolioCardBgHover: "#f2ede9",
+        legacy: {
+          blue: "#171f26",
+          green: "#759242",
+          white: "#f2f2ef",
+        },
       };
 
   return createTheme({

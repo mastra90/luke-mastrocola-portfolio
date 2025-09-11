@@ -15,7 +15,7 @@ const App = () => {
   const theme = createAppTheme(isDark);
   const isMobile = useResponsive();
   const transition = isLegacy ? "1s" : "0.6s";
-  const position = isMobile ? "84px 134px" : "96px 156px";
+  const position = isMobile ? "97px 149px" : "114px 169px";
   const toNewSite = () => setIsLegacy(false);
   const toLegacySite = () => setIsLegacy(true);
 
@@ -24,7 +24,7 @@ const App = () => {
       () => {
         document.body.style.overflow = isLegacy ? "hidden" : "auto";
       },
-      isLegacy ? 300 : 240
+      isLegacy ? 400 : 240
     );
   }, [toNewSite]);
 
@@ -34,11 +34,8 @@ const App = () => {
       <Box
         sx={{
           position: "fixed",
-          bgcolor: "#f2f2ef",
           top: 0,
-          left: 0,
           width: "100%",
-          height: "100vh",
           zIndex: isLegacy ? 10 : 5,
           clipPath: isLegacy ? `circle(150vmax at ${position})` : `circle(0px at ${position})`,
           transition: `clip-path ${transition} cubic-bezier(0.4, 0, 0.2, 1)`,
