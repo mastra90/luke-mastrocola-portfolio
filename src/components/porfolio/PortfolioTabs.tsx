@@ -19,7 +19,7 @@ const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
   const isMobile = useResponsive();
   const bgcolor = theme.palette.background;
   const text = theme.palette.text;
-  const btnHover = theme.palette.buttonHover;
+  const button = theme.palette.button;
   const Icon = isWebDev ? Code : Headphones;
   const iconColor = isActive ? (isWebDev ? bgcolor.default : bgcolor.secondary) : text.primary;
 
@@ -28,10 +28,10 @@ const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
       disableRipple
       sx={{
         borderRadius: 8,
-        bgcolor: isActive ? text.primary : bgcolor.secondary,
+        bgcolor: isActive ? text.primary : button.bg,
         minWidth: { xs: 48, md: 56 },
         cursor: isActive ? "auto" : "pointer",
-        ...(!isMobile && { "&:hover": { bgcolor: !isActive ? btnHover : text.primary } }),
+        ...(!isMobile && { "&:hover": { bgcolor: !isActive ? button.hover : text.primary } }),
       }}
       onClick={onClick}
     >
@@ -42,10 +42,10 @@ const TabButton = ({ isWebDev, isActive, onClick }: TabButtonProps) => {
 
 const PortfolioTabs = ({ isWebDevTab, setIsWebDevTab }: PortfolioTabsProps) => {
   const theme = useTheme();
-  const bgcolor = theme.palette.background;
+  const button = theme.palette.button;
 
   return (
-    <FlexBox row p={1} gap={1} borderRadius={8} bgcolor={bgcolor.secondary}>
+    <FlexBox row p={1} gap={1} borderRadius={8} bgcolor={button.bg}>
       <TabButton isWebDev={true} isActive={isWebDevTab} onClick={() => setIsWebDevTab(true)} />
       <TabButton isWebDev={false} isActive={!isWebDevTab} onClick={() => setIsWebDevTab(false)} />
     </FlexBox>

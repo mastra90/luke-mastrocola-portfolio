@@ -12,7 +12,7 @@ const Header = ({
   setIsDark: (value: boolean) => void;
 }) => {
   const theme = useTheme();
-  const { green, yellow } = theme.palette;
+  const global = theme.palette.global;
   const bgcolor = theme.palette.background;
   const isMobile = useResponsive();
 
@@ -26,7 +26,7 @@ const Header = ({
           sx={{
             width: isMobile ? 150 : 240,
             height: isMobile ? 150 : 240,
-            border: `3px solid ${yellow}`,
+            border: `3px solid ${global.yellow}`,
             mx: isMobile ? "auto" : "inherit",
           }}
         />
@@ -34,8 +34,8 @@ const Header = ({
           textAlign={isMobile ? "center" : "inherit"}
           sx={{ mx: isMobile ? "center" : "none" }}
         >
-          <Typography sx={{ color: green, fontWeight: 500 }}> Hello! I'm </Typography>
-          <FlexBox row mx="auto" gap={1} sx={{ "& > :last-child": { color: green } }}>
+          <Typography sx={{ color: global.green, fontWeight: 500 }}> Hello! I'm </Typography>
+          <FlexBox row mx="auto" gap={1} sx={{ "& > :last-child": { color: global.green } }}>
             <Typography variant={isMobile ? "h5" : "h3"}>Luke</Typography>
             <Typography variant={isMobile ? "h5" : "h3"}> Mastrocola </Typography>
           </FlexBox>
@@ -51,8 +51,10 @@ const Header = ({
               <Button
                 variant="outlined"
                 sx={{
-                  borderColor: bgcolor.secondary,
-                  ...(!isMobile && { "&:hover": { borderColor: green } }),
+                  border: 2,
+                  bgcolor: bgcolor.default,
+                  borderColor: global.green,
+                  ...(!isMobile && { "&:hover": { borderColor: global.green } }),
                 }}
               >
                 View projects

@@ -88,7 +88,7 @@ const App = () => {
         }}
       >
         <Header isDark={isDark} setIsDark={setIsDark} />
-        <About toLegacySite={toLegacySite} />
+        <About isDark={isDark} toLegacySite={toLegacySite} />
         <Portfolio />
         <Contact />
         <Footer isDark={isDark} setIsDark={() => setIsDark(!isDark)} />

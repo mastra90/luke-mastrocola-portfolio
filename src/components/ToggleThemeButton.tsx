@@ -10,7 +10,8 @@ type ToggleThemeButtonProps = {
 
 const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonProps) => {
   const theme = useTheme();
-  const { yellow, buttonHover } = theme.palette;
+  const button = theme.palette.button;
+  const global = theme.palette.global;
   const text = theme.palette.text;
   const bgcolor = theme.palette.background;
   const isMobile = useResponsive();
@@ -23,7 +24,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonP
   const boxSx = {
     width: isFooter ? 56 : 0,
     height: isFooter ? 32 : 0,
-    backgroundColor: isDark ? "#464c52" : "#dbd9d9",
+    backgroundColor: isDark ? "#464c52" : "#d9dee0",
     borderRadius: 4,
     position: "relative",
   };
@@ -33,7 +34,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonP
     left: isFooter ? (isDark ? -2 : 22) : isMobile ? 0 : -30,
     width: isFooter ? 36 : isMobile ? 48 : 60,
     height: isFooter ? 36 : isMobile ? 48 : 60,
-    backgroundColor: isDark ? "#171f26" : buttonHover,
+    backgroundColor: isDark ? "#171f26" : button.hover,
     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
     transition: "left 0.2s ease-in-out !important",
     ...(!isMobile && {
@@ -41,7 +42,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonP
         backgroundColor: text.primary,
         "& .bedtime-icon": {
           opacity: isDark ? 0 : 1,
-          color: yellow,
+          color: global.yellow,
         },
         "& .sunny-icon": {
           opacity: isDark ? 1 : 0,
@@ -76,7 +77,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonP
               sx={{
                 ...iconSx,
                 opacity: isDark ? 1 : 0,
-                color: isDark ? yellow : text.primary,
+                color: isDark ? global.yellow : text.primary,
               }}
             />
             <WbSunny
@@ -84,7 +85,7 @@ const ToggleThemeButton = ({ toggleTheme, isDark, isFooter }: ToggleThemeButtonP
               sx={{
                 ...iconSx,
                 opacity: isDark ? 0 : 1,
-                color: isDark ? yellow : text.primary,
+                color: isDark ? global.yellow : text.primary,
               }}
             />
           </IconButton>

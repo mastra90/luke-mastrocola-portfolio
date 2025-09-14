@@ -21,9 +21,8 @@ import { useResponsive } from "../../hooks/useResponsive";
 
 const AudioCard = ({ project }: { project: AudioCardProps }) => {
   const theme = useTheme();
-  const { green } = theme.palette;
-  const { portfolioCardBg } = theme.palette;
-  const { portfolioCardBgHover } = theme.palette;
+  const global = theme.palette.global;
+  const portfolioCardBg = theme.palette.portfolioCardBg;
   const isMobile = useResponsive();
 
   const getYouTubeId = (url: string): string => {
@@ -43,12 +42,12 @@ const AudioCard = ({ project }: { project: AudioCardProps }) => {
       variant="outlined"
       onClick={() => window.open(project.links.url, "_blank")}
       sx={{
-        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover, isMobile),
+        ...portfolioCardSx(portfolioCardBg.bgcolor, portfolioCardBg.bghover, isMobile),
         ...(!isMobile && {
           "&:hover": {
-            "& .card-icon": { color: green },
-            "& .card-text": { color: green },
-            "& .card-chips": { color: green },
+            "& .card-icon": { color: global.green },
+            "& .card-text": { color: global.green },
+            "& .card-chips": { color: global.green },
             "& .card-arrow": { transform: "translate(1.5px, -1.5px)" },
           },
         }),
