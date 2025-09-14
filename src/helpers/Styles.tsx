@@ -2,8 +2,7 @@ export const portfolioMediaSx = {
   mb: 3,
   height: 190,
   borderRadius: 2,
-  overflow: "hidden",
-};
+}
 
 export const portfolioCardSx = (
   portfolioCardBg: string,

@@ -58,9 +58,11 @@ type LayoutWrapperProps = {
   maxWidthSm?: number;
   children: ReactNode;
   variant?: "default" | "paper";
+  sx?: SxProps<Theme>;
 };
 
 export const LayoutWrapper = ({
+  sx,
   maxWidthXl = 1537,
   maxWidthSm = 1000,
   children,
@@ -77,6 +79,7 @@ export const LayoutWrapper = ({
   const boxSx = {
     py: isPaper ? { xs: 4, sm: 8 } : 0,
     bgcolor: () => (isPaper ? bgcolor.paper : "transparent"),
+    ...sx,
   };
 
   return (
@@ -93,7 +96,7 @@ type HeadingProps = {
 
 export const Heading = ({ title, typography = "h5" }: HeadingProps) => {
   const theme = useTheme();
-  const { green } = theme.palette;
+  const global = theme.palette.global;
   const headerStyles = {
     typography: typography,
     fontWeight: 600,
@@ -106,7 +109,7 @@ export const Heading = ({ title, typography = "h5" }: HeadingProps) => {
       left: 1,
       width: 48,
       height: 4,
-      bgcolor: green,
+      bgcolor: global.green,
       borderRadius: 2,
     },
   };
@@ -136,11 +139,11 @@ export const SubHeading = ({
   sx,
 }: SubHeadingProps) => {
   const theme = useTheme();
-  const { green } = theme.palette;
+  const global = theme.palette.global;
   const iconSx = {
     display: "flex",
     fontSize: 20,
-    color: green,
+    color: global.green,
     alignContent: "center",
     alignItems: "center",
   };
@@ -183,7 +186,7 @@ export const PortfolioCardLinks = ({
 }) => {
   const theme = useTheme();
   const buttonArray = Array.isArray(buttons) ? buttons : [buttons];
-  const { green } = theme.palette;
+  const global = theme.palette.global;
   const text = theme.palette.text;
   const portfolioCardLinksSx = () => ({
     fontSize: 14,
@@ -198,7 +201,7 @@ export const PortfolioCardLinks = ({
       left: 0,
       width: 0,
       height: "1px",
-      color: green,
+      color: global.green,
       transition: "width 0.1s ease-in-out",
     },
   });

@@ -11,28 +11,28 @@ import {
 
 const Contact = () => {
   const theme = useTheme();
-  const { yellow, green, blue, purple, border } = theme.palette;
+  const global = theme.palette.global;
   const bgcolor = theme.palette.background;
   const isMobile = useResponsive();
 
   const contactData = [
     {
-      icon: <WebIcon sx={{ fontSize: 36, color: blue }} />,
+      icon: <WebIcon sx={{ fontSize: 36, color: global.blue }} />,
       title: "Web development",
       description: "Custom websites, web apps and digital experiences",
     },
     {
-      icon: <AudioIcon sx={{ fontSize: 36, color: purple }} />,
+      icon: <AudioIcon sx={{ fontSize: 36, color: global.purple }} />,
       title: "Audio production",
       description: "Music production, mixing, mastering and sound design",
     },
     {
-      icon: <CreativeIcon sx={{ fontSize: 36, color: yellow }} />,
+      icon: <CreativeIcon sx={{ fontSize: 36, color: global.yellow }} />,
       title: "Creative projects",
       description: "Innovative projects that blend technology and artistry",
     },
     {
-      icon: <TeamIcon sx={{ fontSize: 36, color: green }} />,
+      icon: <TeamIcon sx={{ fontSize: 36, color: global.green }} />,
       title: "Team collaboration",
       description: "Join your team as a developer or audio professional",
     },
@@ -44,7 +44,7 @@ const Contact = () => {
         <FlexBox sx={{ mx: "auto" }}>
           <FlexBox row mx="auto" gap={1}>
             <Typography variant={isMobile ? "h5" : "h3"}>Ready to </Typography>
-            <Typography variant={isMobile ? "h5" : "h3"} sx={{ color: green }}>
+            <Typography variant={isMobile ? "h5" : "h3"} sx={{ color: global.green }}>
               Create
             </Typography>
             <Typography variant={isMobile ? "h5" : "h3"}>something </Typography>
@@ -61,7 +61,7 @@ const Contact = () => {
         <Grid container spacing={2}>
           {contactData.map((card, index) => (
             <Grid key={index} size={{ xs: 12, sm: 6, xl: 3 }}>
-              <Card sx={{ px: 3, py: 4, height: "100%", border: 1, borderColor: border }}>
+              <Card sx={{ px: 3, py: 4, height: "100%", border: 1, borderColor: global.border }}>
                 <FlexBox sx={{ textAlign: "center" }}>
                   <Box>{card.icon}</Box>
                   <SubHeading sx={{ mx: "auto" }} title={card.title} fontSize={18} />
@@ -77,7 +77,7 @@ const Contact = () => {
             p: 4,
             height: "100%",
             border: 1,
-            borderColor: "#789c9a",
+            borderColor: global.border,
             position: "relative",
             bgcolor: bgcolor.default,
             maxWidth: 800,
@@ -86,7 +86,7 @@ const Contact = () => {
         >
           <FlexBox>
             <Box sx={{ m: "auto" }}>
-              <FavoriteBorderOutlined sx={{ fontSize: 36, color: green }} />
+              <FavoriteBorderOutlined sx={{ fontSize: 36, color: global.green }} />
             </Box>
             <SubHeading
               title="Have a project in mind?"

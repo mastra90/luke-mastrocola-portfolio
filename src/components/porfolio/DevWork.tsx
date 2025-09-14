@@ -17,9 +17,8 @@ import { useResponsive } from "../../hooks/useResponsive";
 
 const DevCard = ({ project }: { project: DevProjectsDataProps }) => {
   const theme = useTheme();
-  const { green } = theme.palette;
-  const { portfolioCardBg } = theme.palette;
-  const { portfolioCardBgHover } = theme.palette;
+  const global = theme.palette.global;
+  const portfolioCardBg = theme.palette.portfolioCardBg;
   const isMobile = useResponsive();
 
   return (
@@ -27,11 +26,11 @@ const DevCard = ({ project }: { project: DevProjectsDataProps }) => {
       variant="outlined"
       onClick={() => window.open(project.links.github, "_blank")}
       sx={{
-        ...portfolioCardSx(portfolioCardBg, portfolioCardBgHover, isMobile),
-        ...devCardHoverSx("github-btn", "demo-btn", green, isMobile),
+        ...portfolioCardSx(portfolioCardBg.bgcolor, portfolioCardBg.bghover, isMobile),
+        ...devCardHoverSx("github-btn", "demo-btn", global.green, isMobile),
         ...(!isMobile && {
           "&:hover": {
-            "& .card-chips": { color: green },
+            "& .card-chips": { color: global.green },
           },
         }),
       }}
