@@ -1,161 +1,155 @@
-
 /* CONTACT ME PAGE STYLING */
 
 .container {
-  padding-bottom: 32px;
+  padding-bottom: 100px;
 }
 
 /* input fields styling */
-input[type=text], select, textarea {
-    margin: auto;
-    display: block;
-    width: 60%; 
-    padding: 12px;
-    border: 1px solid #494949; 
-    border-radius: 4px;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    resize: vertical;
-    max-width: 600px;
-    min-width: 152px; 
-    font-size: 16px;
-    color: #494949;
-  }
+input[type="text"],
+select,
+textarea {
+  margin: auto;
+  display: block;
+  width: 60%;
+  padding: 12px;
+  border: 1px solid #494949;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  resize: vertical;
+  max-width: 600px;
+  min-width: 152px;
+  font-size: 16px;
+  color: #494949;
+}
 
-  /* input labels styling */
+/* input labels styling */
 
-  label {
-    margin: auto;
-    display: block;
-    width: 60%;
-    max-width: 600px;
-    min-width: 152px; 
-    font-size: 14px;
-    color: #494949;
-  }
+label {
+  margin: auto;
+  display: block;
+  width: 60%;
+  max-width: 600px;
+  min-width: 152px;
+  font-size: 14px;
+  color: #494949;
+}
 
-  ::placeholder {
-    color: #949394;
-  }
-  
-  /* button styling */
+::placeholder {
+  color: #949394;
+}
 
-  input[type=submit] {
-    background-color: #494949;
-    color: #F2F2EF;
-    font-size: 16px;
-    padding: 12px 20px;
-    border-color: #494949;
-    border-width: 1px;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 1;
-    margin: auto;
-    display: block;
-    width: 60%;
-    max-width: 600px;
-    min-width: 150px; 
-    margin-top: 32px;
-  }
-  
-  /* button hover styling */
-  input[type=submit]:hover {
-    background-color: #2a2728;
-    color: #F2F2EF;
-    transition: 0.4s ease;
-    transform: scale(1.03);
-    transition: 0.5s ease
-  }
+/* button styling */
 
-  .contact-details {
-    margin: auto;
-    text-align: center;
-    margin-top: 8px;
-    resize: vertical;
-    font-size: 36px;
-    color: #2a2728;
-  }
+input[type="submit"] {
+  background-color: #494949;
+  color: #f2f2ef;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-color: #494949;
+  border-width: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 1;
+  margin: auto;
+  display: block;
+  width: 60%;
+  max-width: 600px;
+  min-width: 150px;
+  margin-top: 32px;
+}
 
-  /* Icon styling */
-  .icons { 
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 8px;
-    margin-bottom: 64px;
-    resize: vertical;
-    max-width: 600px;
-    min-width: 152px; 
-    font-size: 64px; 
-  }
+/* button hover styling */
+input[type="submit"]:hover {
+  background-color: #2a2728;
+  color: #f2f2ef;
+  transition: 0.4s ease;
+  transform: scale(1.03);
+  transition: 0.5s ease;
+}
 
-  .icons a {text-decoration: none; color:#494949}
-  .icons a:visited { text-decoration: none; color:#494949 }
+.contact-details {
+  margin: auto;
+  text-align: center;
+  margin-top: 8px;
+  resize: vertical;
+  font-size: 36px;
+  color: #2a2728;
+}
 
-  .icons a:hover {
-    transform: scale(1.15);
-    transition: 0.4s ease;
-    color: #2a2728;
-  }
- 
-  .contact-containter {
-    margin: auto;
-    padding: 12px; 
-    border-radius: 4px;
-    margin-top: 8px;
-    margin-bottom: 64px;
-    max-width: 600px;
-  }
+/* Icon styling */
+.icons {
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8px;
+  margin-bottom: 64px;
+  resize: vertical;
+  max-width: 600px;
+  min-width: 152px;
+  font-size: 64px;
+}
 
-  .resume a {
-    background-color: #494949;
-    color: #F2F2EF;
-    font-size: 20px;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: auto;
-    display: block;
-    text-align: center;
-    width: 320px;
-    margin-top: 32px;
-    margin-bottom: 48px;
-  }
-  .resume a:hover {
+.icons a {
+  text-decoration: none;
+  color: #494949;
+}
+.icons a:visited {
+  text-decoration: none;
+  color: #494949;
+}
 
-    transform: scale(1.05);
-    transition: 0.5s ease;
-    background-color: #2a2728
-  }
-  .resume a:visited { text-decoration: none; color:#F2F2EF }
+.icons a:hover {
+  transform: scale(1.15);
+  transition: 0.4s ease;
+  color: #2a2728;
+}
 
+.contact-containter {
+  margin: auto;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 64px;
+  max-width: 600px;
+}
 
+.resume a {
+  background-color: #494949;
+  color: #f2f2ef;
+  font-size: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  text-align: center;
+  width: 320px;
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+.resume a:hover {
+  transform: scale(1.05);
+  transition: 0.5s ease;
+  background-color: #2a2728;
+}
+.resume a:visited {
+  text-decoration: none;
+  color: #f2f2ef;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* ------------------------------Contact form media query START------------------------------ */
+/* ------------------------------Contact form media query START------------------------------ */
 @media all and (max-width: 640px) {
   div form label {
     margin: auto;
     display: flex;
     min-width: 40%;
-    font-size: 80%; 
+    font-size: 80%;
   }
 
-  div form input[type=text], div form select, div form textarea {
+  div form input[type="text"],
+  div form select,
+  div form textarea {
     margin: auto;
     display: flex;
     min-width: 40%;
@@ -163,15 +157,14 @@ input[type=text], select, textarea {
     font-size: 12px;
     margin-top: 8px;
     margin-bottom: 8px;
-   }
+  }
 
   div form textarea {
     margin-bottom: 32px;
     height: 160px !important;
-
   }
 
-  div form input[type=submit] {
+  div form input[type="submit"] {
     margin: auto;
     min-width: 40%;
     border-radius: 4%;
@@ -185,10 +178,12 @@ input[type=text], select, textarea {
     margin: auto;
     display: flex;
     min-width: 40%;
-    font-size: 175%; 
+    font-size: 175%;
   }
 
-  div form input[type=text], div form select, div form textarea {
+  div form input[type="text"],
+  div form select,
+  div form textarea {
     margin: auto;
     display: flex;
     min-width: 40%;
@@ -196,14 +191,14 @@ input[type=text], select, textarea {
     font-size: 200%;
     margin-top: 24px;
     margin-bottom: 24px;
-   }
+  }
 
   div form textarea {
     height: 800px !important;
     margin-bottom: 48px;
   }
 
-  div form input[type=submit] {
+  div form input[type="submit"] {
     margin: auto;
     min-width: 40%;
     font-size: 200%;
@@ -223,8 +218,8 @@ input[type=text], select, textarea {
 
 @media all and (max-width: 400px) {
   .resume a {
-   width: 80%;
-   font-size: 12px;
+    width: 80%;
+    font-size: 12px;
   }
   .contact-details {
     font-size: 16px;
@@ -233,6 +228,5 @@ input[type=text], select, textarea {
     font-size: 36px;
   }
 }
-
 
 /* ------------------------------Contact form media query END------------------------------ */
