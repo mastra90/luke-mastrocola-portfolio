@@ -1,6 +1,6 @@
 import { useTheme, Typography, Card, Grid, Box } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
-import { FlexBox, LayoutWrapper, SocialLinks, SubHeading } from "../helpers/Wrappers";
+import { FlexBox, LayoutWrapper, SubHeading } from "../helpers/Wrappers";
 import { FavoriteBorderOutlined } from "@mui/icons-material";
 import {
   Code as WebIcon,
@@ -8,6 +8,7 @@ import {
   LightbulbOutlined as CreativeIcon,
   PeopleOutlined as TeamIcon,
 } from "@mui/icons-material";
+import { SocialLinks } from "./SocialLinks";
 
 const Contact = () => {
   const theme = useTheme();

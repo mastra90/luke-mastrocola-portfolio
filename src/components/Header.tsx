@@ -1,8 +1,9 @@
 import { useTheme, Avatar, Typography, Button } from "@mui/material";
 import { useResponsive } from "../hooks/useResponsive";
 import ToggleThemeButton from "./ToggleThemeButton";
-import { FlexBox, SocialLinks } from "../helpers/Wrappers";
+import { FlexBox } from "../helpers/Wrappers";
 import { Link } from "react-scroll";
+import { SocialLinks } from "./SocialLinks";
 
 const Header = ({
   isDark,
