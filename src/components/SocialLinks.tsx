@@ -19,7 +19,7 @@ export const SocialLinks = ({ sx }: SocialLinksProps) => {
     ...sx,
     display: "flex",
     fontSize: isMobile ? 24 : 28,
-    transition: "all 0.1s ease-in-out",
+    transition: "none",
     ...(!isMobile && { "&:hover": { color: text.secondary } }),
   };
 

@@ -55,6 +55,7 @@ const Header = ({
                   border: 2,
                   bgcolor: bgcolor.default,
                   borderColor: global.green,
+                  transition: "none",
                   ...(!isMobile && { "&:hover": { borderColor: global.green } }),
                 }}
               >
