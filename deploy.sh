@@ -17,26 +17,26 @@ while true; do
         done
     fi
 
-    echo -e "🔍 Checking if Docker services are running...\n"
+    echo -e "Checking if Docker services are running...\n"
 
     if docker info > /dev/null 2>&1; then
-        echo "✅ Docker is running!"
+        echo "Docker is running"
         echo ""
         break
     else
         sleep 1
-        echo "❌ Docker is not running."
+        echo "Docker is not running."
         echo ""
-        echo "🐳 Run Docker and press y to continue."
-        echo "🐳 Press any other key to cancel."
+        echo "Run Docker and press y to continue."
+        echo "Press any other key to cancel."
         echo ""
-        read -p "🔁 Continue? (y): " input
+        read -p "Continue? [y/N]: " input
 
         if [[ "$input" == [Yy] ]]; then
             RETRY=true
             continue
         else
-            echo -e "\n👋 Deployment cancelled"
+            echo -e "\nDeployment cancelled"
             exit 0
         fi
     fi
@@ -44,12 +44,12 @@ done
 
 set -e
 echo ""
-echo "🚀 Deploying luke-mastrocola-portfolio..."
+echo "Deploying luke-mastrocola-portfolio..."
 
 PARENT_DIR=$(pwd)
 
 if [ -d "$PROJECT_DIR" ]; then
-    echo "🗑️ Removing existing directory..."
+    echo "Removing existing directory..."
     echo ""
     chmod -R u+w "$PROJECT_DIR" 2>/dev/null || true
     rm -rf "$PROJECT_DIR" 2>/dev/null || sudo rm -rf "$PROJECT_DIR"
@@ -68,15 +68,17 @@ if [ ! -z "$CONTAINERS_ON_5173" ]; then
 fi
 
 if docker compose up --build -d --remove-orphans 2>/dev/null; then
-    echo "✅ Started"
+    echo "Started"
 else
     docker-compose up --build -d --remove-orphans
 fi
 
 rm -f "$PARENT_DIR/deploy.sh"
+echo "Launching browser..."
 sleep 2
 
+cmd.exe /c start http://localhost:$PORT 2>/dev/null || \
+xdg-open http://localhost:$PORT 2>/dev/null || \
 python3 -m webbrowser http://localhost:$PORT 2>/dev/null || \
-python -m webbrowser http://localhost:$PORT 2>/dev/null || \
 open http://localhost:$PORT 2>/dev/null || \
 echo "Open http://localhost:$PORT"
